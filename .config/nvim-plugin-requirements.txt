@@ -1,0 +1,14 @@
+molten.nvim // magma.nvimをフォークしたもの，jupyternotebookをいい感じに見せるのに必要
+folke/lazy.nvim // プラグインマネージャー
+nvim-telescope/telescope.nvim // ファジーファインダー
+williamboman/mason.nvim // JSONファイルのハイライト
+hrsh7th/nvim-cmp // 補完エンジン
+nvim-lualine/lualine.nvim // ステータスライン
+folke/trouble.nvim // エラー表示
+lukas-reineke/indent-blankline.nvim // インデントの可視化
+rcarrige/nvim-notify // 通知
+folke/which-key.nvim // キーバインドのヘルプ
+catppuccin/nvim // カラースキーム
+folke/tokyonight.nvim // カラースキーム
+mason-org/mason-lspconfig.nvim // LSPの設定
+
