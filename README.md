@@ -1,0 +1,5 @@
+### fish
+
+```fish
+exec fish
+```
