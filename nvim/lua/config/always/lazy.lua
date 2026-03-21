@@ -26,13 +26,6 @@ require("lazy").setup({
 	spec = {
 		-- import your plugins
 		{
-			"LazyVim/LazyVim",
-			import = "lazyvim.plugins",
-			cond = function()
-				return not vim.g.vscode
-			end,
-		},
-		{
 			import = "plugins.vscode",
 			cond = function()
 				return vim.g.vscode
