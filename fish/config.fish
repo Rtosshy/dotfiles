@@ -38,31 +38,6 @@ function fish_user_key_bindings
     bind \co peco_ghq
 end
 
-# Apple Silicon brew を abrew として使う
-function abrew
-    if test -x /opt/homebrew/bin/brew
-        /opt/homebrew/bin/brew $argv
-    else
-        echo "abrew: /opt/homebrew/bin/brew が見つかりません"
-        return 1
-    end
-end
-
-# Rosetta (Intel) brew を ibrew として使う
-function ibrew
-    if test -x /usr/local/bin/brew
-        # Rosetta で実行するため arch -x86_64 を付ける
-        arch -x86_64 /usr/local/bin/brew $argv
-    else
-        echo "ibrew: /usr/local/bin/brew が見つかりません"
-        return 1
-    end
-end
-
-# 便利補助: どちらが使えるか確認するためのエイリアス
-alias which-abrew='command -v /opt/homebrew/bin/brew; and /opt/homebrew/bin/brew --prefix'
-alias which-ibrew='command -v /usr/local/bin/brew; and arch -x86_64 /usr/local/bin/brew --prefix'
-
 # aliases
 alias v="nvim"
 alias c="clear"
@@ -91,13 +66,14 @@ set -gx PATH /usr/bin /bin /usr/sbin /sbin /opt/homebrew/bin /opt/homebrew/sbin 
 set -x VOLTA_HOME $HOME/.volta
 fish_add_path -g $VOLTA_HOME/bin
 set -x VOLTA_FEATURE_PNPM 1
-set -x GOENV_ROOT $HOME/.goenv
 
 # 3) 他ツールを順次追加（fish_add_pathで重複防止＆順序維持）
 fish_add_path -g $HOME/go/bin # Go (GOPATH/bin)
 fish_add_path -g $HOME/.lmstudio/bin # LM Studio
 fish_add_path -g $HOME/.codeium/windsurf/bin # Windsurf
 fish_add_path -g $HOME/.pixi/bin # pixi
+
+set -gx CLAUDE_CONFIG_DIR $HOME/.claude
 
 # 4) direnvは最後（プロジェクトごとのPATH変更を尊重）
 if command -q direnv
@@ -108,6 +84,4 @@ end
 starship init fish | source
 
 # 6) テーマ環境変数（必要なら）
-set -gx TMUX_THEME solarized
-
-status --is-interactive; and source (goenv init -| psub)
+set -gx TMUX_THEME nord
