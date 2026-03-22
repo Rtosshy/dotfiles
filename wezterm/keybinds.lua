@@ -1,8 +1,11 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
+-- SUPER, CMD, WIN, these are all equivalent.
+-- META,  OPT, CMD, these are all equivalent.
+-- this config is default.
 return {
-  keys = {
+    keys = {
     { key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
     { key = 'Tab', mods = 'SHIFT|CTRL', action = act.ActivateTabRelative(-1) },
     { key = 'Enter', mods = 'ALT', action = act.ToggleFullScreen },
