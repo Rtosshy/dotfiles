@@ -9,10 +9,17 @@ return {
     lazy = false, -- neo-tree will lazily load itself
     ---@module 'neo-tree'
     ---@type neotree.Config
+    keys = {
+        { "<leader>e", "<cmd>Neotree action=focus source=filesystem position=left toggle<CR>", desc = "" },
+    },
     opts = {
         -- options go here
-    },
-    keys = {
-        { "<leader>e", "<cmd>Neotree<CR>", desc = "" },
+        close_if_last_window = true,
+        window = {
+            mappings = {
+                ["l"] = "open",
+                ["h"] = "close_node",
+            },
+        },
     },
 }
