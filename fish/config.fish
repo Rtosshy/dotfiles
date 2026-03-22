@@ -38,16 +38,9 @@ function fish_user_key_bindings
     bind \co peco_ghq
 end
 
-# aliases
-alias v="nvim"
-alias c="clear"
-alias ll="ls -lFh"
-alias la="ls -laFh"
-alias ls="ls -Fh"
-
 set -g fish_greeting ""
 
-# Fish のシンタックスハイライトの色を設定
+# Set fish syntax highlight
 set -g fish_color_command green --bold
 set -g fish_color_param white
 set -g fish_color_option cyan
@@ -75,13 +68,12 @@ fish_add_path -g $HOME/.pixi/bin # pixi
 
 set -gx CLAUDE_CONFIG_DIR $HOME/.claude
 
-# 4) direnvは最後（プロジェクトごとのPATH変更を尊重）
 if command -q direnv
     eval (direnv hook fish)
 end
 
-# 5) プロンプト等の初期化（順序は任意）
 starship init fish | source
+zoxide init fish --cmd cd | source
 
-# 6) テーマ環境変数（必要なら）
 set -gx TMUX_THEME nord
+
