@@ -23,9 +23,11 @@ LINKS=(
   "fish:$HOME/.config/fish"
   "wezterm:$HOME/.config/wezterm"
   "ghostty:$HOME/.config/ghostty"
-  "vim:$HOME/.vim"
-  "starship.toml:$HOME/.config/starship.toml"
+  "nvim:$HOME/.config/nvim"
   "git:$HOME/.config/git"
+  "tmux:$HOME/.config/tmux"
+  "starship.toml:$HOME/.config/starship.toml"
+  "vim:$HOME/.vim"
 )
 
 # ------------------------------------------------------------
