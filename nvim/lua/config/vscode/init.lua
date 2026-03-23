@@ -1,1 +1,1 @@
-require("config.vscode.keymaps")
+require('config.vscode.keymaps')
