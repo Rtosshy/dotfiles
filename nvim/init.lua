@@ -1,7 +1,7 @@
 if vim.g.vscode then
-	require("config.vscode")
+  require('config.vscode')
 else
-	require("config.native")
+  require('config.native')
 end
 
-require("config.always")
+require('config.always')

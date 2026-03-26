@@ -1,10 +1,10 @@
 return {
-  "nwiizo/marp.nvim",
-  ft = "markdown",
+  'nwiizo/marp.nvim',
+  ft = 'markdown',
   config = function()
-    require("marp").setup {
+    require('marp').setup {
       -- options
-      marp_command = "marp", -- default: "marp"
+      marp_command = 'marp', -- default: "marp"
       browser = nil, -- auto detection
       server_mode = false, -- use watch mode(-w)
     }
