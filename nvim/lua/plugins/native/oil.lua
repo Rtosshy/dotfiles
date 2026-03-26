@@ -4,13 +4,7 @@ return {
   ---@type oil.SetupOpts
   keys = {
     {
-      '<Space>go',
-      function()
-        require('oil').open()
-      end,
-    },
-    {
-      '<Space>gf',
+      '<Space>e',
       function()
         require('oil').toggle_float()
       end,
