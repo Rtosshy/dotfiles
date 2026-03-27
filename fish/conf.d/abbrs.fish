@@ -25,4 +25,13 @@ else
     abbr -a lt "ls -lFhR"
 end
 
+# check ripgrep is installed or not
+if command -q rg
+    abbr -a grep "rg"
+end
+
+# check bat is installed or not
+if command -q bat
+    abbr -a cat "bat"
+end
 
