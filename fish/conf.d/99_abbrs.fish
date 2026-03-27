@@ -12,8 +12,6 @@ else
     abbr -a vim "vim"
 end
 
-builtin command -s eza
-echo "exit code: $status"
 # check eza is installed or not
 if command -q eza
     abbr -a ls "eza --icons"
