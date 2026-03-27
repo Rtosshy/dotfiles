@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export --path GOPATH:/Users/toshiyukimannen/go
+SETUVAR --export MISE_FISH_AUTO_ACTIVATE:0
 SETUVAR __fish_initialized:4300
 SETUVAR fish_features:no\x2dquery\x2dterm
-SETUVAR fish_user_paths:/opt/homebrew/opt/rustup/bin\x1e/Users/toshiyukimannen/\x2epixi/bin\x1e/opt/homebrew/opt/postgresql\x4016/bin\x1e/Users/toshiyukimannen/\x2ecodeium/windsurf/bin\x1e/Users/toshiyukimannen/\x2epyenv/bin\x1e/opt/homebrew/sbin\x1e/opt/homebrew/bin\x1e/Users/toshiyukimannen/development/flutter/bin\x1e/Applications/Ghostty\x2eapp/Contents/MacOS

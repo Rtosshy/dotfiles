@@ -52,20 +52,6 @@ set -g fish_color_operator magenta
 set -g fish_color_escape cyan
 set -g fish_color_comment brblack
 
-# 1) 最小のシステムPATHを最初に初期化（1回だけ）
-set -gx PATH /usr/bin /bin /usr/sbin /sbin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin
-
-# 2) Voltaを最優先に追加（node/npm/yarnの優先度をVoltaに）
-set -x VOLTA_HOME $HOME/.volta
-fish_add_path -g $VOLTA_HOME/bin
-set -x VOLTA_FEATURE_PNPM 1
-
-# 3) 他ツールを順次追加（fish_add_pathで重複防止＆順序維持）
-fish_add_path -g $HOME/go/bin # Go (GOPATH/bin)
-fish_add_path -g $HOME/.lmstudio/bin # LM Studio
-fish_add_path -g $HOME/.codeium/windsurf/bin # Windsurf
-fish_add_path -g $HOME/.pixi/bin # pixi
-
 set -gx CLAUDE_CONFIG_DIR $HOME/.claude
 
 if command -q direnv
