@@ -52,13 +52,6 @@ set -g fish_color_operator magenta
 set -g fish_color_escape cyan
 set -g fish_color_comment brblack
 
-# 1) 最小のシステムPATHを最初に初期化（1回だけ）
-set -gx PATH /usr/bin /bin /usr/sbin /sbin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin
-
-# 3) 他ツールを順次追加（fish_add_pathで重複防止＆順序維持）
-fish_add_path -g $HOME/go/bin # Go (GOPATH/bin)
-fish_add_path -g $HOME/.pixi/bin # pixi
-
 set -gx CLAUDE_CONFIG_DIR $HOME/.claude
 
 if command -q direnv
