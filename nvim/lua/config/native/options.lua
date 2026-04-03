@@ -4,7 +4,7 @@
 
 vim.o.hlsearch = false -- Set highlight on search
 vim.wo.number = true -- Make line numbers default
-vim.o.mouse = 'a' -- Enable mouse mode
+vim.o.mouse = 'v' -- Enable mouse mode
 vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
 vim.o.breakindent = true -- Enable break indent
 vim.o.undofile = true -- Save undo history
@@ -12,10 +12,9 @@ vim.o.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in se
 vim.o.smartcase = true -- smart case
 vim.wo.signcolumn = 'yes' -- Keep signcolumn on by default
 vim.o.updatetime = 250 -- Decrease update time
-vim.o.timeoutlen = 300 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.o.timeoutlen = 700 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.o.backup = false -- creates a backup file
 vim.o.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 vim.opt.termguicolors = true -- set termguicolors to enable highlight groups
 vim.o.whichwrap = 'bs<>[]hl' -- which "horizontal" keys are allowed to travel to prev/next line
 vim.o.wrap = false -- display lines as one long line
@@ -46,14 +45,9 @@ vim.opt.iskeyword:append('-') -- hyphenated words recognized by searches
 vim.opt.formatoptions:remove({ 'c', 'r', 'o' }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.runtimepath:remove('/usr/share/vim/vimfiles') -- separate vim plugins from neovim in case vim still in use
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' } -- Set completeopt to have a better completion experience
-vim.g.lazyvim_picker = 'snacks'
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
-package.path = package.path
-  .. ';'
-  .. vim.fn.expand('$HOME')
-  .. './.luarocks/share/lua/5.1/?/init.lua;'
-package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. './.luarocks/share/lua/5.1/?.lua;'
+package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/share/lua/5.1/?.lua;'
