@@ -7,6 +7,7 @@ return {
         ensure_installed = {
           'lua',
           'go',
+          'rust',
           'python',
           'typescript',
           'javascript',
@@ -14,7 +15,9 @@ return {
           'html',
           'css',
           'json',
+          'yaml',
           'bash',
+          'fish',
         },
       })
 
