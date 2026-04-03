@@ -28,14 +28,10 @@ end
 # check ripgrep is installed or not
 if command -q rg
     abbr -a grep "rg"
-else
-    echo "ripgrep is not found"
 end
 
 # check bat is installed or not
 if command -q bat
     abbr -a cat "bat"
-else
-    echo "bat is not found"
 end
 
