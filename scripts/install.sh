@@ -23,7 +23,6 @@ BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 # nix-darwin + home-manager で管理しているためここには含めない
 LINKS=(
   "wezterm:$HOME/.config/wezterm"
-  "ghostty:$HOME/.config/ghostty"
 )
 
 # ------------------------------------------------------------

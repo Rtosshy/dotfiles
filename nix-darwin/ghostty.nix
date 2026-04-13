@@ -1,0 +1,51 @@
+{ ... }: {
+  xdg.configFile."ghostty/config".text = ''
+    background-opacity = 0.8
+    background-blur-radius = 20
+    font-family = "JetBrainsMonoNL Nerd Font Mono"
+    font-style = SemiBold
+    font-style-bold = ExtraBold
+    font-style-italic = SemiBold Italic
+    font-style-bold-italic = ExtraBold Italic
+
+    shell-integration-features = no-cursor
+
+    cursor-style = block
+    cursor-style-blink = false
+    cursor-color = #c0caf5
+    cursor-text = #15161e
+
+    background = #1a1b26
+    foreground = #c0caf5
+
+    keybind = global:cmd+ctrl+shift+j=toggle_visibility
+
+    macos-option-as-alt = left
+    keybind = alt+left=unbind
+    keybind = alt+right=unbind
+    keybind = shift+enter=text:\x1b\r
+
+    term = xterm-256color
+    clipboard-read = allow
+    clipboard-write = allow
+    theme = TokyoNight
+    selection-background = #33467c
+    selection-foreground = #c0caf5
+    palette = 0=#15161e
+    palette = 1=#f7768e
+    palette = 2=#9ece6a
+    palette = 3=#e0af68
+    palette = 4=#7aa2f7
+    palette = 5=#bb9af7
+    palette = 6=#7dcfff
+    palette = 7=#a9b1d6
+    palette = 8=#414868
+    palette = 9=#f7768e
+    palette = 10=#9ece6a
+    palette = 11=#e0af68
+    palette = 12=#7aa2f7
+    palette = 13=#bb9af7
+    palette = 14=#7dcfff
+    palette = 15=#c0caf5
+  '';
+}

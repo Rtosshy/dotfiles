@@ -44,6 +44,7 @@
       "discord"
       "claude"
       "chatgpt"
+      "ghostty"
     ];
   };
 }

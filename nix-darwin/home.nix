@@ -4,6 +4,7 @@
     ./starship.nix
     ./nvim.nix
     ./git.nix
+    ./ghostty.nix
   ];
 
   home.username = "tosshy";
