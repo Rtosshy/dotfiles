@@ -25,7 +25,6 @@ LINKS=(
   "wezterm:$HOME/.config/wezterm"
   "ghostty:$HOME/.config/ghostty"
   "git:$HOME/.config/git"
-  "tmux:$HOME/.config/tmux"
 )
 
 # ------------------------------------------------------------
