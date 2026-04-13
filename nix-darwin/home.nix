@@ -2,6 +2,7 @@
   imports = [
     ./fish.nix
     ./starship.nix
+    ./nvim.nix
   ];
 
   home.username = "tosshy";
@@ -11,7 +12,6 @@
   home.packages = with pkgs; [
     ripgrep
     bat
-    neovim
     gh
     ghq
     peco

@@ -24,7 +24,6 @@ BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 LINKS=(
   "wezterm:$HOME/.config/wezterm"
   "ghostty:$HOME/.config/ghostty"
-  "nvim:$HOME/.config/nvim"
   "git:$HOME/.config/git"
   "tmux:$HOME/.config/tmux"
   "vim:$HOME/.vim"
