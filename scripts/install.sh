@@ -8,7 +8,7 @@ set -euo pipefail
 PROJECT_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 
 # リンク先が実在するか確認
-if [ ! -d "$PROJECT_ROOT/fish" ]; then
+if [ ! -d "$PROJECT_ROOT/nvim" ]; then
   echo "ERROR: $PROJECT_ROOT はdotfilesリポジトリではなさそうです" >&2
   echo "dotfilesリポジトリ内で実行してください" >&2
   exit 1
@@ -19,14 +19,14 @@ BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 # ------------------------------------------------------------
 # リンク対象の定義: "リポジトリ内パス:リンク先パス"
 # ------------------------------------------------------------
+# NOTE: fish, starship, direnv, mise, zoxide は
+# nix-darwin + home-manager で管理しているためここには含めない
 LINKS=(
-  "fish:$HOME/.config/fish"
   "wezterm:$HOME/.config/wezterm"
   "ghostty:$HOME/.config/ghostty"
   "nvim:$HOME/.config/nvim"
   "git:$HOME/.config/git"
   "tmux:$HOME/.config/tmux"
-  "starship.toml:$HOME/.config/starship.toml"
   "vim:$HOME/.vim"
 )
 
