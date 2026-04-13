@@ -3,6 +3,7 @@
     ./fish.nix
     ./starship.nix
     ./nvim.nix
+    ./git.nix
   ];
 
   home.username = "tosshy";

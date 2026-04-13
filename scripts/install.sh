@@ -24,7 +24,6 @@ BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 LINKS=(
   "wezterm:$HOME/.config/wezterm"
   "ghostty:$HOME/.config/ghostty"
-  "git:$HOME/.config/git"
 )
 
 # ------------------------------------------------------------
