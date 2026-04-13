@@ -26,7 +26,6 @@ LINKS=(
   "ghostty:$HOME/.config/ghostty"
   "git:$HOME/.config/git"
   "tmux:$HOME/.config/tmux"
-  "vim:$HOME/.vim"
 )
 
 # ------------------------------------------------------------
