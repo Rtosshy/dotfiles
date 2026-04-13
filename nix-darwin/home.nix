@@ -5,6 +5,7 @@
     ./nvim.nix
     ./git.nix
     ./ghostty.nix
+    ./wezterm.nix
   ];
 
   home.username = "tosshy";
@@ -20,7 +21,6 @@
     eza
     lazygit
     claude-code
-    wezterm
   ];
 
   programs.direnv = {
