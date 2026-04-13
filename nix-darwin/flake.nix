@@ -39,8 +39,9 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#MacBook-V3
     darwinConfigurations."MacBook-V3" = nix-darwin.lib.darwinSystem {
-      modules = [ 
+      modules = [
                   ./configuration.nix
+                  ./homebrew.nix
                   home-manager.darwinModules.home-manager 
 		  {
                     home-manager.useGlobalPkgs = true;

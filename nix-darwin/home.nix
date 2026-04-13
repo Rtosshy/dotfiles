@@ -1,11 +1,11 @@
 { pkgs, ... }: {
   imports = [
-    ./fish.nix
-    ./starship.nix
-    ./nvim.nix
-    ./git.nix
-    ./ghostty.nix
-    ./wezterm.nix
+    ./shell/fish.nix
+    ./shell/starship.nix
+    ./editor/nvim.nix
+    ./apps/git.nix
+    ./apps/ghostty.nix
+    ./apps/wezterm.nix
   ];
 
   home.username = "tosshy";
@@ -21,6 +21,7 @@
     eza
     lazygit
     claude-code
+    stylua
   ];
 
   programs.direnv = {
