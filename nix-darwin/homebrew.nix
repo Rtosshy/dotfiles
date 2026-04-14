@@ -14,6 +14,7 @@
       "chatgpt"
       "ghostty"
       "wezterm"
+      "docker-desktop"
     ];
   };
 }

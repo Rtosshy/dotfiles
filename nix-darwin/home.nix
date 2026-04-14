@@ -22,6 +22,9 @@
     lazygit
     claude-code
     stylua
+    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+    plemoljp-nf
   ];
 
   programs.direnv = {

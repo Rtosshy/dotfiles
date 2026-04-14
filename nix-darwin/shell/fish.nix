@@ -51,6 +51,10 @@
       lt = "eza --icons --tree";
       grep = "rg";
       cat = "bat";
+      drs = {
+        expansion = "darwin-rebuild switch --flake ~/ghq/github.com/Rtosshy/dotfiles/nix-darwin";
+        position = "anywhere";
+      };
     };
 
     shellInit = ''

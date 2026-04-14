@@ -11,8 +11,18 @@
     stateVersion = 6;
     primaryUser = "tosshy";
 
-    defaults.dock.orientation = "left";
-    defaults.screencapture.location = "$HOME/Documents/screenshots";
+    defaults = {
+      dock.orientation = "left";
+      screencapture.location = "$HOME/Documents/screenshots";
+      NSGlobalDomain.AppleShowAllFiles = true;
+      CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys."64" = {
+        enabled = false;
+        value = {
+          parameters = [ 32 49 1048576 ];
+          type = "standard";
+        };
+      };
+    };
   };
 
   environment.shells = [ pkgs.fish ];
@@ -30,6 +40,5 @@
     config.allowUnfree = true;
     hostPlatform = "aarch64-darwin";
   };
-
 }
 
