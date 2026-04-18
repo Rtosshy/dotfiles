@@ -59,7 +59,6 @@
 
     shellInit = ''
       set -gx CLAUDE_CONFIG_DIR $HOME/.claude
-      set -gx TMUX_THEME nord
     '';
 
     interactiveShellInit = ''

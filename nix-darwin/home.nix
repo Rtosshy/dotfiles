@@ -22,6 +22,7 @@
     lazygit
     claude-code
     stylua
+    macism
     jetbrains-mono
     nerd-fonts.jetbrains-mono
     plemoljp-nf

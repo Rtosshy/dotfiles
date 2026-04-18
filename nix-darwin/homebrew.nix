@@ -15,6 +15,8 @@
       "ghostty"
       "wezterm"
       "docker-desktop"
+      "notion"
+      "spotify"
     ];
   };
 }

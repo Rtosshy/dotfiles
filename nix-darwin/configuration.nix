@@ -11,6 +11,11 @@
     stateVersion = 6;
     primaryUser = "tosshy";
 
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
+
     defaults = {
       dock.orientation = "left";
       screencapture.location = "$HOME/Documents/screenshots";
