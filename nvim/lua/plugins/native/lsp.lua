@@ -4,7 +4,7 @@ return {
     config = function()
       require('mason').setup()
       local registry = require('mason-registry')
-      local tools = { 'stylua', 'biome', 'ruff' }
+      local tools = { 'stylua' }
       for _, tool in ipairs(tools) do
         if not registry.is_installed(tool) then
           registry.get_package(tool):install()
@@ -20,12 +20,6 @@ return {
         ensure_installed = {
           'lua_ls',
           'gopls',
-          'pyright',
-          'ts_ls',
-          'html',
-          'cssls',
-          'jsonls',
-          'astro',
         },
       })
 
@@ -68,12 +62,6 @@ return {
 
       vim.lsp.enable('lua_ls')
       vim.lsp.enable('gopls')
-      vim.lsp.enable('pyright')
-      vim.lsp.enable('ts_ls')
-      vim.lsp.enable('html')
-      vim.lsp.enable('cssls')
-      vim.lsp.enable('jsonls')
-      vim.lsp.enable('astro')
     end,
   },
 }

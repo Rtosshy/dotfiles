@@ -22,6 +22,7 @@
     lazygit
     claude-code
     stylua
+    tree-sitter # nvim-treesitter がパーサーのビルドに使用する
     macism
     jetbrains-mono
     nerd-fonts.jetbrains-mono

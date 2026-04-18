@@ -7,13 +7,8 @@ return {
         formatters_by_ft = {
           lua = { 'stylua' },
           go = { 'gofmt' },
-          python = { 'ruff_format' },
-          javascript = { 'biome' },
-          typescript = { 'biome' },
-          javascriptreact = { 'biome' },
-          typescriptreact = { 'biome' },
-          json = { 'biome' },
-          css = { 'biome' },
+          cpp = { 'clang-format' },
+          c = { 'clang-format' },
         },
         format_on_save = {
           timeout_ms = 500,
