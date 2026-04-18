@@ -25,6 +25,18 @@
     keybind = alt+right=unbind
     keybind = shift+enter=text:\x1b\r
 
+    keybind = ctrl+shift+alt+h=new_split:down
+    keybind = ctrl+shift+alt+v=new_split:right
+    keybind = ctrl+shift+left=goto_split:left
+    keybind = ctrl+shift+right=goto_split:right
+    keybind = ctrl+shift+up=goto_split:top
+    keybind = ctrl+shift+down=goto_split:bottom
+    keybind = ctrl+shift+alt+left=resize_split:left,10
+    keybind = ctrl+shift+alt+right=resize_split:right,10
+    keybind = ctrl+shift+alt+up=resize_split:up,10
+    keybind = ctrl+shift+alt+down=resize_split:down,10
+    keybind = ctrl+shift+z=toggle_split_zoom
+
     term = xterm-256color
     clipboard-read = allow
     clipboard-write = allow
