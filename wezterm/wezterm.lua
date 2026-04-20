@@ -23,6 +23,10 @@ config.window_background_gradient = {
   colors = { '#1a1b26' },
 }
 config.show_new_tab_button_in_tab_bar = false
+-- `show_close_tab_button_in_tabs` is only available in nightly builds.
+pcall(function()
+  config.show_close_tab_button_in_tabs = false
+end)
 config.colors = {
   tab_bar = {
     inactive_tab_edge = 'none',

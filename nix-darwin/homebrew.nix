@@ -13,7 +13,7 @@
       "claude"
       "chatgpt"
       "ghostty"
-      "wezterm"
+      "wezterm@nightly"
       "docker-desktop"
       "notion"
       "spotify"
