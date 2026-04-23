@@ -4,6 +4,7 @@
     ./shell/starship.nix
     ./editor/nvim.nix
     ./apps/git.nix
+    ./apps/lazygit.nix
     ./apps/ghostty.nix
     ./apps/wezterm.nix
   ];
