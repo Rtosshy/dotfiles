@@ -42,11 +42,18 @@
       modules = [
                   ./configuration.nix
                   ./homebrew.nix
-                  home-manager.darwinModules.home-manager 
-		  {
+                  home-manager.darwinModules.home-manager
+                  {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users.tosshy = import ./home.nix;
+                  }
+                  {
+                    nixpkgs.overlays = [
+                      (final: prev: {
+                        direnv = prev.direnv.overrideAttrs (_: { doCheck = false; });
+                      })
+                    ];
                   }
                 ];
       specialArgs = { inherit inputs; };
