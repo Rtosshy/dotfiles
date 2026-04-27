@@ -36,6 +36,8 @@
     nix-direnv.enable = true;
   };
 
+  programs.mise.enable = true;
+
   programs.zoxide = {
     enable = true;
     options = [ "--cmd" "cd" ];
