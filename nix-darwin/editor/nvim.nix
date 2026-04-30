@@ -12,6 +12,26 @@
       package.path = nvim_dir .. "/lua/?.lua;" .. nvim_dir .. "/lua/?/init.lua;" .. package.path
       dofile(nvim_dir .. "/init.lua")
     '';
+
+    plugins.im-select = {
+      enable = true;
+      settings = {
+        default_command = "macism";
+        set_previous_events = [ ];
+      };
+    };
+
+    keymaps = [
+      {
+        mode = "n";
+        key = "<Esc>";
+        action.__raw = ''
+          function()
+            vim.system({ 'macism', 'com.apple.keylayout.ABC' })
+          end
+        '';
+      }
+    ];
   };
 }
 
