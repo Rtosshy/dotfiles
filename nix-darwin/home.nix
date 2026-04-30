@@ -25,6 +25,7 @@
       lazygit
       claude-code
       codex
+      github-copilot-cli
       tree-sitter # nvim-treesitter がパーサーのビルドに使用する
       macism
       jetbrains-mono
