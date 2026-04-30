@@ -24,7 +24,8 @@
     claude-code
     codex
     stylua
-    tree-sitter # nvim-treesitter がパーサーのビルドに使用する
+    lua-language-server
+    gopls
     macism
     jetbrains-mono
     nerd-fonts.jetbrains-mono
