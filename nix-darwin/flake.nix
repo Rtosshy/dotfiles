@@ -7,6 +7,8 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
@@ -46,6 +48,7 @@
                   {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
+                    home-manager.extraSpecialArgs = { inherit inputs; };
                     home-manager.users.tosshy = import ./home.nix;
                   }
                   {

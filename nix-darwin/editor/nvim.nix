@@ -1,15 +1,17 @@
-{ ... }: {
-  # パーサーとクエリファイルは lazy.nvim 経由で nvim-treesitter が管理する。
-  # programs.neovim.plugins で入れると lazy.nvim の runtimepath 管理と競合するため、
-  # Nix 側ではプラグイン管理をしない。
-  programs.neovim = {
-    enable = true;
-    withRuby = false;
-    withPython3 = false;
-  };
+{ inputs, ... }: {
+  imports = [ inputs.nixvim.homeModules.nixvim ];
 
-  xdg.configFile."nvim" = {
-    source = ../../nvim;
-    recursive = true;
+  # 段階移行中: nixvim は有効化のみ、プラグイン定義は既存の lazy.nvim 設定をそのまま読み込む。
+  # 各プラグインを nixvim DSL に移し終えたら extraConfigLuaPre と nvim/ ディレクトリを削除する。
+  programs.nixvim = {
+    enable = true;
+
+    extraConfigLuaPre = ''
+      local nvim_dir = "${../../nvim}"
+      vim.opt.runtimepath:prepend(nvim_dir)
+      package.path = nvim_dir .. "/lua/?.lua;" .. nvim_dir .. "/lua/?/init.lua;" .. package.path
+      dofile(nvim_dir .. "/init.lua")
+    '';
   };
 }
+
