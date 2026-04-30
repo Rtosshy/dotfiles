@@ -49,6 +49,7 @@
       ll = "eza --icons -lhg --time-style long-iso";
       la = "eza --icons -lhag --time-style long-iso";
       lt = "eza --icons --tree";
+      lg = "lazygit";
       grep = "rg";
       cat = "bat";
       drs = {
