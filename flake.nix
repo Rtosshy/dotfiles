@@ -20,12 +20,19 @@
         default = pkgs.mkShell {
           packages = [
             pkgs.deadnix
+            pkgs.lefthook
             pkgs.nil
             pkgs.nixfmt
             pkgs.statix
             pkgs.stylua
             pkgs.treefmt
           ];
+
+          shellHook = ''
+            if git rev-parse --git-dir >/dev/null 2>&1; then
+              lefthook install >/dev/null
+            fi
+          '';
         };
       });
 
