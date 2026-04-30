@@ -23,7 +23,6 @@
     lazygit
     claude-code
     codex
-    stylua
     tree-sitter # nvim-treesitter がパーサーのビルドに使用する
     macism
     jetbrains-mono
