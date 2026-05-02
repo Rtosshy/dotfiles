@@ -22,7 +22,11 @@
       ghq
       peco
       eza
+      tealdeer
       lazygit
+      jq
+      curl
+      pandoc
       claude-code
       codex
       github-copilot-cli
