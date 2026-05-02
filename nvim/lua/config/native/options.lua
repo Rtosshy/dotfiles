@@ -4,7 +4,7 @@
 
 vim.o.hlsearch = false -- Set highlight on search
 vim.wo.number = true -- Make line numbers default
-vim.o.mouse = 'v' -- Enable mouse mode
+vim.o.mouse = 'a' -- Keep mouse reporting enabled so terminals do not translate wheel input to arrow keys.
 vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
 vim.o.breakindent = true -- Enable break indent
 vim.o.undofile = true -- Save undo history

@@ -20,6 +20,13 @@ vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
 -- delete single character without copying into register
 vim.keymap.set('n', 'x', '"_x', opts)
 
+-- Ignore wheel events in Neovim. With mouse reporting disabled, some terminals
+-- translate wheel input in the alternate screen to arrow keys instead.
+vim.keymap.set({ 'n', 'i', 'v', 's' }, '<ScrollWheelUp>', '<Nop>', opts)
+vim.keymap.set({ 'n', 'i', 'v', 's' }, '<ScrollWheelDown>', '<Nop>', opts)
+vim.keymap.set({ 'n', 'i', 'v', 's' }, '<ScrollWheelLeft>', '<Nop>', opts)
+vim.keymap.set({ 'n', 'i', 'v', 's' }, '<ScrollWheelRight>', '<Nop>', opts)
+
 -- Vertical scroll and center
 vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
 vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
