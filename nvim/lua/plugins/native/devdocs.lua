@@ -1,7 +1,7 @@
 return {
   'maskudo/devdocs.nvim',
   dependencies = {
-    'folke/snacks.nvim',
+    'nvim-telescope/telescope.nvim',
   },
   cmd = { 'DevDocs' },
   keys = {
@@ -28,7 +28,7 @@ return {
           end
 
           local doc_dir = devdocs.GetDocDir(selected)
-          Snacks.picker.files({ cwd = doc_dir })
+          require('telescope.builtin').find_files({ cwd = doc_dir })
         end)
       end,
       mode = 'n',
