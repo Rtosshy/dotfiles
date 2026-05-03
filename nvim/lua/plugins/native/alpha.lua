@@ -32,7 +32,7 @@ return {
 
     -- Ghostty supports Kitty graphics, but not Kitty animation frames. Animate by
     -- replacing static frame placements from Neovim so Ghostty and WezTerm share
-    -- the same path.
+    -- the same path. This has been verified on WezTerm and Ghostty.
 
     -- The image is drawn by the terminal, not by alpha.nvim, so keep its target row
     -- in sync with the text layout above it.
