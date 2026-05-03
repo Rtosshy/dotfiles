@@ -26,6 +26,7 @@
       lazygit
       jq
       curl
+      imagemagick
       pandoc
       claude-code
       codex
