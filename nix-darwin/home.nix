@@ -3,7 +3,7 @@
   imports = [
     ./shell/fish.nix
     ./shell/starship.nix
-    ../nvim/nvim.nix
+    ../nvim
     ./apps/git.nix
     ./apps/lazygit.nix
     ./apps/ghostty.nix
