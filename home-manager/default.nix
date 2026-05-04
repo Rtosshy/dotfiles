@@ -12,6 +12,7 @@
 
   home.packages = with pkgs; [
     ripgrep
+    fd
     bat
     gh
     ghq
