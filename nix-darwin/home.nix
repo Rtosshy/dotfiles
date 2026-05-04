@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./shell/fish.nix
     ./shell/starship.nix
@@ -9,38 +10,49 @@
     ./apps/wezterm.nix
   ];
 
-  home.username = "tosshy";
-  home.homeDirectory = "/Users/tosshy";
-  home.stateVersion = "25.11";
+  home = {
+    username = "tosshy";
+    homeDirectory = "/Users/tosshy";
+    stateVersion = "25.11";
 
-  home.packages = with pkgs; [
-    ripgrep
-    bat
-    gh
-    ghq
-    peco
-    eza
-    lazygit
-    claude-code
-    codex
-    stylua
-    lua-language-server
-    gopls
-    macism
-    jetbrains-mono
-    nerd-fonts.jetbrains-mono
-    plemoljp-nf
-  ];
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
+    packages = with pkgs; [
+      ripgrep
+      bat
+      gh
+      ghq
+      peco
+      eza
+      tealdeer
+      lazygit
+      jq
+      curl
+      imagemagick
+      pandoc
+      claude-code
+      codex
+      github-copilot-cli
+      tree-sitter # nvim-treesitter がパーサーのビルドに使用する
+      macism
+      jetbrains-mono
+      nerd-fonts.jetbrains-mono
+      plemoljp-nf
+    ];
   };
 
-  programs.mise.enable = true;
+  programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
-  programs.zoxide = {
-    enable = true;
-    options = [ "--cmd" "cd" ];
+    mise.enable = true;
+
+    zoxide = {
+      enable = true;
+      options = [
+        "--cmd"
+        "cd"
+      ];
+    };
   };
 }

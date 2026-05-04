@@ -3,10 +3,13 @@
 # if you want to use /etc/nix-darwin
 # sudo darwin-rebuild switch
 
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   system = {
     stateVersion = 6;
     primaryUser = "tosshy";
@@ -23,7 +26,11 @@
       CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys."64" = {
         enabled = false;
         value = {
-          parameters = [ 32 49 1048576 ];
+          parameters = [
+            32
+            49
+            1048576
+          ];
           type = "standard";
         };
       };
@@ -46,4 +53,3 @@
     hostPlatform = "aarch64-darwin";
   };
 }
-

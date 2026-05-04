@@ -1,0 +1,20 @@
+pre-commit:
+  parallel: false
+  jobs:
+    - name: format-nix
+      glob: "*.nix"
+      run: nixfmt {staged_files}
+      stage_fixed: true
+
+    - name: format-lua
+      glob: "*.lua"
+      run: stylua {staged_files}
+      stage_fixed: true
+
+    - name: lint-deadnix
+      glob: "*.nix"
+      run: deadnix --fail {staged_files}
+
+    - name: lint-statix
+      glob: "*.nix"
+      run: statix check .

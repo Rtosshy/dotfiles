@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   programs.fish = {
     enable = true;
 
@@ -35,8 +35,11 @@
       '';
 
       fish_user_key_bindings = ''
+        fish_vi_key_bindings
         bind \cr peco_select_history_order
         bind \co peco_ghq
+        bind -M insert \cr peco_select_history_order
+        bind -M insert \co peco_ghq
       '';
     };
 
@@ -49,6 +52,7 @@
       ll = "eza --icons -lhg --time-style long-iso";
       la = "eza --icons -lhag --time-style long-iso";
       lt = "eza --icons --tree";
+      lg = "lazygit";
       grep = "rg";
       cat = "bat";
       drs = {

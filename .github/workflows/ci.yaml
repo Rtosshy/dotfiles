@@ -1,8 +1,24 @@
-- uses: actions/checkout@v4
-- uses: JohnnyMorganz/stylua-action@v4
-  with:
-    token: ${{ secrets.GITHUB_TOKEN }}
-    version: latest # NOTE: we recommend pinning to a specific version in case of formatting changes
-    # CLI arguments
-    args: --check .
+name: CI
 
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: cachix/install-nix-action@v31
+
+      - name: Check flake
+        run: nix flake check
+
+      - name: Validate Lefthook config
+        run: nix develop -c lefthook validate
+
+      - name: Run hooks
+        run: nix develop -c lefthook run pre-commit --all-files
