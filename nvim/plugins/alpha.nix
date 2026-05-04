@@ -20,32 +20,71 @@
 
         local top_padding = 2
         local gap_after_logo = 1
-        local yoshi_frame_count = 14
-        local yoshi_frame_delay_ms = 100
         local yoshi_image_id_base = 424242
+
+        local presets = {
+          {
+            name = "yoshi-walk-rainbow",
+            weight = 1,
+            frame_dir = vim.fn.expand("~/ghq/github.com/Rtosshy/dotfiles/assets/frames/yoshi-walk-rainbow"),
+            frame_prefix = "yoshi-walk-rainbow-",
+            frame_count = 14,
+            frame_delay_ms = 100,
+            image_cols = 34,
+            image_rows = 16,
+            colors = {
+              "#ff5fa2", "#d050d8", "#9a3fd6", "#3a3ad6",
+              "#3a8af0", "#3fd0d8", "#1fb39a", "#2fc44a",
+              "#7ad84a", "#e0d83a", "#f0c83a", "#f0a830",
+              "#f07a20", "#e83a2a",
+            },
+          },
+          {
+            name = "yoshi-walk-normal",
+            weight = 9,
+            frame_dir = vim.fn.expand("~/ghq/github.com/Rtosshy/dotfiles/assets/frames/yoshi-walk-normal"),
+            frame_prefix = "yoshi-walk-normal-",
+            frame_count = 8,
+            frame_delay_ms = 120,
+            image_cols = 40,
+            image_rows = 14,
+            colors = {
+              "#7ad84a", "#7ad84a", "#7ad84a", "#7ad84a",
+              "#7ad84a", "#7ad84a", "#7ad84a", "#7ad84a",
+            },
+          },
+        }
+
+        local function pick_preset()
+          local total = 0
+          for _, p in ipairs(presets) do
+            total = total + p.weight
+          end
+          math.randomseed(os.time() + (vim.loop.hrtime() % 1000000))
+          local r = math.random() * total
+          local acc = 0
+          for _, p in ipairs(presets) do
+            acc = acc + p.weight
+            if r <= acc then
+              return p
+            end
+          end
+          return presets[1]
+        end
+
+        local active_preset = pick_preset()
         local yoshi_current_frame = 1
+
+        local function reroll_preset()
+          active_preset = pick_preset()
+          yoshi_current_frame = 1
+        end
         local yoshi_animation_running = false
         local yoshi_animation_generation = 0
 
-        local yoshi_frame_colors = {
-          "#ff5fa2", -- 00 pink
-          "#d050d8", -- 01 magenta
-          "#9a3fd6", -- 02 purple
-          "#3a3ad6", -- 03 indigo
-          "#3a8af0", -- 04 blue
-          "#3fd0d8", -- 05 cyan
-          "#1fb39a", -- 06 teal
-          "#2fc44a", -- 07 green
-          "#7ad84a", -- 08 lime
-          "#e0d83a", -- 09 yellow
-          "#f0c83a", -- 10 amber
-          "#f0a830", -- 11 gold
-          "#f07a20", -- 12 orange
-          "#e83a2a", -- 13 red
-        }
-
         local function apply_yoshi_logo_color(frame)
-          local color = yoshi_frame_colors[frame] or yoshi_frame_colors[1]
+          local palette = active_preset.colors
+          local color = palette[frame] or palette[1]
           vim.api.nvim_set_hl(0, "AlphaYoshiLogo", { fg = color, bold = true })
         end
 
@@ -53,22 +92,13 @@
           return top_padding + #yoshi_vim_logo + gap_after_logo + 1
         end
 
-        local function yoshi_image_size()
-          return {
-            cols = 34,
-            rows = 16,
-          }
-        end
-
         local function yoshi_frame_file(frame)
-          return vim.fn.expand(
-            ("~/ghq/github.com/Rtosshy/dotfiles/assets/yoshitv-yoshi-frames/yoshi-%02d.png"):format(frame - 1)
-          )
+          return ("%s/%s%02d.png"):format(active_preset.frame_dir, active_preset.frame_prefix, frame - 1)
         end
 
         local function yoshi_delete_sequence()
           local chunks = {}
-          for frame = 1, yoshi_frame_count do
+          for frame = 1, active_preset.frame_count do
             chunks[#chunks + 1] = ("\27_Ga=d,d=i,i=%d,q=2\27\\"):format(yoshi_image_id_base + frame)
           end
           return table.concat(chunks)
@@ -86,14 +116,13 @@
           fd:close()
 
           local image_id = yoshi_image_id_base + frame
-          local image_size = yoshi_image_size()
-          local image_col = math.max(0, math.floor((vim.o.columns - image_size.cols) / 2))
+          local image_col = math.max(0, math.floor((vim.o.columns - active_preset.image_cols) / 2))
 
           return table.concat({
             "\27[s",
             ("\27[%d;%dH"):format(yoshi_image_row(), image_col + 1),
             yoshi_delete_sequence(),
-            ("\27_Ga=T,t=f,f=100,i=%d,c=%d,r=%d,q=2;"):format(image_id, image_size.cols, image_size.rows),
+            ("\27_Ga=T,t=f,f=100,i=%d,c=%d,r=%d,q=2;"):format(image_id, active_preset.image_cols, active_preset.image_rows),
             vim.base64.encode(file),
             "\27\\",
             "\27[u",
@@ -142,8 +171,8 @@
             end
 
             draw_yoshi_frame(yoshi_current_frame)
-            yoshi_current_frame = (yoshi_current_frame % yoshi_frame_count) + 1
-            vim.defer_fn(tick, yoshi_frame_delay_ms)
+            yoshi_current_frame = (yoshi_current_frame % active_preset.frame_count) + 1
+            vim.defer_fn(tick, active_preset.frame_delay_ms)
           end
 
           tick()
@@ -179,6 +208,8 @@
           group = yoshi_group,
           pattern = "AlphaReady",
           callback = function()
+            reroll_preset()
+            apply_yoshi_logo_color(yoshi_current_frame)
             vim.defer_fn(start_yoshi_animation, 80)
           end,
         })
@@ -188,6 +219,9 @@
             if vim.bo.filetype ~= "alpha" then
               return
             end
+
+            reroll_preset()
+            apply_yoshi_logo_color(yoshi_current_frame)
 
             vim.defer_fn(function()
               if vim.bo.filetype == "alpha" then
