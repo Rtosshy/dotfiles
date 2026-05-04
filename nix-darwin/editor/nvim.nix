@@ -754,21 +754,9 @@
         end
 
         local function yoshi_image_size()
-          local image_aspect = 194 / 200
-          local cell_width = 17
-          local cell_height = 37
-          local available_rows = math.max(8, vim.o.lines - yoshi_image_row() - 3)
-          local cols = math.min(
-            math.floor(vim.o.columns * 0.34),
-            math.floor(available_rows * cell_height * image_aspect / cell_width)
-          )
-
-          cols = math.max(18, math.min(cols, 34))
-          local rows = math.max(8, math.floor(cols * cell_width / image_aspect / cell_height))
-
           return {
-            cols = cols,
-            rows = rows,
+            cols = 34,
+            rows = 16,
           }
         end
 
@@ -861,7 +849,7 @@
         end
 
         dashboard.section.buttons.val = {
-          dashboard.button("o", "\u{f07c}  Open directory", "<cmd>Oil<cr>"),
+          dashboard.button("e", "\u{f07c}  Open directory", "<cmd>Oil<cr>"),
           dashboard.button("f", "\u{f002}  Find file", "<cmd>lua require('telescope.builtin').find_files()<cr>"),
           dashboard.button("r", "\u{f1da}  Recent files", "<cmd>lua require('telescope.builtin').oldfiles()<cr>"),
           dashboard.button("g", "\u{f419}  LazyGit", "<cmd>LazyGit<cr>"),
