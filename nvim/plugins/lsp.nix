@@ -39,13 +39,13 @@
       }
       {
         mode = "n";
-        key = "<leader>d";
+        key = "<leader>df";
         action.__raw = "vim.diagnostic.open_float";
         options.desc = "Open floating diagnostic message";
       }
       {
         mode = "n";
-        key = "<leader>q";
+        key = "<leader>dl";
         action.__raw = "vim.diagnostic.setloclist";
         options.desc = "Open diagnostics list";
       }

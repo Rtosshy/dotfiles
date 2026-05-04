@@ -5,6 +5,7 @@
       {
         mode = "n";
         key = "<Esc>";
+        options.silent = true;
         action.__raw = ''
           function()
             vim.system({ "macism", "com.apple.keylayout.ABC" })
