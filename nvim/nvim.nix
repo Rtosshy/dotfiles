@@ -848,7 +848,7 @@
         end
 
         dashboard.section.buttons.val = {
-          dashboard.button("e", "\u{f07c}  Open directory", "<cmd>Oil<cr>"),
+          dashboard.button("e", "\u{f07c}  Open directory", "<cmd>lua require('oil').toggle_float()<cr>"),
           dashboard.button("f", "\u{f002}  Find file", "<cmd>lua require('telescope.builtin').find_files()<cr>"),
           dashboard.button("r", "\u{f1da}  Recent files", "<cmd>lua require('telescope.builtin').oldfiles()<cr>"),
           dashboard.button("g", "\u{f419}  LazyGit", "<cmd>LazyGit<cr>"),
