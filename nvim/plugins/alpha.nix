@@ -27,6 +27,28 @@
         local yoshi_animation_running = false
         local yoshi_animation_generation = 0
 
+        local yoshi_frame_colors = {
+          "#ff5fa2", -- 00 pink
+          "#d050d8", -- 01 magenta
+          "#9a3fd6", -- 02 purple
+          "#3a3ad6", -- 03 indigo
+          "#3a8af0", -- 04 blue
+          "#3fd0d8", -- 05 cyan
+          "#1fb39a", -- 06 teal
+          "#2fc44a", -- 07 green
+          "#7ad84a", -- 08 lime
+          "#e0d83a", -- 09 yellow
+          "#f0c83a", -- 10 amber
+          "#f0a830", -- 11 gold
+          "#f07a20", -- 12 orange
+          "#e83a2a", -- 13 red
+        }
+
+        local function apply_yoshi_logo_color(frame)
+          local color = yoshi_frame_colors[frame] or yoshi_frame_colors[1]
+          vim.api.nvim_set_hl(0, "AlphaYoshiLogo", { fg = color, bold = true })
+        end
+
         local function yoshi_image_row()
           return top_padding + #yoshi_vim_logo + gap_after_logo + 1
         end
@@ -90,6 +112,7 @@
           local sequence = yoshi_image_sequence(frame)
           if sequence then
             send_to_terminal(sequence)
+            apply_yoshi_logo_color(frame)
           end
         end
 
@@ -134,9 +157,11 @@
           dashboard.button("q", "\u{f011}  Quit", "<cmd>qa<cr>"),
         }
 
+        apply_yoshi_logo_color(yoshi_current_frame)
+
         dashboard.section.header.val = yoshi_vim_logo
         dashboard.section.header.opts = {
-          hl = "Type",
+          hl = "AlphaYoshiLogo",
           position = "center",
         }
 
