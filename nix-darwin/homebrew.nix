@@ -17,6 +17,7 @@ _: {
       "docker-desktop"
       "notion"
       "spotify"
+      "tableplus"
     ];
   };
 }
