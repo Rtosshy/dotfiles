@@ -17,6 +17,7 @@
     ./plugins/lazygit.nix
     ./plugins/devdocs.nix
     ./plugins/alpha.nix
+    ./plugins/yoshi-error.nix
 
     ./platform/darwin-ime.nix
   ];
