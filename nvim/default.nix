@@ -18,6 +18,8 @@
     ./plugins/devdocs.nix
     ./plugins/alpha.nix
     ./plugins/yoshi-error.nix
+    ./plugins/yoshi-yank.nix
+    ./plugins/yoshi-paste.nix
 
     ./platform/darwin-ime.nix
   ];
