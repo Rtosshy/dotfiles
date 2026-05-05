@@ -34,6 +34,8 @@ _: {
     keybind = ctrl+shift+alt+down=resize_split:down,10
     keybind = ctrl+shift+z=toggle_split_zoom
 
+    # SSH先サーバーでxterm-ghostty terminfoが無い場合の互換性確保のため固定。
+    # 代償としてundercurl/Kitty graphics/keyboard protocol等のGhostty拡張は無効になる。
     term = xterm-256color
     clipboard-read = allow
     clipboard-write = allow
