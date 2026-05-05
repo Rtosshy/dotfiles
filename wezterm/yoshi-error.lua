@@ -3,7 +3,7 @@ local wezterm = require('wezterm')
 local M = {}
 
 local yoshi_error_gif = os.getenv('HOME')
-  .. '/ghq/github.com/Rtosshy/dotfiles/assets/yoshi-angry.gif'
+  .. '/ghq/github.com/Rtosshy/dotfiles/assets/gif/yoshi-angry.gif'
 local yoshi_error_state = {}
 
 local function with_yoshi_error_background(base_background)
