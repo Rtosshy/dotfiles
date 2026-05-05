@@ -41,6 +41,25 @@ _: {
         bind -M insert \cr peco_select_history_order
         bind -M insert \co peco_ghq
       '';
+
+      yoshi_on_error = {
+        onEvent = "fish_postexec";
+        body = ''
+          set -l last_status $status
+          test $last_status -eq 0; and return
+          set -q WEZTERM_PANE; or return
+          command -q base64; or return
+
+          set -l nonce (printf '%s-%s' (date +%s) (random))
+          set -l encoded (printf '%s' "$nonce" | base64 | string collect)
+
+          if set -q TMUX
+              printf '\ePtmux;\e\e]1337;SetUserVar=YOSHI_ERROR=%s\a\e\\' "$encoded"
+          else
+              printf '\e]1337;SetUserVar=YOSHI_ERROR=%s\a' "$encoded"
+          end
+        '';
+      };
     };
 
     shellAbbrs = {

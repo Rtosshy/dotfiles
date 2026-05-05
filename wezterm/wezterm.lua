@@ -1,6 +1,8 @@
 local wezterm = require('wezterm')
 local keybinds = require('keybinds')
+local yoshi_error = require('yoshi-error')
 local config = wezterm.config_builder()
+
 config.keys = keybinds.keys
 
 config.automatically_reload_config = true
@@ -22,6 +24,8 @@ config.font = wezterm.font_with_fallback({
 config.window_background_gradient = {
   colors = { '#1a1b26' },
 }
+
+yoshi_error.setup()
 config.show_new_tab_button_in_tab_bar = false
 -- `show_close_tab_button_in_tabs` is only available in nightly builds.
 pcall(function()
