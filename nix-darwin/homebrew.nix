@@ -10,6 +10,7 @@ _: {
       "raycast"
       "slack"
       "discord"
+      "firefox"
       "claude"
       "chatgpt"
       "ghostty"
