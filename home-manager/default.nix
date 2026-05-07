@@ -22,6 +22,9 @@
     lazygit
     jq
     curl
+    kubectl
+    kubernetes-helm
+    minikube
     imagemagick
     pandoc
     claude-code
