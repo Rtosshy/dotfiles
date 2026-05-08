@@ -1,13 +1,11 @@
 { pkgs, ... }:
 {
   imports = [
-    ../shell/fish.nix
-    ../shell/starship.nix
-    ../nvim
-    ../apps/git.nix
-    ../apps/lazygit.nix
-    ../apps/ghostty.nix
-    ../apps/wezterm.nix
+    ./fish
+    ./starship
+    ./git
+    ./lazygit
+    ./nvim
   ];
 
   home.packages = with pkgs; [
@@ -31,9 +29,6 @@
     codex
     github-copilot-cli
     tree-sitter # nvim-treesitter がパーサーのビルドに使用する
-    jetbrains-mono
-    nerd-fonts.jetbrains-mono
-    plemoljp-nf
   ];
 
   programs = {
