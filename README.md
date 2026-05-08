@@ -11,5 +11,5 @@ exec fish
 - `modules/shared/`: Home Manager modules shared across platforms.
 - `modules/shared/cli/`: CLI modules imported by default.
 - `modules/shared/gui/`: GUI modules imported by GUI-capable hosts.
-- `modules/darwin/`: nix-darwin system modules and Darwin-only Home Manager additions.
+- `modules/darwin/`: Darwin-only modules split by nix-darwin and Home Manager layer.
 - `modules/nixos/`: reserved for future NixOS modules.

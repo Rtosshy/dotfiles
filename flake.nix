@@ -22,17 +22,7 @@
       # $ darwin-rebuild build --flake .#MacBook-V3
       darwinConfigurations."MacBook-V3" = nix-darwin.lib.darwinSystem {
         modules = [
-          ./modules/darwin/system
-          ./modules/darwin/homebrew
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users.tosshy = import ./hosts/darwin/macbook-v3;
-            };
-          }
+          ./hosts/darwin/macbook-v3
           {
             nixpkgs.overlays = [
               (_final: prev: {
@@ -43,7 +33,7 @@
             ];
           }
         ];
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs home-manager; };
       };
     };
 }
