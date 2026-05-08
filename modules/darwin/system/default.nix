@@ -1,7 +1,6 @@
-# if you want to use ~/.config/nix-darwin
-# sudo darwin-rebuild switch --flake ~/.config/nix-darwin
-# if you want to use /etc/nix-darwin
-# sudo darwin-rebuild switch
+# Build or switch this host with:
+# darwin-rebuild build --flake .#MacBook-V3
+# darwin-rebuild switch --flake .#MacBook-V3
 
 { pkgs, ... }:
 
