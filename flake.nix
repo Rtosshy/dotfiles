@@ -1,41 +1,49 @@
 {
-  description = "Development tools for this dotfiles repository";
+  description = "System configuration for the dotfiles repository";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs =
-    { nixpkgs, ... }:
-    let
-      systems = [
-        "aarch64-darwin"
-        "x86_64-darwin"
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-
-      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f (import nixpkgs { inherit system; }));
-    in
+    inputs@{
+      nix-darwin,
+      home-manager,
+      ...
+    }:
     {
-      devShells = forAllSystems (pkgs: {
-        default = pkgs.mkShell {
-          packages = [
-            pkgs.deadnix
-            pkgs.lefthook
-            pkgs.nil
-            pkgs.nixfmt
-            pkgs.statix
-            pkgs.stylua
-            pkgs.treefmt
-          ];
-
-          shellHook = ''
-            if git rev-parse --git-dir >/dev/null 2>&1; then
-              lefthook install >/dev/null
-            fi
-          '';
-        };
-      });
-
-      formatter = forAllSystems (pkgs: pkgs.treefmt);
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#MacBook-V3
+      darwinConfigurations."MacBook-V3" = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./nix-darwin/configuration.nix
+          ./nix-darwin/homebrew.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
+              users.tosshy = import ./nix-darwin/home.nix;
+            };
+          }
+          {
+            nixpkgs.overlays = [
+              (_final: prev: {
+                direnv = prev.direnv.overrideAttrs (_: {
+                  doCheck = false;
+                });
+              })
+            ];
+          }
+        ];
+        specialArgs = { inherit inputs; };
+      };
     };
 }
