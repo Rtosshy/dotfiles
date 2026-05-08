@@ -1,12 +1,11 @@
+{ username, homeDirectory, ... }:
 {
   imports = [
     ../../../modules/shared
-    ../../../modules/shared/gui
   ];
 
   home = {
-    username = "tosshy";
-    homeDirectory = "/home/tosshy";
+    inherit username homeDirectory;
     stateVersion = "25.11";
   };
 }

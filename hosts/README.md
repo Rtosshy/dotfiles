@@ -29,24 +29,19 @@ darwin-rebuild build --flake .#MacBook-V3
 darwin-rebuild switch --flake .#MacBook-V3
 ```
 
-### `linux/ubuntu-cli`
+### `linux/standalone`
 
-Standalone Home Manager configuration for a CLI-only Ubuntu environment.
+Standalone Home Manager configuration for non-NixOS Linux environments
+(Codespaces, remote dev servers, generic Ubuntu/Debian/Fedora boxes, etc.).
+CLI-only; no GUI modules are imported.
 
-Imports:
-
-- `modules/shared`: shared CLI modules and CLI packages
-
-This host is intended to be exposed as a Home Manager flake output in Phase 4.
-
-### `linux/ubuntu-gui`
-
-Standalone Home Manager configuration for an Ubuntu environment with GUI tools.
+`username` and `homeDirectory` are passed in by the flake so the same host
+can be reused across environments where the default user differs (e.g.
+`vscode` on Codespaces, `ubuntu` on EC2).
 
 Imports:
 
 - `modules/shared`: shared CLI modules and CLI packages
-- `modules/shared/gui`: shared GUI modules, terminal configs, and fonts
 
 This host is intended to be exposed as a Home Manager flake output in Phase 4.
 
@@ -59,6 +54,6 @@ Reserved for future NixOS host configurations.
 - Put reusable app, shell, editor, GUI, and platform modules in `modules/`.
 - Use `hosts/` to compose module groups for a machine.
 - Import `modules/shared` for CLI defaults.
-- Import `modules/shared/gui` only for GUI-capable hosts.
+- Import `modules/shared/gui` only for GUI-capable hosts (currently Darwin only).
 - Import platform-specific modules, such as `modules/darwin/home-manager`, only
   from matching platform hosts.
