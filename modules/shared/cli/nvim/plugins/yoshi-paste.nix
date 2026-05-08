@@ -1,7 +1,7 @@
 _: {
   programs.nixvim = {
     extraConfigLuaPost = ''
-      local frame_dir = vim.fn.expand("~/ghq/github.com/Rtosshy/dotfiles/assets/frames/yoshi-egg")
+      local frame_dir = "${../../../../../assets/frames/yoshi-egg}"
       local frame_prefix = "yoshi-egg-"
       local frame_count = 44
       local frame_delay_ms = 40

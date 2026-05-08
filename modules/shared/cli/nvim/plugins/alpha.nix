@@ -26,7 +26,7 @@
           {
             name = "yoshi-walk-rainbow",
             weight = 1,
-            frame_dir = vim.fn.expand("~/ghq/github.com/Rtosshy/dotfiles/assets/frames/yoshi-walk-rainbow"),
+            frame_dir = "${../../../../../assets/frames/yoshi-walk-rainbow}",
             frame_prefix = "yoshi-walk-rainbow-",
             frame_count = 14,
             frame_delay_ms = 100,
@@ -42,7 +42,7 @@
           {
             name = "yoshi-walk-normal",
             weight = 9,
-            frame_dir = vim.fn.expand("~/ghq/github.com/Rtosshy/dotfiles/assets/frames/yoshi-walk-normal"),
+            frame_dir = "${../../../../../assets/frames/yoshi-walk-normal}",
             frame_prefix = "yoshi-walk-normal-",
             frame_count = 8,
             frame_delay_ms = 120,
