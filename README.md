@@ -47,23 +47,21 @@ default user (`vscode`, `node`, `codespace`, `ubuntu`, ...). This requires
 curl --proto '=https' --tlsv1.2 -sSf -L \
   https://install.determinate.systems/nix | sh -s -- install
 
-# 2. Clone to the standard ghq location
-git clone https://github.com/Rtosshy/dotfiles ~/ghq/github.com/Rtosshy/dotfiles
-cd ~/ghq/github.com/Rtosshy/dotfiles
-
-# 3. Activate
-nix run home-manager/master -- switch --flake .#standalone --impure
-
-# Subsequent rebuilds
-home-manager switch --flake ~/ghq/github.com/Rtosshy/dotfiles#standalone --impure
-```
-
-For ephemeral Codespaces where a local checkout is unnecessary, skip the
-clone and reference the GitHub flake directly:
-
-```sh
+# 2. Activate directly from GitHub (no clone required)
 nix run home-manager/master -- switch \
   --flake github:Rtosshy/dotfiles#standalone --impure
+
+# Subsequent rebuilds
+home-manager switch --flake github:Rtosshy/dotfiles#standalone --impure
+```
+
+For long-lived hosts where the config will be edited locally (EC2, WSL2,
+etc.), clone to the standard ghq location and switch from there:
+
+```sh
+git clone https://github.com/Rtosshy/dotfiles ~/ghq/github.com/Rtosshy/dotfiles
+cd ~/ghq/github.com/Rtosshy/dotfiles
+home-manager switch --flake .#standalone --impure
 ```
 
 #### Why `--impure`
