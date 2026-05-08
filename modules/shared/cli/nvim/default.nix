@@ -20,8 +20,6 @@
     ./plugins/yoshi-error.nix
     ./plugins/yoshi-yank.nix
     ./plugins/yoshi-paste.nix
-
-    ./platform/darwin-ime.nix
   ];
 
   programs.nixvim.enable = true;
