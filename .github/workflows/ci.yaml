@@ -15,10 +15,10 @@ jobs:
       - uses: cachix/install-nix-action@v31
 
       - name: Check flake
-        run: nix flake check
+        run: nix flake check --impure
 
       - name: Validate Lefthook config
-        run: nix develop -c lefthook validate
+        run: nix develop ./dev -c lefthook validate
 
       - name: Run hooks
-        run: nix develop -c lefthook run pre-commit --all-files
+        run: nix develop ./dev -c lefthook run pre-commit --all-files
