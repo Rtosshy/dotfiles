@@ -24,8 +24,8 @@ fi
 
 cd "$repo_root"
 
-if [ "${AI_AFTER_WORK_IN_NIX:-}" != "1" ] && command -v nix >/dev/null 2>&1 && [ -f flake.nix ]; then
-  exec env AI_AFTER_WORK_IN_NIX=1 nix develop "path:$repo_root" -c "$0"
+if [ "${AI_AFTER_WORK_IN_NIX:-}" != "1" ] && command -v nix >/dev/null 2>&1 && [ -f dev/flake.nix ]; then
+  exec env AI_AFTER_WORK_IN_NIX=1 nix develop "path:$repo_root/dev" -c "$0"
 fi
 
 changed_files="$(
