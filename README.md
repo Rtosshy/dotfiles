@@ -34,8 +34,8 @@ After activation the `drs` / `nfu` fish abbreviations point at this repo.
 ### Non-NixOS Linux (`homeConfigurations."standalone"`)
 
 For Codespaces spawned from OSS project devcontainers, remote dev boxes,
-generic Ubuntu / Debian / Fedora servers, WSL2, etc. Targets `x86_64-linux`
-and CLI modules only (no GUI).
+generic Ubuntu / Debian / Fedora servers, WSL2, etc. Targets the current Linux
+system, such as `x86_64-linux` or `aarch64-linux`, and CLI modules only (no GUI).
 
 The output reads `username` and `homeDirectory` from `$USER` / `$HOME` at
 activation time, so the same flake works in any container regardless of the

@@ -18,6 +18,20 @@
       home-manager,
       ...
     }:
+    let
+      standaloneSystem =
+        let
+          envSystem = builtins.getEnv "NIX_SYSTEM";
+        in
+        if envSystem != "" then
+          envSystem
+        else
+          builtins.currentSystem or (throw ''
+            homeConfigurations."standalone" reads the current system from
+            the activation environment, so it must be evaluated with
+            --impure. Re-run with: --impure
+          '');
+    in
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#MacBook-V3
@@ -59,7 +73,7 @@
       #     --flake github:Rtosshy/dotfiles#standalone --impure
       homeConfigurations."standalone" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
-          system = "x86_64-linux";
+          system = standaloneSystem;
           config.allowUnfree = true;
         };
         extraSpecialArgs =
