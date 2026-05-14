@@ -1,6 +1,17 @@
 {
   programs.nixvim = {
-    colorschemes.tokyonight.enable = true;
+    colorschemes.tokyonight = {
+      enable = true;
+      settings = {
+        style = "moon";
+        transparent = true;
+
+        styles = {
+          sidebars = "transparent";
+          floats = "transparent";
+        };
+      };
+    };
 
     plugins = {
       web-devicons.enable = true;

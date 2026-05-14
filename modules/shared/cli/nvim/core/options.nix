@@ -21,15 +21,23 @@
       backup = false;
       writebackup = false;
       termguicolors = true;
+      winblend = 0;
+      pumblend = 0;
       whichwrap = "bs<>[]hl";
       wrap = false;
       linebreak = true;
+      list = true;
+      listchars = {
+        tab = ">>=";
+        trail = "-";
+        eol = "↵";
+      };
       scrolloff = 4;
       sidescrolloff = 8;
       numberwidth = 4;
-      shiftwidth = 4;
-      tabstop = 4;
-      softtabstop = 4;
+      shiftwidth = 2;
+      tabstop = 2;
+      softtabstop = 2;
       expandtab = true;
       cursorline = false;
       splitbelow = true;
