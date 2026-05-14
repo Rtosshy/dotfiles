@@ -14,6 +14,7 @@
     ./plugins/lsp.nix
     ./plugins/formatting.nix
     ./plugins/trouble.nix
+    ./plugins/gitsigns.nix
     ./plugins/lazygit.nix
     ./plugins/devdocs.nix
     ./plugins/alpha.nix
