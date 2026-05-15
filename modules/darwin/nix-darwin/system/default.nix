@@ -39,6 +39,8 @@
   environment.shells = [ pkgs.fish ];
   programs.fish.enable = true;
 
+  security.pam.services.sudo_local.touchIdAuth = true;
+
   users.knownUsers = [ "tosshy" ];
   users.users.tosshy = {
     name = "tosshy";
