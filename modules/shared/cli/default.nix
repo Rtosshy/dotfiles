@@ -7,6 +7,7 @@
     ./lazygit
     ./nvim
     ./claude
+    ./codex
   ];
 
   home.packages = with pkgs; [
