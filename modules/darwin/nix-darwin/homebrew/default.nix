@@ -9,6 +9,7 @@ _: {
       "arc"
       "raycast"
       "slack"
+      "zoom"
       "discord"
       "firefox"
       "claude"
