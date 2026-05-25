@@ -20,6 +20,7 @@ _: {
       "notion"
       "spotify"
       "tableplus"
+      "cmux"
     ];
   };
 }
