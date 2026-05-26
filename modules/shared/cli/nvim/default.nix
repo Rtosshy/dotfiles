@@ -8,6 +8,7 @@
     ./core/keymaps.nix
 
     ./plugins/ui.nix
+    ./plugins/noice.nix
     ./plugins/oil.nix
     ./plugins/telescope.nix
     ./plugins/treesitter.nix
