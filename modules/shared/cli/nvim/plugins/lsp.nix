@@ -59,6 +59,15 @@
           settings.Lua.diagnostics.globals = [ "vim" ];
         };
         gopls.enable = true;
+        rust_analyzer = {
+          enable = true;
+          installRustc = false;
+          installCargo = false;
+          settings = {
+            check.command = "clippy";
+            cargo.allFeatures = true;
+          };
+        };
       };
     };
 
