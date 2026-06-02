@@ -36,7 +36,10 @@
     };
   };
 
-  environment.shells = [ pkgs.fish ];
+  environment = {
+    shells = [ pkgs.fish ];
+    systemPackages = [ pkgs.openfortivpn ];
+  };
   programs.fish.enable = true;
 
   security.pam.services.sudo_local.touchIdAuth = true;
