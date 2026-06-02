@@ -50,11 +50,13 @@ Examples:
 Darwin-specific modules.
 
 - `darwin/nix-darwin/system/`: nix-darwin system settings
-- `darwin/nix-darwin/homebrew/`: Homebrew casks and activation behavior
+- `darwin/nix-darwin/homebrew/`: nix-homebrew setup plus Homebrew casks and activation behavior
 - `darwin/home-manager/`: Darwin-only Home Manager additions
 
 Darwin-only user configuration, such as `macism`, macOS terminal keybinds, and
 `darwin-rebuild` abbreviations, belongs in `darwin/home-manager`.
+Darwin-only system packages from nixpkgs, such as `openfortivpn`, belong in
+`darwin/nix-darwin/system`.
 
 ### `nixos/`
 

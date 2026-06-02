@@ -15,8 +15,9 @@ Darwin system and Home Manager configuration for `MacBook-V3`.
 
 Imports:
 
+- `inputs.nix-homebrew.darwinModules.nix-homebrew`: Homebrew installation manager
 - `modules/darwin/nix-darwin/system`: nix-darwin system settings
-- `modules/darwin/nix-darwin/homebrew`: Homebrew settings
+- `modules/darwin/nix-darwin/homebrew`: nix-homebrew configuration and Homebrew settings
 - `home-manager.darwinModules.home-manager`: Home Manager integration
 - `modules/shared`: shared CLI modules and CLI packages
 - `modules/shared/gui`: shared GUI modules, terminal configs, and fonts

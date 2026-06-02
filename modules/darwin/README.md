@@ -21,6 +21,7 @@ Examples:
 - Nix experimental features
 - macOS defaults
 - system shell setup
+- Darwin-only system packages, such as `openfortivpn`
 - Darwin user account metadata
 - `nixpkgs.hostPlatform`
 
@@ -28,14 +29,20 @@ This module is imported from a Darwin host file.
 
 ### `nix-darwin/homebrew/`
 
-nix-darwin Homebrew settings.
+nix-darwin Homebrew settings plus `nix-homebrew` installation management.
 
 Examples:
 
+- Homebrew prefix and tap management through `nix-homebrew`
 - Homebrew activation behavior
-- cask packages
+- Homebrew cask packages
 
 This module is imported from a Darwin host file.
+
+Use nixpkgs for CLI tools when available. Reserve `homebrew.casks` for GUI apps
+or software that is only practical through Homebrew Cask. `nix-homebrew`
+manages Homebrew itself and pinned taps; package lists still live under
+nix-darwin's `homebrew.*` options.
 
 ### `home-manager/`
 
@@ -57,6 +64,7 @@ This module is imported from a Darwin host file under
 flake.nix
 └─ darwinConfigurations."MacBook-V3"
    └─ hosts/darwin/macbook-v3
+      ├─ inputs.nix-homebrew.darwinModules.nix-homebrew
       ├─ modules/darwin/nix-darwin/system
       ├─ modules/darwin/nix-darwin/homebrew
       └─ home-manager.users.tosshy
