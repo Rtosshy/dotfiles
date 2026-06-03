@@ -53,6 +53,9 @@
 
     plugins.lsp = {
       enable = true;
+      capabilities = ''
+        capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+      '';
       servers = {
         lua_ls = {
           enable = true;

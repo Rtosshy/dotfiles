@@ -26,6 +26,8 @@ It enables `programs.nixvim` and imports the smaller modules below.
   keymaps.
 - `plugins/treesitter.nix`: Treesitter enablement, parser list, and the FileType
   autocmd that starts Treesitter.
+- `plugins/completion.nix`: nvim-cmp completion, LSP/path/buffer/snippet
+  sources, LuaSnip, friendly-snippets, and insert-mode completion keymaps.
 - `plugins/lsp.nix`: LSP servers, `LspAttach` keymaps, diagnostic keymaps, and
   diagnostic display settings.
 - `plugins/formatting.nix`: conform.nvim formatter settings, format-on-save, and

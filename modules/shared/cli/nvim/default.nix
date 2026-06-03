@@ -12,6 +12,7 @@
     ./plugins/oil.nix
     ./plugins/telescope.nix
     ./plugins/treesitter.nix
+    ./plugins/completion.nix
     ./plugins/lsp.nix
     ./plugins/formatting.nix
     ./plugins/trouble.nix
