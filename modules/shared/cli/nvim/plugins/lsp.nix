@@ -62,6 +62,7 @@
           settings.Lua.diagnostics.globals = [ "vim" ];
         };
         gopls.enable = true;
+        kotlin_language_server.enable = true;
         rust_analyzer = {
           enable = true;
           installRustc = false;

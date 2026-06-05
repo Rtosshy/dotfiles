@@ -19,6 +19,7 @@
         formatters_by_ft = {
           lua = [ "stylua" ];
           go = [ "gofmt" ];
+          kotlin = [ "ktlint" ];
           rust = [ "rustfmt" ];
           cpp = [ "clang-format" ];
           c = [ "clang-format" ];
