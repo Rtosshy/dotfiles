@@ -6,11 +6,28 @@
         callback.__raw = ''
           function(args)
             local opts = { buffer = args.buf, silent = true }
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-            vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+            local function lsp_map(key, action, desc)
+              vim.keymap.set("n", key, action, vim.tbl_extend("force", opts, { desc = desc }))
+            end
+
+            lsp_map("gd", function()
+              Snacks.picker.lsp_definitions()
+            end, "LSP definitions (Snacks)")
+            lsp_map("gD", function()
+              Snacks.picker.lsp_declarations()
+            end, "LSP declarations (Snacks)")
+            lsp_map("gri", function()
+              Snacks.picker.lsp_implementations()
+            end, "LSP implementations (Snacks)")
+            lsp_map("grr", function()
+              Snacks.picker.lsp_references()
+            end, "LSP references (Snacks)")
+            lsp_map("grt", function()
+              Snacks.picker.lsp_type_definitions()
+            end, "LSP type definitions (Snacks)")
+            lsp_map("K", vim.lsp.buf.hover, "LSP hover")
+            lsp_map("grn", vim.lsp.buf.rename, "LSP rename")
+            lsp_map("gra", vim.lsp.buf.code_action, "LSP code action")
           end
         '';
       }

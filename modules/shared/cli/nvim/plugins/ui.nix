@@ -71,7 +71,10 @@
       };
 
       smear-cursor.enable = true;
-      snacks.enable = true;
+      snacks = {
+        enable = true;
+        settings.picker.enabled = true;
+      };
     };
   };
 }
