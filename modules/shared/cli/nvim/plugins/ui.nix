@@ -13,6 +13,25 @@
       };
     };
 
+    extraConfigLuaPost = ''
+      local function set_transparent_number_highlights()
+        vim.api.nvim_set_hl(0, "LineNr", { fg = "#7aa2f7", bg = "NONE" })
+        vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#7aa2f7", bg = "NONE" })
+        vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#7aa2f7", bg = "NONE" })
+        vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff9e64", bg = "NONE", bold = true })
+        vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "Whitespace", { fg = "#6b729c", bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NonText", { fg = "#6b729c", bg = "NONE" })
+      end
+
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "tokyonight*",
+        callback = set_transparent_number_highlights,
+      })
+
+      set_transparent_number_highlights()
+    '';
+
     plugins = {
       web-devicons.enable = true;
 
