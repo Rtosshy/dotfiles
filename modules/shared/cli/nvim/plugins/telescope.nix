@@ -21,6 +21,15 @@
       }
       {
         mode = "n";
+        key = "<leader>fl";
+        action = "<cmd>lua require('telescope.builtin').live_grep({ additional_args = function() return { '--fixed-strings' } end })<CR>";
+        options = {
+          silent = true;
+          desc = "Telescope live grep literal";
+        };
+      }
+      {
+        mode = "n";
         key = "<leader>fb";
         action = "<cmd>Telescope buffers<CR>";
         options = {
