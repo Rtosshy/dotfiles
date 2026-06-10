@@ -13,6 +13,7 @@
     ./plugins/telescope.nix
     ./plugins/treesitter.nix
     ./plugins/completion.nix
+    ./plugins/autopairs.nix
     ./plugins/lsp.nix
     ./plugins/formatting.nix
     ./plugins/trouble.nix
