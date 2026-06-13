@@ -23,6 +23,8 @@
           rust = [ "rustfmt" ];
           cpp = [ "clang-format" ];
           c = [ "clang-format" ];
+          terraform = [ "terraform_fmt" ];
+          terraform-vars = [ "terraform_fmt" ];
         };
         format_on_save = {
           timeout_ms = 500;

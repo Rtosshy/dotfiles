@@ -21,6 +21,7 @@
         "c"
         "cpp"
         "nix"
+        "terraform"
       ];
     };
   };

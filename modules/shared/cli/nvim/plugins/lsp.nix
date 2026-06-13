@@ -80,6 +80,7 @@
         };
         gopls.enable = true;
         kotlin_language_server.enable = true;
+        terraformls.enable = true;
         rust_analyzer = {
           enable = true;
           installRustc = false;

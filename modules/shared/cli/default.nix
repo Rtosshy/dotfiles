@@ -27,6 +27,8 @@
     claude-code
     codex
     github-copilot-cli
+    terraform
+    terraform-ls
     tree-sitter # nvim-treesitter がパーサーのビルドに使用する
   ];
 
