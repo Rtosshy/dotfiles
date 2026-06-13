@@ -58,6 +58,22 @@
         "type": "github"
       }
     },
+    "homebrew-barutsrb-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781123230,
+        "narHash": "sha256-h0VgpQJcHFf7XR6s4Oqce/0iXDQvLfkh2Ya1g7zc950=",
+        "owner": "barutsrb",
+        "repo": "homebrew-tap",
+        "rev": "00c663d2c56b101dfef5b3e13f3cd089b4a29088",
+        "type": "github"
+      },
+      "original": {
+        "owner": "barutsrb",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "homebrew-cask": {
       "flake": false,
       "locked": {
@@ -170,6 +186,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "homebrew-barutsrb-tap": "homebrew-barutsrb-tap",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "nix-darwin": "nix-darwin",
