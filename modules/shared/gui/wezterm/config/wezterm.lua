@@ -3,6 +3,7 @@ local keybinds = require('keybinds')
 local yoshi_error = require('yoshi-error')
 local config = wezterm.config_builder()
 
+config.disable_default_key_bindings = true
 config.keys = keybinds.keys
 
 config.automatically_reload_config = true

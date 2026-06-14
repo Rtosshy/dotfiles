@@ -2,7 +2,7 @@ local wezterm = require('wezterm')
 local act = wezterm.action
 
 -- SUPER, CMD, WIN, these are all equivalent.
--- META,  OPT, CMD, these are all equivalent.
+-- META,  ALT, OPT, these are all equivalent.
 -- this config is default.
 return {
   keys = {
@@ -12,14 +12,14 @@ return {
     { key = '!', mods = 'CTRL', action = act.ActivateTab(0) },
     { key = '!', mods = 'SHIFT|CTRL', action = act.ActivateTab(0) },
     {
-      key = 'h',
-      mods = 'SHIFT|ALT|CTRL',
-      action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
+      key = '\\',
+      action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
+      mods = 'SHIFT|CTRL',
     },
     {
-      key = 'v',
-      mods = 'SHIFT|ALT|CTRL',
+      key = '|',
       action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
+      mods = 'SHIFT|CTRL',
     },
     { key = '#', mods = 'CTRL', action = act.ActivateTab(2) },
     { key = '#', mods = 'SHIFT|CTRL', action = act.ActivateTab(2) },
@@ -31,17 +31,14 @@ return {
     { key = '&', mods = 'SHIFT|CTRL', action = act.ActivateTab(6) },
     { key = '(', mods = 'CTRL', action = act.ActivateTab(-1) },
     { key = '(', mods = 'SHIFT|CTRL', action = act.ActivateTab(-1) },
-    { key = ')', mods = 'CTRL', action = act.ResetFontSize },
-    { key = ')', mods = 'SHIFT|CTRL', action = act.ResetFontSize },
     { key = '*', mods = 'CTRL', action = act.ActivateTab(7) },
     { key = '*', mods = 'SHIFT|CTRL', action = act.ActivateTab(7) },
-    { key = '+', mods = 'CTRL', action = act.IncreaseFontSize },
-    { key = '+', mods = 'SHIFT|CTRL', action = act.IncreaseFontSize },
-    { key = '-', mods = 'CTRL', action = act.DecreaseFontSize },
-    { key = '-', mods = 'SHIFT|CTRL', action = act.DecreaseFontSize },
+    {
+      key = '-',
+      action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
+      mods = 'SHIFT|CTRL',
+    },
     { key = '-', mods = 'SUPER', action = act.DecreaseFontSize },
-    { key = '0', mods = 'CTRL', action = act.ResetFontSize },
-    { key = '0', mods = 'SHIFT|CTRL', action = act.ResetFontSize },
     { key = '0', mods = 'SUPER', action = act.ResetFontSize },
     { key = '1', mods = 'SHIFT|CTRL', action = act.ActivateTab(0) },
     { key = '1', mods = 'SUPER', action = act.ActivateTab(0) },
@@ -61,8 +58,6 @@ return {
     { key = '8', mods = 'SUPER', action = act.ActivateTab(7) },
     { key = '9', mods = 'SHIFT|CTRL', action = act.ActivateTab(-1) },
     { key = '9', mods = 'SUPER', action = act.ActivateTab(-1) },
-    { key = '=', mods = 'CTRL', action = act.IncreaseFontSize },
-    { key = '=', mods = 'SHIFT|CTRL', action = act.IncreaseFontSize },
     { key = '=', mods = 'SUPER', action = act.IncreaseFontSize },
     { key = '@', mods = 'CTRL', action = act.ActivateTab(1) },
     { key = '@', mods = 'SHIFT|CTRL', action = act.ActivateTab(1) },
@@ -111,8 +106,11 @@ return {
     { key = ']', mods = 'SHIFT|SUPER', action = act.ActivateTabRelative(1) },
     { key = '^', mods = 'CTRL', action = act.ActivateTab(5) },
     { key = '^', mods = 'SHIFT|CTRL', action = act.ActivateTab(5) },
-    { key = '_', mods = 'CTRL', action = act.DecreaseFontSize },
-    { key = '_', mods = 'SHIFT|CTRL', action = act.DecreaseFontSize },
+    {
+      key = '_',
+      action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
+      mods = 'SHIFT|CTRL',
+    },
     { key = 'c', mods = 'SHIFT|CTRL', action = act.CopyTo('Clipboard') },
     { key = 'c', mods = 'SUPER', action = act.CopyTo('Clipboard') },
     { key = 'f', mods = 'SHIFT|CTRL', action = act.Search('CurrentSelectionOrEmptyString') },
