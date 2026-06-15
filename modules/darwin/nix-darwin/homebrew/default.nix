@@ -21,7 +21,6 @@
       cleanup = "zap";
     };
     casks = [
-      "omniwm"
       "arc"
       "raycast"
       "slack"

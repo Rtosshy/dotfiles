@@ -110,8 +110,8 @@ useGlobalGaps = true
 
 [focus]
 followsMouse = false
-followsWindowToMonitor = true
-moveMouseToFocusedWindow = true
+followsWindowToMonitor = false
+moveMouseToFocusedWindow = false
 
 [gaps]
 size = 16.0
@@ -727,7 +727,7 @@ centerFocusedColumn = "never"
 columnWidthPresets = [0.3333333333333333, 0.5, 0.6666666666666666]
 defaultColumnWidth = 0.5
 infiniteLoop = false
-maxVisibleColumns = 2
+maxVisibleColumns = 4
 singleWindowAspectRatio = "none"
 
 [quakeTerminal]
