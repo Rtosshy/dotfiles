@@ -9,6 +9,7 @@
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "barutsrb/homebrew-tap" = inputs.homebrew-barutsrb-tap;
+      "nikitabobko/homebrew-tap" = inputs.homebrew-nikitabobko-tap;
     };
     mutableTaps = false;
   };
@@ -21,7 +22,9 @@
       cleanup = "zap";
     };
     casks = [
+      "aerospace"
       "arc"
+      "omniwm"
       "raycast"
       "slack"
       "zoom"
