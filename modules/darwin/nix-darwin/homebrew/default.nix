@@ -20,6 +20,7 @@
     onActivation = {
       autoUpdate = true;
       cleanup = "zap";
+      upgrade = true;
     };
     casks = [
       "aerospace"
