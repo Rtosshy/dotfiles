@@ -56,5 +56,10 @@
     }
   ];
 
-  plugins.trouble.enable = true;
+  plugins.trouble = {
+    enable = true;
+
+    # キーマップはすべて <cmd>Trouble ...> 経由なので cmd トリガーで足りる。
+    lazyLoad.settings.cmd = [ "Trouble" ];
+  };
 }

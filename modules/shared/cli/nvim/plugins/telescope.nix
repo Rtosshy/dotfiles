@@ -20,15 +20,6 @@
     }
     {
       mode = "n";
-      key = "<leader>fl";
-      action = "<cmd>lua require('telescope.builtin').live_grep({ additional_args = function() return { '--fixed-strings' } end })<CR>";
-      options = {
-        silent = true;
-        desc = "Telescope live grep literal";
-      };
-    }
-    {
-      mode = "n";
       key = "<leader>fb";
       action = "<cmd>Telescope buffers<CR>";
       options = {
@@ -50,5 +41,21 @@
   plugins.telescope = {
     enable = true;
     extensions.fzf-native.enable = true;
+
+    # lz.n による遅延ロード。<cmd>Telescope ...> 経由のキーマップは
+    # cmd トリガーが拾うが、additional_args を渡す <leader>fl だけは
+    # コマンド化できないため keys トリガーでロードを発火させる。
+    lazyLoad.settings = {
+      cmd = [ "Telescope" ];
+      keys = [
+        {
+          __unkeyed-1 = "<leader>fl";
+          __unkeyed-2 = "<cmd>lua require('telescope.builtin').live_grep({ additional_args = function() return { '--fixed-strings' } end })<CR>";
+          mode = "n";
+          silent = true;
+          desc = "Telescope live grep literal";
+        }
+      ];
+    };
   };
 }

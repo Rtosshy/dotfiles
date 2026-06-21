@@ -36,7 +36,9 @@
             end
 
             local doc_dir = devdocs.GetDocDir(selected)
-            require("telescope.builtin").find_files({ cwd = doc_dir })
+            -- telescope は lazy ロードのため、require 直叩きではなく
+            -- :Telescope コマンド経由で起動して lz.n の cmd トリガーを発火させる。
+            vim.cmd("Telescope find_files cwd=" .. vim.fn.fnameescape(doc_dir))
           end)
         end
       '';

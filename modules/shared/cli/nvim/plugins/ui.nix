@@ -1,6 +1,10 @@
 {
   colorschemes.tokyonight = {
     enable = true;
+    lazyLoad = {
+      enable = true;
+
+    };
     settings = {
       style = "moon";
       transparent = true;

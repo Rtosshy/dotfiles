@@ -21,6 +21,7 @@
       ./plugins/devdocs.nix
       ./plugins/alpha.nix
       ./plugins/live-share.nix
+      ./plugins/lz-n.nix
       ./plugins/yoshi-error.nix
       ./plugins/yoshi-yank.nix
       ./plugins/yoshi-paste.nix
