@@ -90,6 +90,7 @@
             cargo.allFeatures = true;
           };
         };
+        nixd.enable = true;
       };
     };
 
