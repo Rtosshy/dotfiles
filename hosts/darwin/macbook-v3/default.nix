@@ -15,7 +15,6 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs nixvim; };
     users.tosshy = {
       imports = [
         ../../../modules/shared
