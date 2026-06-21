@@ -1,254 +1,252 @@
 { pkgs, ... }:
 {
-  programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      alpha-nvim
-    ];
+  extraPlugins = with pkgs.vimPlugins; [
+    alpha-nvim
+  ];
 
-    extraConfigLuaPost = ''
-      local alpha = require("alpha")
-        local dashboard = require("alpha.themes.dashboard")
+  extraConfigLuaPost = ''
+    local alpha = require("alpha")
+      local dashboard = require("alpha.themes.dashboard")
 
-        local yoshi_vim_logo = {
-          [[ ██╗   ██╗  ██████╗  ███████╗ ██╗  ██╗ ██╗ ██╗   ██╗ ██╗ ███╗   ███╗]],
-          [[ ╚██╗ ██╔╝ ██╔═══██╗ ██╔════╝ ██║  ██║ ██║ ██║   ██║ ██║ ████╗ ████║]],
-          [[  ╚████╔╝  ██║   ██║ ███████╗ ███████║ ██║ ██║   ██║ ██║ ██╔████╔██║]],
-          [[   ╚██╔╝   ██║   ██║ ╚════██║ ██╔══██║ ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║]],
-          [[    ██║    ╚██████╔╝ ███████║ ██║  ██║ ██║  ╚████╔╝  ██║ ██║ ╚═╝ ██║]],
-          [[    ╚═╝     ╚═════╝  ╚══════╝ ╚═╝  ╚═╝ ╚═╝   ╚═══╝   ╚═╝ ╚═╝     ╚═╝]],
-        }
+      local yoshi_vim_logo = {
+        [[ ██╗   ██╗  ██████╗  ███████╗ ██╗  ██╗ ██╗ ██╗   ██╗ ██╗ ███╗   ███╗]],
+        [[ ╚██╗ ██╔╝ ██╔═══██╗ ██╔════╝ ██║  ██║ ██║ ██║   ██║ ██║ ████╗ ████║]],
+        [[  ╚████╔╝  ██║   ██║ ███████╗ ███████║ ██║ ██║   ██║ ██║ ██╔████╔██║]],
+        [[   ╚██╔╝   ██║   ██║ ╚════██║ ██╔══██║ ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║]],
+        [[    ██║    ╚██████╔╝ ███████║ ██║  ██║ ██║  ╚████╔╝  ██║ ██║ ╚═╝ ██║]],
+        [[    ╚═╝     ╚═════╝  ╚══════╝ ╚═╝  ╚═╝ ╚═╝   ╚═══╝   ╚═╝ ╚═╝     ╚═╝]],
+      }
 
-        local top_padding = 2
-        local gap_after_logo = 1
-        local yoshi_image_id_base = 424242
+      local top_padding = 2
+      local gap_after_logo = 1
+      local yoshi_image_id_base = 424242
 
-        local presets = {
-          {
-            name = "yoshi-walk-rainbow",
-            weight = 1,
-            frame_dir = "${../../../../../assets/frames/yoshi-walk-rainbow}",
-            frame_prefix = "yoshi-walk-rainbow-",
-            frame_count = 14,
-            frame_delay_ms = 100,
-            image_cols = 34,
-            image_rows = 16,
-            colors = {
-              "#ff5fa2", "#d050d8", "#9a3fd6", "#3a3ad6",
-              "#3a8af0", "#3fd0d8", "#1fb39a", "#2fc44a",
-              "#7ad84a", "#e0d83a", "#f0c83a", "#f0a830",
-              "#f07a20", "#e83a2a",
-            },
+      local presets = {
+        {
+          name = "yoshi-walk-rainbow",
+          weight = 1,
+          frame_dir = "${../../../../../assets/frames/yoshi-walk-rainbow}",
+          frame_prefix = "yoshi-walk-rainbow-",
+          frame_count = 14,
+          frame_delay_ms = 100,
+          image_cols = 34,
+          image_rows = 16,
+          colors = {
+            "#ff5fa2", "#d050d8", "#9a3fd6", "#3a3ad6",
+            "#3a8af0", "#3fd0d8", "#1fb39a", "#2fc44a",
+            "#7ad84a", "#e0d83a", "#f0c83a", "#f0a830",
+            "#f07a20", "#e83a2a",
           },
-          {
-            name = "yoshi-walk-normal",
-            weight = 9,
-            frame_dir = "${../../../../../assets/frames/yoshi-walk-normal}",
-            frame_prefix = "yoshi-walk-normal-",
-            frame_count = 8,
-            frame_delay_ms = 120,
-            image_cols = 40,
-            image_rows = 14,
-            colors = {
-              "#7ad84a", "#7ad84a", "#7ad84a", "#7ad84a",
-              "#7ad84a", "#7ad84a", "#7ad84a", "#7ad84a",
-            },
+        },
+        {
+          name = "yoshi-walk-normal",
+          weight = 9,
+          frame_dir = "${../../../../../assets/frames/yoshi-walk-normal}",
+          frame_prefix = "yoshi-walk-normal-",
+          frame_count = 8,
+          frame_delay_ms = 120,
+          image_cols = 40,
+          image_rows = 14,
+          colors = {
+            "#7ad84a", "#7ad84a", "#7ad84a", "#7ad84a",
+            "#7ad84a", "#7ad84a", "#7ad84a", "#7ad84a",
           },
-        }
+        },
+      }
 
-        local function pick_preset()
-          local total = 0
-          for _, p in ipairs(presets) do
-            total = total + p.weight
-          end
-          math.randomseed(os.time() + (vim.loop.hrtime() % 1000000))
-          local r = math.random() * total
-          local acc = 0
-          for _, p in ipairs(presets) do
-            acc = acc + p.weight
-            if r <= acc then
-              return p
-            end
-          end
-          return presets[1]
+      local function pick_preset()
+        local total = 0
+        for _, p in ipairs(presets) do
+          total = total + p.weight
         end
-
-        local active_preset = pick_preset()
-        local yoshi_current_frame = 1
-
-        local function reroll_preset()
-          active_preset = pick_preset()
-          yoshi_current_frame = 1
-        end
-        local yoshi_animation_running = false
-        local yoshi_animation_generation = 0
-
-        local function apply_yoshi_logo_color(frame)
-          local palette = active_preset.colors
-          local color = palette[frame] or palette[1]
-          vim.api.nvim_set_hl(0, "AlphaYoshiLogo", { fg = color, bold = true })
-        end
-
-        local function yoshi_image_row()
-          return top_padding + #yoshi_vim_logo + gap_after_logo + 1
-        end
-
-        local function yoshi_frame_file(frame)
-          return ("%s/%s%02d.png"):format(active_preset.frame_dir, active_preset.frame_prefix, frame - 1)
-        end
-
-        local function yoshi_delete_sequence()
-          local chunks = {}
-          for frame = 1, active_preset.frame_count do
-            chunks[#chunks + 1] = ("\27_Ga=d,d=i,i=%d,q=2\27\\"):format(yoshi_image_id_base + frame)
-          end
-          return table.concat(chunks)
-        end
-
-        local function yoshi_image_sequence(frame)
-          local file = yoshi_frame_file(frame)
-          local fd = io.open(file, "rb")
-
-          if not fd then
-            vim.notify("Yoshi frame was not found: " .. file, vim.log.levels.ERROR)
-            return nil
-          end
-
-          fd:close()
-
-          local image_id = yoshi_image_id_base + frame
-          local image_col = math.max(0, math.floor((vim.o.columns - active_preset.image_cols) / 2))
-
-          return table.concat({
-            "\27[s",
-            ("\27[%d;%dH"):format(yoshi_image_row(), image_col + 1),
-            yoshi_delete_sequence(),
-            ("\27_Ga=T,t=f,f=100,i=%d,c=%d,r=%d,q=2;"):format(image_id, active_preset.image_cols, active_preset.image_rows),
-            vim.base64.encode(file),
-            "\27\\",
-            "\27[u",
-          })
-        end
-
-        local function send_to_terminal(sequence)
-          if vim.api.nvim_ui_send then
-            vim.api.nvim_ui_send(sequence)
-          else
-            io.stdout:write(sequence)
+        math.randomseed(os.time() + (vim.loop.hrtime() % 1000000))
+        local r = math.random() * total
+        local acc = 0
+        for _, p in ipairs(presets) do
+          acc = acc + p.weight
+          if r <= acc then
+            return p
           end
         end
+        return presets[1]
+      end
 
-        local function draw_yoshi_frame(frame)
-          local sequence = yoshi_image_sequence(frame)
-          if sequence then
-            send_to_terminal(sequence)
-            apply_yoshi_logo_color(frame)
-          end
+      local active_preset = pick_preset()
+      local yoshi_current_frame = 1
+
+      local function reroll_preset()
+        active_preset = pick_preset()
+        yoshi_current_frame = 1
+      end
+      local yoshi_animation_running = false
+      local yoshi_animation_generation = 0
+
+      local function apply_yoshi_logo_color(frame)
+        local palette = active_preset.colors
+        local color = palette[frame] or palette[1]
+        vim.api.nvim_set_hl(0, "AlphaYoshiLogo", { fg = color, bold = true })
+      end
+
+      local function yoshi_image_row()
+        return top_padding + #yoshi_vim_logo + gap_after_logo + 1
+      end
+
+      local function yoshi_frame_file(frame)
+        return ("%s/%s%02d.png"):format(active_preset.frame_dir, active_preset.frame_prefix, frame - 1)
+      end
+
+      local function yoshi_delete_sequence()
+        local chunks = {}
+        for frame = 1, active_preset.frame_count do
+          chunks[#chunks + 1] = ("\27_Ga=d,d=i,i=%d,q=2\27\\"):format(yoshi_image_id_base + frame)
+        end
+        return table.concat(chunks)
+      end
+
+      local function yoshi_image_sequence(frame)
+        local file = yoshi_frame_file(frame)
+        local fd = io.open(file, "rb")
+
+        if not fd then
+          vim.notify("Yoshi frame was not found: " .. file, vim.log.levels.ERROR)
+          return nil
         end
 
-        local function clear_yoshi_image()
-          send_to_terminal(yoshi_delete_sequence())
+        fd:close()
+
+        local image_id = yoshi_image_id_base + frame
+        local image_col = math.max(0, math.floor((vim.o.columns - active_preset.image_cols) / 2))
+
+        return table.concat({
+          "\27[s",
+          ("\27[%d;%dH"):format(yoshi_image_row(), image_col + 1),
+          yoshi_delete_sequence(),
+          ("\27_Ga=T,t=f,f=100,i=%d,c=%d,r=%d,q=2;"):format(image_id, active_preset.image_cols, active_preset.image_rows),
+          vim.base64.encode(file),
+          "\27\\",
+          "\27[u",
+        })
+      end
+
+      local function send_to_terminal(sequence)
+        if vim.api.nvim_ui_send then
+          vim.api.nvim_ui_send(sequence)
+        else
+          io.stdout:write(sequence)
+        end
+      end
+
+      local function draw_yoshi_frame(frame)
+        local sequence = yoshi_image_sequence(frame)
+        if sequence then
+          send_to_terminal(sequence)
+          apply_yoshi_logo_color(frame)
+        end
+      end
+
+      local function clear_yoshi_image()
+        send_to_terminal(yoshi_delete_sequence())
+      end
+
+      local function start_yoshi_animation()
+        if yoshi_animation_running then
+          return
         end
 
-        local function start_yoshi_animation()
-          if yoshi_animation_running then
+        yoshi_animation_running = true
+        yoshi_animation_generation = yoshi_animation_generation + 1
+        local generation = yoshi_animation_generation
+
+        local function tick()
+          if generation ~= yoshi_animation_generation then
             return
           end
 
-          yoshi_animation_running = true
-          yoshi_animation_generation = yoshi_animation_generation + 1
-          local generation = yoshi_animation_generation
-
-          local function tick()
-            if generation ~= yoshi_animation_generation then
-              return
-            end
-
-            if vim.bo.filetype ~= "alpha" then
-              yoshi_animation_running = false
-              yoshi_animation_generation = yoshi_animation_generation + 1
-              clear_yoshi_image()
-              return
-            end
-
-            draw_yoshi_frame(yoshi_current_frame)
-            yoshi_current_frame = (yoshi_current_frame % active_preset.frame_count) + 1
-            vim.defer_fn(tick, active_preset.frame_delay_ms)
+          if vim.bo.filetype ~= "alpha" then
+            yoshi_animation_running = false
+            yoshi_animation_generation = yoshi_animation_generation + 1
+            clear_yoshi_image()
+            return
           end
 
-          tick()
+          draw_yoshi_frame(yoshi_current_frame)
+          yoshi_current_frame = (yoshi_current_frame % active_preset.frame_count) + 1
+          vim.defer_fn(tick, active_preset.frame_delay_ms)
         end
 
-        dashboard.section.buttons.val = {
-          dashboard.button("e", "\u{f07c}  Open directory", "<cmd>lua require('oil').toggle_float()<cr>"),
-          dashboard.button("f", "\u{f002}  Find file", "<cmd>lua require('telescope.builtin').find_files()<cr>"),
-          dashboard.button("r", "\u{f1da}  Recent files", "<cmd>lua require('telescope.builtin').oldfiles()<cr>"),
-          dashboard.button("g", "\u{f419}  LazyGit", "<cmd>LazyGit<cr>"),
-          dashboard.button("q", "\u{f011}  Quit", "<cmd>qa<cr>"),
-        }
+        tick()
+      end
 
-        apply_yoshi_logo_color(yoshi_current_frame)
+      dashboard.section.buttons.val = {
+        dashboard.button("e", "\u{f07c}  Open directory", "<cmd>lua require('oil').toggle_float()<cr>"),
+        dashboard.button("f", "\u{f002}  Find file", "<cmd>lua require('telescope.builtin').find_files()<cr>"),
+        dashboard.button("r", "\u{f1da}  Recent files", "<cmd>lua require('telescope.builtin').oldfiles()<cr>"),
+        dashboard.button("g", "\u{f419}  LazyGit", "<cmd>LazyGit<cr>"),
+        dashboard.button("q", "\u{f011}  Quit", "<cmd>qa<cr>"),
+      }
 
-        dashboard.section.header.val = yoshi_vim_logo
-        dashboard.section.header.opts = {
-          hl = "AlphaYoshiLogo",
-          position = "center",
-        }
+      apply_yoshi_logo_color(yoshi_current_frame)
 
-        dashboard.config.layout = {
-          { type = "padding", val = top_padding },
-          dashboard.section.header,
-          { type = "padding", val = 18 },
-          dashboard.section.buttons,
-        }
+      dashboard.section.header.val = yoshi_vim_logo
+      dashboard.section.header.opts = {
+        hl = "AlphaYoshiLogo",
+        position = "center",
+      }
 
-        alpha.setup(dashboard.config)
+      dashboard.config.layout = {
+        { type = "padding", val = top_padding },
+        dashboard.section.header,
+        { type = "padding", val = 18 },
+        dashboard.section.buttons,
+      }
 
-        local yoshi_group = vim.api.nvim_create_augroup("AlphaYoshiImage", { clear = true })
-        vim.api.nvim_create_autocmd("User", {
-          group = yoshi_group,
-          pattern = "AlphaReady",
-          callback = function()
-            reroll_preset()
-            apply_yoshi_logo_color(yoshi_current_frame)
-            vim.defer_fn(start_yoshi_animation, 80)
-          end,
-        })
-        vim.api.nvim_create_autocmd("BufEnter", {
-          group = yoshi_group,
-          callback = function()
-            if vim.bo.filetype ~= "alpha" then
-              return
-            end
+      alpha.setup(dashboard.config)
 
-            reroll_preset()
-            apply_yoshi_logo_color(yoshi_current_frame)
+      local yoshi_group = vim.api.nvim_create_augroup("AlphaYoshiImage", { clear = true })
+      vim.api.nvim_create_autocmd("User", {
+        group = yoshi_group,
+        pattern = "AlphaReady",
+        callback = function()
+          reroll_preset()
+          apply_yoshi_logo_color(yoshi_current_frame)
+          vim.defer_fn(start_yoshi_animation, 80)
+        end,
+      })
+      vim.api.nvim_create_autocmd("BufEnter", {
+        group = yoshi_group,
+        callback = function()
+          if vim.bo.filetype ~= "alpha" then
+            return
+          end
 
-            vim.defer_fn(function()
-              if vim.bo.filetype == "alpha" then
-                start_yoshi_animation()
-              end
-            end, 80)
-          end,
-        })
-        vim.api.nvim_create_autocmd("BufLeave", {
-          group = yoshi_group,
-          callback = function()
-            if yoshi_animation_running then
-              yoshi_animation_running = false
-              yoshi_animation_generation = yoshi_animation_generation + 1
-              clear_yoshi_image()
-            end
-          end,
-        })
-        vim.api.nvim_create_autocmd({ "VimResized", "WinResized" }, {
-          group = yoshi_group,
-          callback = function()
+          reroll_preset()
+          apply_yoshi_logo_color(yoshi_current_frame)
+
+          vim.defer_fn(function()
             if vim.bo.filetype == "alpha" then
-              pcall(alpha.redraw)
-              vim.defer_fn(start_yoshi_animation, 160)
+              start_yoshi_animation()
             end
-          end,
-        })
-    '';
-  };
+          end, 80)
+        end,
+      })
+      vim.api.nvim_create_autocmd("BufLeave", {
+        group = yoshi_group,
+        callback = function()
+          if yoshi_animation_running then
+            yoshi_animation_running = false
+            yoshi_animation_generation = yoshi_animation_generation + 1
+            clear_yoshi_image()
+          end
+        end,
+      })
+      vim.api.nvim_create_autocmd({ "VimResized", "WinResized" }, {
+        group = yoshi_group,
+        callback = function()
+          if vim.bo.filetype == "alpha" then
+            pcall(alpha.redraw)
+            vim.defer_fn(start_yoshi_animation, 160)
+          end
+        end,
+      })
+  '';
 }

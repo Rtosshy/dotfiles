@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.noice = {
+  plugins.noice = {
     enable = true;
 
     settings = {

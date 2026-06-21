@@ -1,5 +1,5 @@
 {
-  programs.nixvim.autoCmd = [
+  autoCmd = [
     {
       event = "InsertLeave";
       pattern = "*";

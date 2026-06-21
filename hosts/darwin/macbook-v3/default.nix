@@ -1,4 +1,9 @@
-{ inputs, home-manager, ... }:
+{
+  inputs,
+  home-manager,
+  nixvim,
+  ...
+}:
 {
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
@@ -10,12 +15,13 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs nixvim; };
     users.tosshy = {
       imports = [
         ../../../modules/shared
         ../../../modules/shared/gui
         ../../../modules/darwin/home-manager
+        nixvim.homeModules.nixvim
       ];
 
       home = {

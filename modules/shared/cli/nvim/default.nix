@@ -1,31 +1,29 @@
-{ inputs, ... }:
 {
-  imports = [
-    inputs.nixvim.homeModules.nixvim
+  programs.nixvim = {
+    enable = true;
+    imports = [
+      ./core/options.nix
+      ./core/autocmds.nix
+      ./core/keymaps.nix
 
-    ./core/options.nix
-    ./core/autocmds.nix
-    ./core/keymaps.nix
-
-    ./plugins/ui.nix
-    ./plugins/noice.nix
-    ./plugins/oil.nix
-    ./plugins/telescope.nix
-    ./plugins/treesitter.nix
-    ./plugins/completion.nix
-    ./plugins/autopairs.nix
-    ./plugins/lsp.nix
-    ./plugins/formatting.nix
-    ./plugins/trouble.nix
-    ./plugins/gitsigns.nix
-    ./plugins/lazygit.nix
-    ./plugins/devdocs.nix
-    ./plugins/alpha.nix
-    ./plugins/live-share.nix
-    ./plugins/yoshi-error.nix
-    ./plugins/yoshi-yank.nix
-    ./plugins/yoshi-paste.nix
-  ];
-
-  programs.nixvim.enable = true;
+      ./plugins/oil.nix
+      ./plugins/ui.nix
+      ./plugins/noice.nix
+      ./plugins/telescope.nix
+      ./plugins/treesitter.nix
+      ./plugins/completion.nix
+      ./plugins/autopairs.nix
+      ./plugins/lsp.nix
+      ./plugins/formatting.nix
+      ./plugins/trouble.nix
+      ./plugins/gitsigns.nix
+      ./plugins/lazygit.nix
+      ./plugins/devdocs.nix
+      ./plugins/alpha.nix
+      ./plugins/live-share.nix
+      ./plugins/yoshi-error.nix
+      ./plugins/yoshi-yank.nix
+      ./plugins/yoshi-paste.nix
+    ];
+  };
 }
