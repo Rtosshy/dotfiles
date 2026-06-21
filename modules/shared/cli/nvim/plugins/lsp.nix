@@ -78,7 +78,14 @@
         settings.Lua.diagnostics.globals = [ "vim" ];
       };
       gopls.enable = true;
-      kotlin_language_server.enable = true;
+      kotlin_language_server = {
+        enable = true;
+        # kotlin-language-server expects initializationOptions to be a JSON
+        # object. An empty init_options is encoded by Neovim as `[]` (array),
+        # which makes the server crash in getStoragePath during initialize.
+        # Providing a real storagePath keeps it a `{}` object.
+        extraOptions.init_options.storagePath.__raw = ''vim.fn.stdpath("cache") .. "/kotlin-language-server"'';
+      };
       terraformls.enable = true;
       rust_analyzer = {
         enable = true;
