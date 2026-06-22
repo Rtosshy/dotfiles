@@ -66,6 +66,7 @@ _: {
       v = "nvim";
       vi = "nvim";
       vim = "nvim";
+      emacs = "emacs -nw";
       ls = "eza --icons";
       ll = "eza --icons -lhg --time-style long-iso";
       la = "eza --icons -lhag --time-style long-iso";
