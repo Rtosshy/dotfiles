@@ -402,7 +402,7 @@ binding = "Control+Command+Grave"
 id = "focusMonitorLast"
 
 [[hotkeys]]
-binding = "Left Option+F"
+binding = "Left Option+Shift+F"
 id = "toggleFullscreen"
 
 [[hotkeys]]
