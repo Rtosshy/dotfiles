@@ -5,8 +5,52 @@
         noremap = true;
         silent = true;
       };
+
+      descriptions = {
+        "<C-s>" = "Save file";
+        "<leader>sn" = "Save file without autocommands";
+        "<C-q>" = "Quit";
+        "x" = "Delete character without yank";
+        "<C-d>" = "Scroll down and center";
+        "<C-u>" = "Scroll up and center";
+        "n" = "Next search result and center";
+        "N" = "Previous search result and center";
+        "<Up>" = "Decrease window height";
+        "<Down>" = "Increase window height";
+        "<Left>" = "Decrease window width";
+        "<Right>" = "Increase window width";
+        "]b" = "Next buffer";
+        "[b" = "Previous buffer";
+        "<leader>bx" = "Delete buffer";
+        "<leader>w\\" = "Split window vertically";
+        "<leader>w-" = "Split window horizontally";
+        "<leader>w=" = "Equalize window sizes";
+        "<leader>wx" = "Close window";
+        "<C-k>" = "Focus window above";
+        "<C-j>" = "Focus window below";
+        "<C-h>" = "Focus window left";
+        "<C-l>" = "Focus window right";
+        "<leader>lw" = "Toggle line wrap";
+        "<" = "Indent left and reselect";
+        ">" = "Indent right and reselect";
+        "p" = "Paste without yanking replaced text";
+      };
+
+      withDesc =
+        keymap:
+        keymap
+        // {
+          options =
+            (keymap.options or opts)
+            // (
+              if builtins.hasAttr keymap.key descriptions then
+                { desc = builtins.getAttr keymap.key descriptions; }
+              else
+                { }
+            );
+        };
     in
-    [
+    map withDesc [
       {
         mode = [
           "n"
@@ -160,19 +204,19 @@
 
       {
         mode = "n";
-        key = "<leader>wsv";
+        key = "<leader>w\\";
         action = "<C-w>v";
         options = opts;
       }
       {
         mode = "n";
-        key = "<leader>wsh";
+        key = "<leader>w-";
         action = "<C-w>s";
         options = opts;
       }
       {
         mode = "n";
-        key = "<leader>wse";
+        key = "<leader>w=";
         action = "<C-w>=";
         options = opts;
       }
