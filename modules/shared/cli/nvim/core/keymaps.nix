@@ -25,6 +25,7 @@
         "<leader>w\\" = "Split window vertically";
         "<leader>w-" = "Split window horizontally";
         "<leader>w=" = "Equalize window sizes";
+        "<leader>wo" = "Close other windows";
         "<leader>wx" = "Close window";
         "<C-k>" = "Focus window above";
         "<C-j>" = "Focus window below";
@@ -218,6 +219,12 @@
         mode = "n";
         key = "<leader>w=";
         action = "<C-w>=";
+        options = opts;
+      }
+      {
+        mode = "n";
+        key = "<leader>wo";
+        action = "<cmd>only<CR>";
         options = opts;
       }
       {
