@@ -115,7 +115,10 @@
             {
               inherit inputs username homeDirectory;
             };
-        modules = [ ./hosts/linux/standalone ];
+        modules = [
+          ./hosts/linux/standalone
+          nixvim.homeModules.nixvim
+        ];
       };
     };
 }
