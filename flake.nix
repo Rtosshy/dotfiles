@@ -124,11 +124,15 @@
             ''
           else
             {
-              inherit inputs username homeDirectory;
+              inherit
+                inputs
+                username
+                homeDirectory
+                nixvim
+                ;
             };
         modules = [
-          ./systems/linux/standalone
-          nixvim.homeModules.nixvim
+          ./home/linux/standalone.nix
         ];
       };
     };

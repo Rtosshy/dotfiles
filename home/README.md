@@ -27,11 +27,22 @@ This home is imported by the root flake as
 home-manager switch --flake .#tosshy@MacBook-V3
 ```
 
-### `standalone`
+### `linux/standalone.nix`
 
-The standalone Linux Home Manager configuration is currently composed from
-`systems/linux/standalone` because it models an ad-hoc environment more than a
-named personal machine. It is exposed as `homeConfigurations."standalone"`.
+Standalone Home Manager configuration for non-NixOS Linux environments
+(Codespaces, remote dev servers, generic Ubuntu/Debian/Fedora boxes, etc.).
+CLI-only; no GUI modules are imported.
+
+`username` and `homeDirectory` are passed in by the flake so the same
+configuration can be reused across environments where the default user differs
+(e.g. `vscode` on Codespaces, `ubuntu` on EC2).
+
+Imports:
+
+- `modules/shared`: shared CLI modules and CLI packages
+- `nixvim.homeModules.nixvim`: nixvim module integration
+
+This home is imported by the root flake as `homeConfigurations."standalone"`.
 
 ## Guidelines
 

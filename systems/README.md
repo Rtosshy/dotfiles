@@ -30,22 +30,6 @@ darwin-rebuild switch --flake .#MacBook-V3
 Home Manager for this machine is intentionally separate and exposed as
 `homeConfigurations."tosshy@MacBook-V3"`.
 
-### `linux/standalone`
-
-Standalone Home Manager composition for non-NixOS Linux environments
-(Codespaces, remote dev servers, generic Ubuntu/Debian/Fedora boxes, etc.).
-CLI-only; no GUI modules are imported.
-
-`username` and `homeDirectory` are passed in by the flake so the same
-configuration can be reused across environments where the default user differs
-(e.g. `vscode` on Codespaces, `ubuntu` on EC2).
-
-Imports:
-
-- `modules/shared`: shared CLI modules and CLI packages
-
-This configuration is exposed as `homeConfigurations."standalone"`.
-
 ### `nixos/`
 
 Reserved for future NixOS system configurations.
