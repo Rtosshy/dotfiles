@@ -71,8 +71,8 @@ flake.nix
 flake.nix
 └─ homeConfigurations."tosshy@MacBook-V3"
    └─ home/darwin/tosshy.nix
-      ├─ modules/shared
-      ├─ modules/shared/gui
+      ├─ modules/shared/cli/*
+      ├─ modules/shared/gui/*
       └─ modules/darwin/home-manager
 ```
 
@@ -84,4 +84,5 @@ flake.nix
   from a Home Manager entrypoint under `home/`.
 - Put settings that require macOS, nix-darwin, Homebrew, or `/Users/...` under
   this directory.
-- Prefer `modules/shared/` for configuration that works across Darwin and Linux.
+- Put cross-platform Home Manager modules under `modules/shared/` and import the
+  needed modules explicitly from each profile.

@@ -107,7 +107,7 @@ codex exec --skip-git-repo-check 'List all skills currently available to you. Ju
 
 1. `modules/shared/cli/<runtime>/default.nix` を作る
 2. デプロイ先パスにシンボリックリンクを張る(ランタイムが symlink を辿るなら `home.file` の `source` で OK。辿らないなら Codex 同様 `home.activation` + `install -Dm644` で実ファイル化)
-3. `modules/shared/cli/default.nix` でその `<runtime>` モジュールを import
+3. 必要な Home Manager entrypoint でその `<runtime>` モジュールを import
 
 SKILL.md 本体は基本変更不要(両形式併記・中立表記・YAML リスト `allowed-tools` で書かれているため)。
 

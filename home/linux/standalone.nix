@@ -7,7 +7,13 @@
 }:
 {
   imports = [
-    ../../modules/shared
+    ../../modules/shared/cli/nvim
+    ../../modules/shared/cli/fish
+    ../../modules/shared/cli/git
+    ../../modules/shared/cli/lazygit
+    ../../modules/shared/cli/starship
+    ../../modules/shared/cli/claude
+    ../../modules/shared/cli/codex
     nixvim.homeModules.nixvim
   ];
 
@@ -26,6 +32,7 @@
       lazygit
       jq
       curl
+      byobu
       claude-code
       codex
       tree-sitter # nvim-treesitter がパーサーのビルドに使用する

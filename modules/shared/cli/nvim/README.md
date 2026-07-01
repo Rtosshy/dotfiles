@@ -2,8 +2,8 @@
 
 This directory contains the nixvim-based Neovim configuration.
 
-`default.nix` is the entry point imported from `modules/shared/cli/default.nix`.
-It enables `programs.nixvim` and imports the smaller modules below.
+`default.nix` is imported directly from Home Manager entrypoints. It enables
+`programs.nixvim` and imports the smaller modules below.
 
 ## Core
 

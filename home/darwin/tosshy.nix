@@ -1,8 +1,20 @@
 { pkgs, nixvim, ... }:
 {
   imports = [
-    ../../modules/shared
-    ../../modules/shared/gui
+    ../../modules/shared/cli/nvim
+    ../../modules/shared/cli/fish
+    ../../modules/shared/cli/git
+    ../../modules/shared/cli/codex
+    ../../modules/shared/cli/emacs
+    ../../modules/shared/cli/claude
+    ../../modules/shared/cli/lazygit
+    ../../modules/shared/cli/starship
+    ../../modules/shared/gui/cmux
+    ../../modules/shared/gui/fonts
+    ../../modules/shared/gui/omniwm
+    ../../modules/shared/gui/aerospace
+    ../../modules/shared/gui/ghostty
+    ../../modules/shared/gui/wezterm
     ../../modules/darwin/home-manager
     nixvim.homeModules.nixvim
   ];
