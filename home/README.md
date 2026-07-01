@@ -5,7 +5,9 @@ Manager modules for a user profile and define user-local values such as
 `home.username`, `home.homeDirectory`, and `home.stateVersion`.
 
 OS-level configuration belongs under `systems/`. Reusable Home Manager modules
-belong under `modules/`.
+belong under `modules/`. Profile package lists and optional `programs.*`
+choices also live here, because macOS, Linux, containers, and servers do not
+necessarily want the same tools.
 
 ## Current Homes
 
@@ -15,10 +17,13 @@ Home Manager configuration for `tosshy` on `MacBook-V3`.
 
 Imports:
 
-- `modules/shared`: shared CLI modules and CLI packages
+- `modules/shared`: shared CLI modules
 - `modules/shared/gui`: shared GUI modules, terminal configs, and fonts
 - `modules/darwin/home-manager`: Darwin-only Home Manager additions
 - `nixvim.homeModules.nixvim`: nixvim module integration
+
+This profile also defines the macOS user package set and enables profile-level
+programs such as Home Manager, direnv, mise, and zoxide.
 
 This home is imported by the root flake as
 `homeConfigurations."tosshy@MacBook-V3"`.
@@ -39,8 +44,11 @@ configuration can be reused across environments where the default user differs
 
 Imports:
 
-- `modules/shared`: shared CLI modules and CLI packages
+- `modules/shared`: shared CLI modules
 - `nixvim.homeModules.nixvim`: nixvim module integration
+
+This profile defines a Linux-oriented package set and only enables the
+profile-level programs that should be present in standalone environments.
 
 This home is imported by the root flake as `homeConfigurations."standalone"`.
 
@@ -49,5 +57,6 @@ This home is imported by the root flake as `homeConfigurations."standalone"`.
 - Keep nix-darwin and future NixOS settings out of this directory.
 - Use `modules/shared` for cross-platform CLI defaults.
 - Use `modules/shared/gui` only for GUI-capable user profiles.
+- Keep package lists and `programs.*` opt-ins in the profile that needs them.
 - Put platform-specific user additions in platform modules such as
   `modules/darwin/home-manager`.

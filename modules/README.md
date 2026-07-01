@@ -15,13 +15,14 @@ this piece?", keep that decision in the entrypoint file.
 Cross-platform Home Manager modules.
 
 - `shared/default.nix`: default shared entrypoint. It imports `shared/cli`.
-- `shared/cli/default.nix`: CLI group module. It imports CLI tools and defines
-  shared CLI packages.
+- `shared/cli/default.nix`: CLI group module. It imports reusable CLI and
+  editor modules.
 - `shared/gui/default.nix`: GUI group module. It imports GUI-related modules.
 
 Use `modules/shared` when a Home Manager entrypoint should get the standard CLI
-environment. Use `modules/shared/gui` only when that entrypoint should get GUI
-tools.
+configuration modules. Use `modules/shared/gui` only when that entrypoint
+should get GUI tools. Profile-specific package lists and `programs.*` choices
+belong in `home/`.
 
 ### `shared/cli/`
 
@@ -35,8 +36,9 @@ Examples:
 - `lazygit/`: lazygit configuration
 - `nvim/`: nixvim-based Neovim configuration
 
-CLI packages that are part of the standard CLI environment are declared in
-`shared/cli/default.nix`.
+CLI package lists and profile-level program choices are intentionally not
+declared here. Put those decisions in the importing Home Manager entrypoint
+under `home/`.
 
 ### `shared/gui/`
 
@@ -72,6 +74,8 @@ Reserved for future NixOS modules.
   `modules/shared/gui`.
 - Import individual modules from an entrypoint only for deliberate exceptions.
 - If the same exception appears in multiple entrypoints, create a new group module.
+- Keep profile package policy and optional tools such as `direnv`, `mise`, and
+  `zoxide` in `home/`, where each user environment can opt in deliberately.
 - Keep platform-specific behavior in platform modules or guard it with platform
   checks.
 - Keep app-specific configuration near the app module. For example, WezTerm Lua
