@@ -1,6 +1,9 @@
+{ pkgs, ... }:
+
 {
   programs.nixvim = {
     enable = true;
+    nixpkgs.source = pkgs.path;
     imports = [
       ./core/options.nix
       ./core/autocmds.nix
