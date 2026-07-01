@@ -3,7 +3,8 @@
 ## Layout
 
 - `flake.nix`: root entrypoint for host configurations.
-- `hosts/`: machine-specific composition.
+- `systems/`: OS-level system configurations, such as nix-darwin hosts.
+- `home/`: Home Manager user configurations.
 - `modules/shared/`: Home Manager modules shared across platforms.
 - `modules/shared/cli/`: CLI modules imported by default.
 - `modules/shared/gui/`: GUI modules imported by GUI-capable hosts.
@@ -13,7 +14,7 @@
 
 ## Install
 
-### macOS (`darwinConfigurations."MacBook-V3"`)
+### macOS System (`darwinConfigurations."MacBook-V3"`)
 
 Prerequisite: install Nix (Determinate Systems installer recommended) and
 `nix-darwin`.
@@ -29,7 +30,25 @@ nix run nix-darwin -- switch --flake .#MacBook-V3
 darwin-rebuild switch --flake .#MacBook-V3
 ```
 
-After activation the `drs` / `nfu` fish abbreviations point at this repo.
+This applies system-level macOS, nix-darwin, and Homebrew configuration.
+
+### macOS Home (`homeConfigurations."tosshy@MacBook-V3"`)
+
+Home Manager is evaluated separately from nix-darwin. First-time activation can
+use the pinned Home Manager input from this flake:
+
+```sh
+nix run home-manager/master -- switch --flake .#tosshy@MacBook-V3
+```
+
+After that, `home-manager` is installed into the user profile:
+
+```sh
+home-manager switch --flake .#tosshy@MacBook-V3
+```
+
+Home activation installs user CLI/GUI packages and shell configuration. The
+`drs` / `nfu` fish abbreviations point at this repo.
 
 ### Non-NixOS Linux (`homeConfigurations."standalone"`)
 
@@ -66,7 +85,7 @@ nix run home-manager/master -- switch \
 home-manager switch --flake github:Rtosshy/dotfiles#standalone --impure --refresh
 ```
 
-For long-lived hosts where the config will be edited locally (EC2, WSL2,
+For long-lived systems where the config will be edited locally (EC2, WSL2,
 etc.), clone to the standard ghq location and switch from there:
 
 ```sh

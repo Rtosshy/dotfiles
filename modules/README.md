@@ -1,10 +1,12 @@
 # Modules
 
 `modules/` contains reusable configuration units. A module should describe a
-piece of configuration that can be composed by one or more hosts.
+piece of configuration that can be composed by one or more system or home
+entrypoints.
 
-Host-specific choices belong in `hosts/`. If a setting only answers "does this
-machine use this piece?", keep that decision in the host file.
+Machine-specific system choices belong in `systems/`. User profile choices
+belong in `home/`. If a setting only answers "does this machine or user use
+this piece?", keep that decision in the entrypoint file.
 
 ## Layout
 
@@ -17,8 +19,9 @@ Cross-platform Home Manager modules.
   shared CLI packages.
 - `shared/gui/default.nix`: GUI group module. It imports GUI-related modules.
 
-Use `modules/shared` when a host should get the standard CLI environment.
-Use `modules/shared/gui` only when a host should get GUI tools.
+Use `modules/shared` when a Home Manager entrypoint should get the standard CLI
+environment. Use `modules/shared/gui` only when that entrypoint should get GUI
+tools.
 
 ### `shared/cli/`
 
@@ -65,10 +68,10 @@ Reserved for future NixOS modules.
 ## Guidelines
 
 - Use `module-name/default.nix` for module entrypoints.
-- Prefer group modules for normal hosts: `modules/shared` and
+- Prefer group modules for normal Home Manager entrypoints: `modules/shared` and
   `modules/shared/gui`.
-- Import individual modules from a host only for deliberate exceptions.
-- If the same exception appears in multiple hosts, create a new group module.
+- Import individual modules from an entrypoint only for deliberate exceptions.
+- If the same exception appears in multiple entrypoints, create a new group module.
 - Keep platform-specific behavior in platform modules or guard it with platform
   checks.
 - Keep app-specific configuration near the app module. For example, WezTerm Lua

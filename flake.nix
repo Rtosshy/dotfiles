@@ -61,7 +61,7 @@
       # $ darwin-rebuild build --flake .#MacBook-V3
       darwinConfigurations."MacBook-V3" = nix-darwin.lib.darwinSystem {
         modules = [
-          ./hosts/darwin/macbook-v3
+          ./systems/darwin/macbook-v3
           {
             nixpkgs.overlays = [
               (_final: prev: {
@@ -73,6 +73,17 @@
           }
         ];
         specialArgs = { inherit inputs home-manager nixvim; };
+      };
+
+      homeConfigurations."tosshy@MacBook-V3" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config.allowUnfree = true;
+        };
+        extraSpecialArgs = { inherit inputs nixvim; };
+        modules = [
+          ./home/darwin/tosshy.nix
+        ];
       };
 
       # Standalone Home Manager output for non-NixOS Linux environments
@@ -116,7 +127,7 @@
               inherit inputs username homeDirectory;
             };
         modules = [
-          ./hosts/linux/standalone
+          ./systems/linux/standalone
           nixvim.homeModules.nixvim
         ];
       };

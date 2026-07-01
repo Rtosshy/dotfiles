@@ -6,9 +6,9 @@ It includes two different Nix layers:
 - nix-darwin system modules
 - Darwin-only Home Manager modules
 
-Keep those layers separate. nix-darwin modules are imported by Darwin host files
-under `hosts/darwin/`. Home Manager modules are nested under the host's
-`home-manager.users.<name>` configuration.
+Keep those layers separate. nix-darwin modules are imported by Darwin system files
+under `systems/darwin/`. Home Manager modules are imported by Darwin home files
+under `home/darwin/`.
 
 ## Layout
 
@@ -25,7 +25,7 @@ Examples:
 - Darwin user account metadata
 - `nixpkgs.hostPlatform`
 
-This module is imported from a Darwin host file.
+This module is imported from a Darwin system file.
 
 ### `nix-darwin/homebrew/`
 
@@ -37,7 +37,7 @@ Examples:
 - Homebrew activation behavior
 - Homebrew cask packages
 
-This module is imported from a Darwin host file.
+This module is imported from a Darwin system file.
 
 Use nixpkgs for CLI tools when available. Reserve `homebrew.casks` for GUI apps
 or software that is only practical through Homebrew Cask. `nix-homebrew`
@@ -55,28 +55,33 @@ Examples:
 - macOS-specific Ghostty settings
 - Darwin IME integration for Neovim
 
-This module is imported from a Darwin host file under
-`home-manager.users.<name>.imports`.
+This module is imported from a Darwin Home Manager entrypoint under
+`home/darwin/`.
 
 ## Import Flow
 
 ```text
 flake.nix
 └─ darwinConfigurations."MacBook-V3"
-   └─ hosts/darwin/macbook-v3
+   └─ systems/darwin/macbook-v3
       ├─ inputs.nix-homebrew.darwinModules.nix-homebrew
       ├─ modules/darwin/nix-darwin/system
       ├─ modules/darwin/nix-darwin/homebrew
-      └─ home-manager.users.tosshy
-         └─ modules/darwin/home-manager
+
+flake.nix
+└─ homeConfigurations."tosshy@MacBook-V3"
+   └─ home/darwin/tosshy.nix
+      ├─ modules/shared
+      ├─ modules/shared/gui
+      └─ modules/darwin/home-manager
 ```
 
 ## Guidelines
 
 - Do not import `nix-darwin/system/` or `nix-darwin/homebrew/` from Home
-  Manager host files.
+  Manager entrypoints.
 - Do not import `home-manager/` directly as a nix-darwin system module; import it
-  inside `home-manager.users.<name>.imports`.
+  from a Home Manager entrypoint under `home/`.
 - Put settings that require macOS, nix-darwin, Homebrew, or `/Users/...` under
   this directory.
 - Prefer `modules/shared/` for configuration that works across Darwin and Linux.
