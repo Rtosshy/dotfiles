@@ -24,7 +24,8 @@
     };
     casks = [
       "aerospace"
-      "arc"
+      "zen"
+      "thebrowsercompany-dia"
       "omniwm"
       "raycast"
       "slack"
