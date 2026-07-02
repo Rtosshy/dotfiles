@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   username,
   homeDirectory,
@@ -33,7 +34,7 @@
       jq
       curl
       byobu
-      claude-code
+      inputs.claude-code.packages.${pkgs.system}.default
       codex
       tree-sitter # nvim-treesitter がパーサーのビルドに使用する
     ];

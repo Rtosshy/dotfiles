@@ -1,4 +1,9 @@
-{ pkgs, nixvim, ... }:
+{
+  inputs,
+  pkgs,
+  nixvim,
+  ...
+}:
 {
   imports = [
     ../../modules/shared/cli/nvim
@@ -37,7 +42,7 @@
       curl
       imagemagick
       pandoc
-      claude-code
+      inputs.claude-code.packages.${pkgs.system}.default
       codex
       terraform
       terraform-ls
