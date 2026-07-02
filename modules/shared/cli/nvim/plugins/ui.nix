@@ -25,6 +25,12 @@
       vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
       vim.api.nvim_set_hl(0, "Whitespace", { fg = "#6b729c", bg = "NONE" })
       vim.api.nvim_set_hl(0, "NonText", { fg = "#6b729c", bg = "NONE" })
+
+      vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#d8ffe2", bg = "#1f6f43" })
+      vim.api.nvim_set_hl(0, "DiffChange", { fg = "#d7e9ff", bg = "#24476b" })
+      vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#ffd4d9", bg = "#70323a" })
+      vim.api.nvim_set_hl(0, "DiffText", { fg = "#ffffff", bg = "#2e8b57", bold = true })
+      vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { fg = "#ffd4d9", bg = "#70323a" })
     end
 
     vim.api.nvim_create_autocmd("ColorScheme", {
@@ -68,6 +74,10 @@
         {
           __unkeyed-1 = "<leader>g";
           group = "git";
+        }
+        {
+          __unkeyed-1 = "<leader>gd";
+          group = "git diff";
         }
         {
           __unkeyed-1 = "<leader>h";

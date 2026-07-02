@@ -21,6 +21,7 @@
       ./plugins/formatting.nix
       ./plugins/trouble.nix
       ./plugins/gitsigns.nix
+      ./plugins/diffview.nix
       ./plugins/lazygit.nix
       ./plugins/devdocs.nix
       ./plugins/alpha.nix
