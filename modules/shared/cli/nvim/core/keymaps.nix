@@ -21,6 +21,7 @@
         "<Right>" = "Increase window width";
         "]b" = "Next buffer";
         "[b" = "Previous buffer";
+        "<leader>bo" = "Delete other buffers";
         "<leader>bx" = "Delete buffer";
         "<leader>w\\" = "Split window vertically";
         "<leader>w-" = "Split window horizontally";
@@ -200,6 +201,12 @@
         mode = "n";
         key = "<leader>bx";
         action = ":bdelete<CR>";
+        options = opts;
+      }
+      {
+        mode = "n";
+        key = "<leader>bo";
+        action = "<cmd>BufferOnly<CR>";
         options = opts;
       }
 

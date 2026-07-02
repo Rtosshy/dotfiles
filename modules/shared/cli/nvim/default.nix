@@ -7,6 +7,7 @@
     imports = [
       ./core/options.nix
       ./core/autocmds.nix
+      ./core/commands.nix
       ./core/keymaps.nix
 
       ./plugins/oil.nix
