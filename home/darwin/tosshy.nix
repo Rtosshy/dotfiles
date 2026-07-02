@@ -10,6 +10,7 @@
     ../../modules/shared/cli/fish
     ../../modules/shared/cli/git
     ../../modules/shared/cli/codex
+    ../../modules/shared/cli/direnv
     ../../modules/shared/cli/emacs
     ../../modules/shared/cli/claude
     ../../modules/shared/cli/lazygit

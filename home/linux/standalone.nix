@@ -11,6 +11,7 @@
     ../../modules/shared/cli/nvim
     ../../modules/shared/cli/fish
     ../../modules/shared/cli/git
+    ../../modules/shared/cli/direnv
     ../../modules/shared/cli/lazygit
     ../../modules/shared/cli/starship
     ../../modules/shared/cli/claude
