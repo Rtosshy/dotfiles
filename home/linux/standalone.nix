@@ -8,6 +8,7 @@
 }:
 {
   imports = [
+    ../../modules/shared/home-manager/nix-profile-add-activation.nix
     ../../modules/shared/cli/nvim
     ../../modules/shared/cli/fish
     ../../modules/shared/cli/git
@@ -34,7 +35,7 @@
       jq
       curl
       byobu
-      inputs.claude-code.packages.${pkgs.system}.default
+      inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       codex
       tree-sitter # nvim-treesitter がパーサーのビルドに使用する
     ];
