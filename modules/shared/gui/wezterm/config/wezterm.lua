@@ -8,6 +8,7 @@ config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 
 config.automatically_reload_config = true
+config.adjust_window_size_when_changing_font_size = false
 config.font_size = 14.0
 config.use_ime = true
 config.window_background_opacity = 0.65
