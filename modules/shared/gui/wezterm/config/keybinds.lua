@@ -1,5 +1,6 @@
 local wezterm = require('wezterm')
 local act = wezterm.action
+local pending_g = {}
 
 -- SUPER, CMD, WIN, these are all equivalent.
 -- META,  ALT, OPT, these are all equivalent.
@@ -9,6 +10,7 @@ return {
     { key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
     { key = 'Tab', mods = 'SHIFT|CTRL', action = act.ActivateTabRelative(-1) },
     { key = 'Enter', mods = 'ALT', action = act.ToggleFullScreen },
+    { key = 'phys:Period', mods = 'SHIFT|CTRL', action = act.ShowDebugOverlay },
     { key = '!', mods = 'CTRL', action = act.ActivateTab(0) },
     { key = '!', mods = 'SHIFT|CTRL', action = act.ActivateTab(0) },
     {
@@ -218,7 +220,24 @@ return {
       { key = 'f', mods = 'NONE', action = act.CopyMode({ JumpForward = { prev_char = false } }) },
       { key = 'f', mods = 'ALT', action = act.CopyMode('MoveForwardWord') },
       { key = 'f', mods = 'CTRL', action = act.CopyMode('PageDown') },
-      { key = 'g', mods = 'NONE', action = act.CopyMode('MoveToScrollbackTop') },
+      {
+        key = 'g',
+        mods = 'NONE',
+        action = wezterm.action_callback(function(window, pane)
+          local pane_id = pane:pane_id()
+
+          if pending_g[pane_id] then
+            pending_g[pane_id] = nil
+            window:perform_action(act.CopyMode('MoveToScrollbackTop'), pane)
+            return
+          end
+
+          pending_g[pane_id] = true
+          wezterm.time.call_after(1, function()
+            pending_g[pane_id] = nil
+          end)
+        end),
+      },
       {
         key = 'g',
         mods = 'CTRL',

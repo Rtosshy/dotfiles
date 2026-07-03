@@ -5,6 +5,7 @@ local config = wezterm.config_builder()
 
 config.disable_default_key_bindings = true
 config.keys = keybinds.keys
+config.key_tables = keybinds.key_tables
 
 config.automatically_reload_config = true
 config.font_size = 14.0
