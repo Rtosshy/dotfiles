@@ -14,6 +14,7 @@
     ../../modules/shared/cli/direnv
     ../../modules/shared/cli/emacs
     ../../modules/shared/cli/claude
+    ../../modules/shared/cli/herdr
     ../../modules/shared/cli/lazygit
     ../../modules/shared/cli/starship
     ../../modules/shared/gui/cmux

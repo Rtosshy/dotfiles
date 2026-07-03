@@ -17,6 +17,7 @@
     ../../modules/shared/cli/starship
     ../../modules/shared/cli/claude
     ../../modules/shared/cli/codex
+    ../../modules/shared/cli/herdr
     nixvim.homeModules.nixvim
   ];
 
@@ -36,6 +37,7 @@
       jq
       curl
       byobu
+      herdr
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       codex
       tree-sitter # nvim-treesitter がパーサーのビルドに使用する

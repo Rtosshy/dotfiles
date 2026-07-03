@@ -22,6 +22,9 @@
       cleanup = "zap";
       upgrade = true;
     };
+    brews = [
+      "herdr"
+    ];
     casks = [
       "aerospace"
       "zen"
