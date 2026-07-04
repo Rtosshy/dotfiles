@@ -1,4 +1,77 @@
 {
+  keymaps = [
+    {
+      mode = "n";
+      key = "]c";
+      action.__raw = ''
+        function()
+          if vim.wo.diff then
+            vim.cmd.normal({ args = "]c", bang = true })
+          else
+            require("gitsigns").nav_hunk("next")
+          end
+        end
+      '';
+      options = {
+        silent = true;
+        desc = "Git next hunk";
+      };
+    }
+    {
+      mode = "n";
+      key = "[c";
+      action.__raw = ''
+        function()
+          if vim.wo.diff then
+            vim.cmd.normal({ args = "[c", bang = true })
+          else
+            require("gitsigns").nav_hunk("prev")
+          end
+        end
+      '';
+      options = {
+        silent = true;
+        desc = "Git previous hunk";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>gsp";
+      action = "<cmd>Gitsigns preview_hunk_inline<CR>";
+      options = {
+        silent = true;
+        desc = "Git preview hunk inline";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>gsP";
+      action = "<cmd>Gitsigns preview_hunk<CR>";
+      options = {
+        silent = true;
+        desc = "Git preview hunk popup";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>gsr";
+      action = "<cmd>Gitsigns reset_hunk<CR>";
+      options = {
+        silent = true;
+        desc = "Git reset hunk";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>gsR";
+      action = "<cmd>Gitsigns reset_buffer<CR>";
+      options = {
+        silent = true;
+        desc = "Git reset buffer";
+      };
+    }
+  ];
+
   plugins.gitsigns = {
     enable = true;
     settings = {
