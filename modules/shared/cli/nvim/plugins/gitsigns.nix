@@ -46,17 +46,7 @@
     {
       mode = "n";
       key = "<leader>gsP";
-      action.__raw = ''
-        function()
-          local gitsigns = require("gitsigns")
-
-          -- preview_hunk は、未表示なら popup を開き、既に開いていれば
-          -- その popup にフォーカスする。2 回呼んで、開いた直後に
-          -- j/k で内容をスクロールできる状態にする。
-          gitsigns.preview_hunk()
-          gitsigns.preview_hunk()
-        end
-      '';
+      action = "<cmd>Gitsigns preview_hunk<CR>";
       options = {
         silent = true;
         desc = "Git preview hunk popup";
