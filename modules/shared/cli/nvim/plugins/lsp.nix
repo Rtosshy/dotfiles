@@ -77,6 +77,7 @@
         enable = true;
         settings.Lua.diagnostics.globals = [ "vim" ];
       };
+      pyright.enable = true;
       gopls.enable = true;
       kotlin_language_server = {
         enable = true;
