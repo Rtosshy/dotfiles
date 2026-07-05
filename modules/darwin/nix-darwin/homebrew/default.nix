@@ -34,16 +34,14 @@
       "slack"
       "zoom"
       "discord"
-      "firefox"
+      "google-chrome"
       "claude"
       "chatgpt"
-      "ghostty"
       "wezterm@nightly"
       "docker-desktop"
       "notion"
       "spotify"
       "tableplus"
-      "cmux"
     ];
   };
 }
