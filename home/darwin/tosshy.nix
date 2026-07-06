@@ -17,11 +17,10 @@
     ../../modules/shared/cli/herdr
     ../../modules/shared/cli/lazygit
     ../../modules/shared/cli/starship
-    ../../modules/shared/gui/cmux
+    ../../modules/shared/cli/tmux
     ../../modules/shared/gui/fonts
     ../../modules/shared/gui/omniwm
     ../../modules/shared/gui/aerospace
-    ../../modules/shared/gui/ghostty
     ../../modules/shared/gui/wezterm
     ../../modules/darwin/home-manager
     nixvim.homeModules.nixvim
@@ -50,6 +49,7 @@
       terraform
       terraform-ls
       tree-sitter # nvim-treesitter がパーサーのビルドに使用する
+      tmux
     ];
   };
 
