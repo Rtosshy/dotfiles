@@ -22,6 +22,7 @@
     ../../modules/shared/gui/omniwm
     ../../modules/shared/gui/aerospace
     ../../modules/shared/gui/wezterm
+    ../../modules/shared/gui/kitty
     ../../modules/darwin/home-manager
     nixvim.homeModules.nixvim
   ];
