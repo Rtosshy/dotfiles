@@ -13,7 +13,7 @@ new_cwd = "follow"
 manage_ssh_config = true
 
 [keys]
-prefix = "ctrl+b"
+prefix = "ctrl+t"
 detach = "prefix+q"
 workspace_picker = "prefix+w"
 goto = "prefix+g"
