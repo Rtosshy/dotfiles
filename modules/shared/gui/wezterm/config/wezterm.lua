@@ -1,4 +1,4 @@
-local wezterm = require('wezterm')
+local wezterm = require('wezterm') ---@type Wezterm
 local keybinds = require('keybinds')
 local yoshi_error = require('yoshi-error')
 local config = wezterm.config_builder()

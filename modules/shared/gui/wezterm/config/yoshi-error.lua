@@ -1,4 +1,4 @@
-local wezterm = require('wezterm')
+local wezterm = require('wezterm') ---@type Wezterm
 
 local M = {}
 
@@ -102,6 +102,7 @@ end
 
 function M.setup()
   wezterm.on('user-var-changed', function(window, pane, name, value)
+    wezterm.log_info('fired!')
     if name ~= 'YOSHI_ERROR' or value == '' then
       return
     end

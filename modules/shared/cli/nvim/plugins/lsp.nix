@@ -1,3 +1,12 @@
+{ pkgs, ... }:
+let
+  wezterm-types = pkgs.fetchFromGitHub {
+    owner = "DrKJeff16";
+    repo = "wezterm-types";
+    rev = "d8b1671db6de96e3c4e44ce5cfd1c9c31d3828bf";
+    hash = "sha256-FdoMQk+t0Zi/TPAhxHFssQmWlzYyL/QG/KUfPz6QT1U=";
+  };
+in
 {
   autoCmd = [
     {
@@ -75,7 +84,10 @@
     servers = {
       lua_ls = {
         enable = true;
-        settings.Lua.diagnostics.globals = [ "vim" ];
+        settings = {
+          workspace.library = [ "${wezterm-types}" ];
+          diagnostics.globals = [ "vim" ];
+        };
       };
       pyright.enable = true;
       gopls.enable = true;
