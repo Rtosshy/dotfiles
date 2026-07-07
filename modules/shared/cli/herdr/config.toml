@@ -1,0 +1,67 @@
+onboarding = false
+
+[update]
+channel = "stable"
+version_check = true
+manifest_check = true
+
+[terminal]
+shell_mode = "auto"
+new_cwd = "follow"
+
+[remote]
+manage_ssh_config = true
+
+[keys]
+prefix = "ctrl+b"
+detach = "prefix+q"
+workspace_picker = "prefix+w"
+goto = "prefix+g"
+new_tab = "prefix+t"
+next_tab = "prefix+n"
+previous_tab = "prefix+p"
+copy_mode = "prefix+c"
+split_vertical = "prefix+\\"
+split_horizontal = "prefix+minus"
+close_pane = "prefix+x"
+zoom = "prefix+z"
+toggle_sidebar = "prefix+b"
+
+[[keys.command]]
+key = "prefix+alt+g"
+type = "pane"
+command = "lazygit"
+description = "run lazygit"
+
+[theme]
+name = "tokyo-night"
+auto_switch = false
+
+[ui]
+sidebar_width = 32
+sidebar_min_width = 18
+sidebar_max_width = 36
+mobile_width_threshold = 64
+mouse_capture = true
+confirm_close = true
+prompt_new_tab_name = true
+pane_borders = true
+pane_gaps = true
+
+[ui.sound]
+enabled = false
+
+[advanced]
+scrollback_limit_bytes = 10485760
+
+[session]
+resume_agents_on_restore = true
+
+[experimental]
+pane_history = false
+allow_nested = false
+kitty_graphics = false
+reveal_hidden_cursor_for_cjk_ime = true
+cjk_ime_agents = ["claude", "codex", "opencode"]
+cjk_ime_cursor_shape = "steady_block"
+switch_ascii_input_source_in_prefix = true
