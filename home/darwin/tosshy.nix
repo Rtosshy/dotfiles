@@ -45,6 +45,7 @@
       curl
       imagemagick
       pandoc
+      poppler-utils
       tdf
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       codex
