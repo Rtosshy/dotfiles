@@ -44,6 +44,7 @@
       curl
       imagemagick
       pandoc
+      tdf
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       codex
       terraform
