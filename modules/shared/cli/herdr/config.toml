@@ -33,6 +33,12 @@ type = "pane"
 command = "lazygit"
 description = "run lazygit"
 
+[[keys.command]]
+key = "prefix+alt+s"
+type = "pane"
+command = "fish"
+description = "run temporary shell"
+
 [theme]
 name = "tokyo-night"
 auto_switch = false
