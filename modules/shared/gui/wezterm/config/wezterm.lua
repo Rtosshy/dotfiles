@@ -12,10 +12,10 @@ config.adjust_window_size_when_changing_font_size = false
 config.font_size = 14.0
 config.use_ime = true
 config.enable_kitty_graphics = true
-config.window_background_opacity = 0.65
-if wezterm.target_triple:find('darwin') then
-  config.macos_window_background_blur = 20
-end
+-- config.window_background_opacity = 0.65
+-- if wezterm.target_triple:find('darwin') then
+--   config.macos_window_background_blur = 20
+-- end
 config.window_decorations = 'RESIZE'
 config.hide_tab_bar_if_only_one_tab = true
 config.color_scheme = 'Tokyo Night'
