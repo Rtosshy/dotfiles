@@ -44,26 +44,28 @@ config.colors = {
 }
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
+local ACTIVE_TAB_BACKGROUND = '#7aa2f7'
+local INACTIVE_TAB_FOREGROUND = '#8f98b5'
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
-  local background = '#5c6d74'
-  local foreground = '#FFFFFF'
-  local edge_background = 'none'
-  if tab.is_active then
-    background = '#7aa2f7'
-    foreground = '#FFFFFF'
-  end
-  local edge_foreground = background
   local title = '   ' .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. '   '
+  if not tab.is_active then
+    return {
+      { Background = { Color = 'none' } },
+      { Foreground = { Color = INACTIVE_TAB_FOREGROUND } },
+      { Text = title },
+    }
+  end
+
   return {
-    { Background = { Color = edge_background } },
-    { Foreground = { Color = edge_foreground } },
+    { Background = { Color = 'none' } },
+    { Foreground = { Color = ACTIVE_TAB_BACKGROUND } },
     { Text = SOLID_LEFT_ARROW },
-    { Background = { Color = background } },
-    { Foreground = { Color = foreground } },
+    { Background = { Color = ACTIVE_TAB_BACKGROUND } },
+    { Foreground = { Color = '#FFFFFF' } },
     { Text = title },
-    { Background = { Color = edge_background } },
-    { Foreground = { Color = edge_foreground } },
+    { Background = { Color = 'none' } },
+    { Foreground = { Color = ACTIVE_TAB_BACKGROUND } },
     { Text = SOLID_RIGHT_ARROW },
   }
 end)
