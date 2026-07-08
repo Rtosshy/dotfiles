@@ -36,6 +36,15 @@
         desc = "Telescope help tags";
       };
     }
+    {
+      mode = "n";
+      key = "<leader>fG";
+      action = "<cmd>Telescope git_status<CR>";
+      options = {
+        silent = true;
+        desc = "Telescope git status";
+      };
+    }
   ];
 
   plugins.telescope = {
