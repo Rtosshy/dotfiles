@@ -15,6 +15,8 @@ config.enable_kitty_graphics = true
 config.window_background_opacity = 0.15
 if wezterm.target_triple:find('darwin') then
   config.macos_window_background_blur = 40
+  config.send_composed_key_when_left_alt_is_pressed = false
+  config.send_composed_key_when_right_alt_is_pressed = true
 end
 config.window_decorations = 'RESIZE'
 config.hide_tab_bar_if_only_one_tab = true
@@ -44,16 +46,24 @@ config.colors = {
 }
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
-local ACTIVE_TAB_BACKGROUND = '#7aa2f7'
-local INACTIVE_TAB_FOREGROUND = '#8f98b5'
+local BLANK_ARROW = '\u{00a0}'
+local ACTIVE_TAB_BACKGROUND = '#9ece6a'
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
-  local title = '   ' .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. '   '
+  local EDGE_WIDTH = 2 -- left + right arrow/space
+  local PADDING_WIDTH = 6 -- left 3 + right 3
+  local title_width = math.max(0, max_width - EDGE_WIDTH - PADDING_WIDTH)
+  local title_text =
+    wezterm.pad_right(wezterm.truncate_right(tab.active_pane.title, title_width), title_width)
+  local title = '   ' .. title_text .. '   '
   if not tab.is_active then
     return {
       { Background = { Color = 'none' } },
-      { Foreground = { Color = INACTIVE_TAB_FOREGROUND } },
+      { Text = BLANK_ARROW },
+      { Foreground = { Color = '#FFFFFF' } },
       { Text = title },
+      { Background = { Color = 'none' } },
+      { Text = BLANK_ARROW },
     }
   end
 

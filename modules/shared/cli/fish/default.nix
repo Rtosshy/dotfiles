@@ -35,10 +35,9 @@ _: {
       '';
 
       fish_user_key_bindings = ''
+        bind ctrl-_ undo
         bind \cr peco_select_history_order
         bind \co peco_ghq
-        bind -M insert \cr peco_select_history_order
-        bind -M insert \co peco_ghq
       '';
 
       herdr = ''
