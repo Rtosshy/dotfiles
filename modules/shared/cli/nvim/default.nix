@@ -14,6 +14,7 @@
       ./plugins/ui.nix
       ./plugins/noice.nix
       ./plugins/telescope.nix
+      ./plugins/flash.nix
       ./plugins/treesitter.nix
       ./plugins/completion.nix
       ./plugins/autopairs.nix
