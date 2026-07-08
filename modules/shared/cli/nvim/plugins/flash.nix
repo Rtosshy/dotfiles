@@ -1,8 +1,11 @@
 {
   keymaps = [
     {
-      mode = [ "n" ];
-      key = "<CR>";
+      mode = [
+        "n"
+        "x"
+      ];
+      key = "s";
       action = "<cmd>lua require('flash').jump()<CR>";
       options = {
         silent = true;
