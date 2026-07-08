@@ -12,6 +12,11 @@
         sidebars = "transparent";
         floats = "transparent";
       };
+
+      highlights = {
+        FloatBorder.fg = "#ffffff";
+        TelescopeBorder.fg = "#ffffff";
+      };
     };
   };
 

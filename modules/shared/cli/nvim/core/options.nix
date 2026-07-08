@@ -22,6 +22,7 @@
     termguicolors = true;
     winblend = 0;
     pumblend = 0;
+    winborder = "rounded";
     whichwrap = "bs<>[]hl";
     wrap = false;
     linebreak = true;
