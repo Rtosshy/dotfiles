@@ -74,17 +74,9 @@
           __unkeyed-1 = "<leader>w";
           group = "window";
         }
-        {
-          __unkeyed-1 = "<leader>ws";
-          group = "split";
-        }
       ];
     };
 
     smear-cursor.enable = true;
-    snacks = {
-      enable = true;
-      settings.picker.enabled = true;
-    };
   };
 }

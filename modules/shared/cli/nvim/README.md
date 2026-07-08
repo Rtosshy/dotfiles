@@ -19,7 +19,7 @@ This directory contains the nixvim-based Neovim configuration.
 ## Plugins
 
 - `plugins/ui.nix`: colorscheme, icons, bufferline, lualine, which-key groups,
-  smear-cursor, and snacks.
+  and smear-cursor.
 - `plugins/oil.nix`: oil.nvim enablement, `<leader>e`, hidden file display, and
   oil buffer keymaps.
 - `plugins/telescope.nix`: Telescope, fzf-native extension, and file/search/help
