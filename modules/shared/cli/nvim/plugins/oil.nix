@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   keymaps = [
     {
@@ -12,6 +14,8 @@
     enable = true;
     settings = {
       view_options.show_hidden = true;
+      # oil-git-status がindex/working treeの2列を差し込むためのsign column幅。
+      win_options.signcolumn = "yes:2";
       keymaps.__raw = ''
         {
           ["g?"] = { "actions.show_help", mode = "n" },
@@ -34,4 +38,12 @@
       '';
     };
   };
+
+  extraPlugins = with pkgs.vimPlugins; [
+    oil-git-status-nvim
+  ];
+
+  extraConfigLuaPost = ''
+    require("oil-git-status").setup()
+  '';
 }
