@@ -68,10 +68,7 @@ _: {
     };
 
     shellAbbrs = {
-      sc = "source $HOME/.config/fish/config.fish";
       v = "nvim";
-      vi = "nvim";
-      vim = "nvim";
       emacs = "emacs -nw";
       ls = "eza --icons";
       ll = "eza --icons -lhg --time-style long-iso";
