@@ -9,6 +9,8 @@
     ../../modules/shared/home-manager/nix-profile-add-activation.nix
     ../../modules/shared/cli/nvim
     ../../modules/shared/cli/fish
+    ../../modules/shared/cli/bash
+    ../../modules/shared/cli/nushell
     ../../modules/shared/cli/git
     ../../modules/shared/cli/codex
     ../../modules/shared/cli/direnv

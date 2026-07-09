@@ -1,9 +1,19 @@
+format = "$all$shell$line_break$character"
+
 [directory]
 style = "fg:white"
 format = "[$path]($style)"
 truncation_length = 4
 truncation_symbol = "..."
 truncate_to_repo = false
+
+[shell]
+disabled = false
+fish_indicator = "fish"
+bash_indicator = "bash"
+nu_indicator = "nu"
+format = ' [$indicator]($style)'
+
 
 [character]
 success_symbol = '[\$](fg:green)'
@@ -45,5 +55,4 @@ style = "yellow"
 format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [cmd_duration]
-show_milliseconds = true
-format = ' [󱫌 $duration]($style)'
+disabled = true
