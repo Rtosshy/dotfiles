@@ -38,7 +38,6 @@
       jq
       curl
       byobu
-      herdr
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       codex
       tree-sitter # nvim-treesitter がパーサーのビルドに使用する
