@@ -9,6 +9,7 @@
 {
   imports = [
     ../../modules/shared/home-manager/nix-profile-add-activation.nix
+    ../../modules/shared/cli/vim
     ../../modules/shared/cli/nvim
     ../../modules/shared/cli/fish
     ../../modules/shared/cli/git
