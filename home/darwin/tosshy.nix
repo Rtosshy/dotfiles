@@ -51,7 +51,7 @@
       poppler-utils
       tdf
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
-      codex
+      inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
       terraform
       terraform-ls
       tree-sitter # nvim-treesitter がパーサーのビルドに使用する
