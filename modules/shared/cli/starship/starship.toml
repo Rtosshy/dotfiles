@@ -76,13 +76,11 @@ format = ' [$symbol $version]($style)'
 [python]
 detect_extensions = ['py', 'ipynb']
 style = 'fg:#FFD343 bg:#3776AB'
-format = ' [ $symbol( $version)( \($virtualenv\)) ]($style)'
+format = ' [$symbol( $version)( \($virtualenv\))]($style)'
 
 [nix_shell]
 symbol = '❄️'
-pure_msg = '[pure](fg:green)'
-impure_msg = '[impure](fg:yellow)'
-style = ''
+style = 'fg:#77B6E1 bg:#4D6FB7'
 format = ' [$symbol $state( \($name\))]($style)'
 
 [cmd_duration]
