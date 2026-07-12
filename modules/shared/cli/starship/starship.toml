@@ -11,11 +11,11 @@ $line_break\
 $character"""
 
 [directory]
-style = 'fg:white'
-format = '[$path]($style)'
 truncation_length = 4
 truncation_symbol = '...'
 truncate_to_repo = false
+style = 'fg:white'
+format = '[$path]($style)'
 
 [shell]
 disabled = false
@@ -50,17 +50,17 @@ format = '([\[](white)$all_status$ahead_behind[\]](white))'
 
 
 [git_branch]
-style = 'fg:#888888'
 symbol = ''
+style = 'fg:#888888'
 format = ' [$symbol $branch]($style)'
 
 
 [git_metrics]
 disabled = false
+only_nonzero_diffs = true
 added_style = 'bold fg:green'
 deleted_style = 'bold fg:red'
 format = '\([+$added]($added_style)/[-$deleted]($deleted_style)\)'
-only_nonzero_diffs = true
 
 
 [package]
@@ -68,9 +68,9 @@ disabled = true
 
 
 [nodejs]
+symbol = ''
 style = 'fg:#8cc84b'
 format = ' [$symbol $version]($style)'
-symbol = ''
 
 
 [python]
