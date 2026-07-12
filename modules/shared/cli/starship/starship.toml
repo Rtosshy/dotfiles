@@ -11,17 +11,17 @@ $line_break\
 $character"""
 
 [directory]
-style = "fg:white"
-format = "[$path]($style)"
+style = 'fg:white'
+format = '[$path]($style)'
 truncation_length = 4
-truncation_symbol = "..."
+truncation_symbol = '...'
 truncate_to_repo = false
 
 [shell]
 disabled = false
-fish_indicator = "fish"
-bash_indicator = "bash"
-nu_indicator = "nu"
+fish_indicator = 'fish'
+bash_indicator = 'bash'
+nu_indicator = 'nu'
 format = ' [$indicator]($style)'
 
 
@@ -50,15 +50,15 @@ format = '([\[](white)$all_status$ahead_behind[\]](white))'
 
 
 [git_branch]
-format = " [$symbol $branch]($style)"
-style = "fg:#888888"
-symbol = ""
+style = 'fg:#888888'
+symbol = ''
+format = ' [$symbol $branch]($style)'
 
 
 [git_metrics]
 disabled = false
-added_style = 'bold green'
-deleted_style = 'bold red'
+added_style = 'bold fg:green'
+deleted_style = 'bold fg:red'
 format = '\([+$added]($added_style)/[-$deleted]($deleted_style)\)'
 only_nonzero_diffs = true
 
@@ -68,16 +68,22 @@ disabled = true
 
 
 [nodejs]
-style = "8cc84b"
-format = " [$symbol $version]($style)"
+style = 'fg:#8cc84b'
+format = ' [$symbol $version]($style)'
 symbol = ''
 
 
 [python]
 detect_extensions = ['py', 'ipynb']
-pyenv_version_name = true
-style = "yellow"
-format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+style = 'fg:#FFD343 bg:#3776AB'
+format = ' [ $symbol( $version)( \($virtualenv\)) ]($style)'
+
+[nix_shell]
+symbol = '❄️'
+pure_msg = '[pure](fg:green)'
+impure_msg = '[impure](fg:yellow)'
+style = ''
+format = ' [$symbol $state( \($name\))]($style)'
 
 [cmd_duration]
 disabled = true
