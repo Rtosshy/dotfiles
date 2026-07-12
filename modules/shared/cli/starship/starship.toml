@@ -1,4 +1,14 @@
-format = "$all$shell$line_break$character"
+format = """
+$directory\
+$git_branch\
+$git_metrics\
+$git_status\
+$nodejs\
+$python\
+$nix_shell\
+$shell\
+$line_break\
+$character"""
 
 [directory]
 style = "fg:white"
@@ -21,8 +31,22 @@ error_symbol = '[\$](fg:red)'
 
 
 [git_status]
-style = "fg:blue"
-format = '([\[$all_status$ahead_behind\]]($style))'
+# $all_status に含まれるワークツリーとステージング領域の状態
+conflicted = '[=](bold red)'
+stashed = '[\$](purple)'
+deleted = '[✘](red)'
+renamed = '[»](cyan)'
+modified = '[!](yellow)'
+staged = '[+](green)'
+untracked = '[?](bright-black)'
+
+# $ahead_behind はリモートとの差に応じて、このいずれか一つに展開される
+ahead = '[⇡](green)'
+behind = '[⇣](red)'
+diverged = '[⇕](yellow)'
+
+# 状態があるときだけ、白い角括弧の中に色分けした記号を表示する
+format = '([\[](white)$all_status$ahead_behind[\]](white))'
 
 
 [git_branch]
@@ -34,6 +58,7 @@ symbol = ""
 [git_metrics]
 disabled = false
 added_style = 'bold green'
+deleted_style = 'bold red'
 format = '\([+$added]($added_style)/[-$deleted]($deleted_style)\)'
 only_nonzero_diffs = true
 
@@ -43,7 +68,7 @@ disabled = true
 
 
 [nodejs]
-style = "#ffc0cb"
+style = "8cc84b"
 format = " [$symbol $version]($style)"
 symbol = ''
 
