@@ -19,6 +19,7 @@
     settings.label = {
       before = true;
       after = false;
+      style = "inline";
     };
     settings.modes.search.enabled = true;
   };
