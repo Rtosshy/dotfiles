@@ -12,6 +12,10 @@ config.adjust_window_size_when_changing_font_size = false
 config.font_size = 20.0
 config.use_ime = true
 config.enable_kitty_graphics = true
+-- Required for kitty kittens (e.g. `kitten themes`) to receive key input.
+-- WARNING: wezterm's kitty keyboard protocol has known bugs (AltGr/dead keys,
+-- Esc handling in some TUI apps). If keys misbehave elsewhere, disable this first.
+config.enable_kitty_keyboard = true
 config.window_background_opacity = 0.15
 if wezterm.target_triple:find('darwin') then
   config.macos_window_background_blur = 40
