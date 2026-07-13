@@ -96,23 +96,23 @@ _: {
       tick()
     end
 
+    -- expr マッピングでキーをその場に返す。
+    -- feedkeys は typeahead の末尾に追加されるため、マクロ再生中は
+    -- 残りのマクロキー(例: <C-a>)より後に p が実行されて順序が壊れる。
+    -- expr ならマッピング位置で展開され、count / レジスタ指定もそのまま効く。
     local function put_with_yoshi(keys)
       return function()
-        local count = vim.v.count > 0 and tostring(vim.v.count) or ""
-        local register = vim.v.register ~= '"' and ('"' .. vim.v.register) or ""
-        local termcodes = vim.api.nvim_replace_termcodes(count .. register .. keys, true, false, true)
-
-        vim.api.nvim_feedkeys(termcodes, "n", false)
         vim.defer_fn(play_once, 20)
+        return keys
       end
     end
 
     vim.api.nvim_create_user_command("YoshiEgg", play_once, {})
 
-    vim.keymap.set({ "n", "x" }, "p", put_with_yoshi("p"), { silent = true })
-    vim.keymap.set({ "n", "x" }, "P", put_with_yoshi("P"), { silent = true })
-    vim.keymap.set({ "n", "x" }, "gp", put_with_yoshi("gp"), { silent = true })
-    vim.keymap.set({ "n", "x" }, "gP", put_with_yoshi("gP"), { silent = true })
+    vim.keymap.set({ "n", "x" }, "p", put_with_yoshi("p"), { silent = true, expr = true })
+    vim.keymap.set({ "n", "x" }, "P", put_with_yoshi("P"), { silent = true, expr = true })
+    vim.keymap.set({ "n", "x" }, "gp", put_with_yoshi("gp"), { silent = true, expr = true })
+    vim.keymap.set({ "n", "x" }, "gP", put_with_yoshi("gP"), { silent = true, expr = true })
 
     local yoshi_paste_group = vim.api.nvim_create_augroup("YoshiPasteAnimation", { clear = true })
     vim.api.nvim_create_autocmd({ "VimResized", "WinResized" }, {
