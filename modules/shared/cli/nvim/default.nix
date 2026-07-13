@@ -9,6 +9,7 @@
       ./core/autocmds.nix
       ./core/commands.nix
       ./core/keymaps.nix
+      ./core/autoreload.nix
 
       ./plugins/oil.nix
       ./plugins/ui.nix
