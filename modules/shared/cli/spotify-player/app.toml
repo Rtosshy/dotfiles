@@ -1,0 +1,3 @@
+# spotify-player configuration
+theme = "tokyonight"
+enable_audio_visualization = true
