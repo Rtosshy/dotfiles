@@ -23,7 +23,6 @@
     ../../modules/shared/cli/tmux
     ../../modules/shared/gui/fonts
     ../../modules/shared/gui/omniwm
-    ../../modules/shared/gui/aerospace
     ../../modules/shared/gui/wezterm
     ../../modules/shared/gui/kitty
     ../../modules/darwin/home-manager
@@ -49,9 +48,10 @@
       imagemagick
       pandoc
       poppler-utils
-      tdf
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+      spotify-player
+      tdf
       terraform
       terraform-ls
       tree-sitter # nvim-treesitter がパーサーのビルドに使用する
