@@ -35,8 +35,10 @@
     stateVersion = "25.11";
     packages = with pkgs; [
       ripgrep
+      fastfetch
       fd
       bat
+      btop
       gh
       ghq
       peco
