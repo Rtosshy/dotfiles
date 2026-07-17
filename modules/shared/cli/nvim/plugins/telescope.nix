@@ -3,7 +3,7 @@
     {
       mode = "n";
       key = "<leader>ff";
-      action = "<cmd>Telescope find_files<CR>";
+      action = "<cmd>Telescope find_files hidden=true<CR>";
       options = {
         silent = true;
         desc = "Telescope find files";
@@ -12,7 +12,7 @@
     {
       mode = "n";
       key = "<leader>fg";
-      action = "<cmd>Telescope live_grep<CR>";
+      action = "<cmd>Telescope live_grep hidden=true<CR>";
       options = {
         silent = true;
         desc = "Telescope live grep";
@@ -51,6 +51,11 @@
     enable = true;
     extensions.fzf-native.enable = true;
 
+    settings.pickers = {
+      find_files.hidden = true;
+      live_grep.additional_args = [ "--hidden" ];
+    };
+
     # lz.n による遅延ロード。<cmd>Telescope ...> 経由のキーマップは
     # cmd トリガーが拾うが、additional_args を渡す <leader>fl だけは
     # コマンド化できないため keys トリガーでロードを発火させる。
@@ -59,7 +64,7 @@
       keys = [
         {
           __unkeyed-1 = "<leader>fl";
-          __unkeyed-2 = "<cmd>lua require('telescope.builtin').live_grep({ additional_args = function() return { '--fixed-strings' } end })<CR>";
+          __unkeyed-2 = "<cmd>lua require('telescope.builtin').live_grep({ additional_args = function() return { '--hidden', '--fixed-strings' } end })<CR>";
           mode = "n";
           silent = true;
           desc = "Telescope live grep literal";
