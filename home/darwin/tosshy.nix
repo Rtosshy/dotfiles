@@ -34,6 +34,7 @@
     homeDirectory = "/Users/tosshy";
     stateVersion = "25.11";
     packages = with pkgs; [
+      alt-tab-macos
       ripgrep
       fastfetch
       fd
