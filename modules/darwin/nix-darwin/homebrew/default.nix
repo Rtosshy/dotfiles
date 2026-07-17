@@ -23,7 +23,6 @@
       upgrade = true;
     };
     casks = [
-      "aerospace"
       "zen"
       "thebrowsercompany-dia"
       "omniwm"
@@ -37,7 +36,6 @@
       "wezterm@nightly"
       "docker-desktop"
       "notion"
-      "spotify"
       "tableplus"
       "kitty"
     ];
