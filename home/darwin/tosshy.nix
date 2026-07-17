@@ -21,6 +21,8 @@
     ../../modules/shared/cli/lazygit
     ../../modules/shared/cli/starship
     ../../modules/shared/cli/tmux
+    ../../modules/shared/cli/btop
+    ../../modules/shared/cli/spotify-player
     ../../modules/shared/gui/fonts
     ../../modules/shared/gui/omniwm
     ../../modules/shared/gui/wezterm
@@ -39,7 +41,6 @@
       fastfetch
       fd
       bat
-      btop
       gh
       ghq
       peco
@@ -53,7 +54,6 @@
       poppler-utils
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
-      spotify-player
       tdf
       terraform
       terraform-ls
