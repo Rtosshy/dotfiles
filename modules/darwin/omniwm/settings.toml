@@ -88,7 +88,7 @@ mode = "dark"
 
 [borders]
 enabled = true
-width = 3.0
+width = 1.0
 
 [borders.color]
 alpha = 1.0
@@ -118,7 +118,7 @@ moveCrossesMonitorAtEdge = true
 moveMouseToFocusedWindow = false
 
 [gaps]
-size = 16.0
+size = 1.0
 
 [gaps.outer]
 bottom = 0.0
