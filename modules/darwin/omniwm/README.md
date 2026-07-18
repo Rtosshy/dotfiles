@@ -15,7 +15,7 @@ OmniWMは起動中のメモリ上の設定を `settings.toml` に書き戻すこ
 
 ```sh
 osascript -e 'quit app "OmniWM"'
-sudo darwin-rebuild switch --flake ~/ghq/github.com/Rtosshy/dotfiles#MacBook-V3
+home-manager switch --flake ~/ghq/github.com/Rtosshy/dotfiles#tosshy@MacBook-V3
 open -a OmniWM
 ```
 

@@ -6,7 +6,7 @@
 - `systems/`: OS-level system configurations, such as nix-darwin hosts.
 - `home/`: Home Manager user configurations.
 - `modules/shared/`: flat collection of Home Manager modules shared across platforms.
-- `modules/darwin/`: Darwin-only modules split by nix-darwin and Home Manager layer.
+- `modules/darwin/`: Darwin-only nix-darwin and application modules.
 - `modules/nixos/`: reserved for future NixOS modules.
 - `dev/`: dev shell with formatters and linters used by hooks.
 

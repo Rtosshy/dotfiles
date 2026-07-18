@@ -40,10 +40,10 @@ Darwin-specific modules.
 
 - `darwin/nix-darwin/system/`: nix-darwin system settings
 - `darwin/nix-darwin/homebrew/`: nix-homebrew setup plus Homebrew casks and activation behavior
-- `darwin/home-manager/`: Darwin-only Home Manager additions, including OmniWM
+- `darwin/omniwm/`: Darwin-only OmniWM Home Manager module
 
-Darwin-only user configuration, such as `macism`, macOS terminal keybinds, and
-`darwin-rebuild` abbreviations, belongs in `darwin/home-manager`.
+User-specific Darwin configuration, such as `macism` and macOS terminal
+keybinds, belongs in the importing profile under `home/darwin/`.
 Darwin-only system packages from nixpkgs, such as `openfortivpn`, belong in
 `darwin/nix-darwin/system`.
 

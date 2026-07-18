@@ -1,14 +1,14 @@
 # Darwin Modules
 
-`modules/darwin/` contains modules that should only be used by Darwin hosts.
-It includes two different Nix layers:
+`modules/darwin/` contains reusable modules that should only be used by Darwin
+hosts. It includes two different Nix layers:
 
 - nix-darwin system modules
-- Darwin-only Home Manager modules
+- Darwin-only application modules for Home Manager
 
 Keep those layers separate. nix-darwin modules are imported by Darwin system files
-under `systems/darwin/`. Home Manager modules are imported by Darwin home files
-under `home/darwin/`.
+under `systems/darwin/`. Application modules are imported by Darwin home files
+under `home/darwin/`. User-specific Darwin settings stay in those home files.
 
 ## Layout
 
@@ -44,20 +44,12 @@ or software that is only practical through Homebrew Cask. `nix-homebrew`
 manages Homebrew itself and pinned taps; package lists still live under
 nix-darwin's `homebrew.*` options.
 
-### `home-manager/`
+### `omniwm/`
 
-Darwin-only Home Manager additions.
+Home Manager module and settings for the Darwin-only OmniWM application.
 
-Examples:
-
-- `macism`
-- OmniWM settings
-- `darwin-rebuild` and `nix flake update` fish abbreviations
-- macOS-specific Ghostty settings
-- Darwin IME integration for Neovim
-
-This module is imported from a Darwin Home Manager entrypoint under
-`home/darwin/`.
+It materializes OmniWM's writable `settings.toml` during Home Manager
+activation and is imported from `home/darwin/tosshy.nix`.
 
 ## Import Flow
 
@@ -73,16 +65,17 @@ flake.nix
 └─ homeConfigurations."tosshy@MacBook-V3"
    └─ home/darwin/tosshy.nix
       ├─ modules/shared/*
-      └─ modules/darwin/home-manager
+      ├─ modules/shared/nvim/platform/darwin-ime.nix
+      └─ modules/darwin/omniwm
 ```
 
 ## Guidelines
 
 - Do not import `nix-darwin/system/` or `nix-darwin/homebrew/` from Home
   Manager entrypoints.
-- Do not import `home-manager/` directly as a nix-darwin system module; import it
-  from a Home Manager entrypoint under `home/`.
-- Put settings that require macOS, nix-darwin, Homebrew, or `/Users/...` under
-  this directory.
+- Import Darwin application modules only from Home Manager entrypoints under
+  `home/darwin/`.
+- Put reusable settings that require macOS, nix-darwin, or Homebrew under this
+  directory. Keep user- and machine-specific choices in `home/` and `systems/`.
 - Put cross-platform Home Manager modules under `modules/shared/` and import the
   needed modules explicitly from each profile.

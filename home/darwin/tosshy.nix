@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   nixvim,
   ...
@@ -9,6 +10,7 @@
     ../../modules/shared/home-manager/nix-profile-add-activation.nix
     ../../modules/shared/vim
     ../../modules/shared/nvim
+    ../../modules/shared/nvim/platform/darwin-ime.nix
     ../../modules/shared/fish
     ../../modules/shared/bash
     ../../modules/shared/nushell
@@ -26,7 +28,7 @@
     ../../modules/shared/fonts
     ../../modules/shared/wezterm
     ../../modules/shared/kitty
-    ../../modules/darwin/home-manager
+    ../../modules/darwin/omniwm
     nixvim.homeModules.nixvim
   ];
 
@@ -36,6 +38,7 @@
     stateVersion = "25.11";
     packages = with pkgs; [
       alt-tab-macos
+      macism
       ripgrep
       fastfetch
       fd
@@ -60,6 +63,12 @@
       tmux
     ];
   };
+
+  xdg.configFile."ghostty/config".text = lib.mkAfter ''
+
+    keybind = global:cmd+ctrl+shift+j=toggle_visibility
+    macos-option-as-alt = left
+  '';
 
   programs = {
     home-manager.enable = true;
