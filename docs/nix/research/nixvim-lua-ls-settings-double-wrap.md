@@ -82,7 +82,7 @@ lua_ls.settings.Lua = {
 
 - nixvim ソース(サーバー別ラップ定義): https://github.com/nix-community/nixvim/blob/main/plugins/lsp/language-servers/default.nix
 - nixvim 汎用サーバー構築ヘルパー(`settings` 変換の適用箇所): https://github.com/nix-community/nixvim/blob/main/plugins/lsp/language-servers/_mk-lsp.nix
-- リポジトリ内、修正箇所: [lsp.nix](../../../modules/shared/cli/nvim/plugins/lsp.nix)
+- リポジトリ内、修正箇所: [lsp.nix](../../../modules/shared/nvim/plugins/lsp.nix)
 - 生成物: `~/.config/nvim/init.lua`(home-manager が `~/.config/nvim/init.lua` に symlink する生成ファイル)
 - Neovim公式ヘルプ(`:help lsp-quickstart`、オンライン版): https://neovim.io/doc/user/lsp/ — `lua_ls` の `settings = { Lua = {...} }` 例が載っている箇所。ただしこれは生の `vim.lsp.config()` 向けの例であり、nixvimの `settings` オプションとは層が異なる点に注意
 
@@ -115,7 +115,7 @@ lua_ls.settings.Lua = {
 
 ## 関連
 
-- [lsp.nix](../../../modules/shared/cli/nvim/plugins/lsp.nix) — 実際に修正した設定ファイル
+- [lsp.nix](../../../modules/shared/nvim/plugins/lsp.nix) — 実際に修正した設定ファイル
 - [lazy-load-plugin-with-lz-n.md](../../nvim/how-to/lazy-load-plugin-with-lz-n.md) — 同じく「ビルドは通るが実行時の検証が別途必要」という教訓を持つ関連ナレッジ
 
 <!--

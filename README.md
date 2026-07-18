@@ -5,9 +5,7 @@
 - `flake.nix`: root entrypoint for host configurations.
 - `systems/`: OS-level system configurations, such as nix-darwin hosts.
 - `home/`: Home Manager user configurations.
-- `modules/shared/`: Home Manager modules shared across platforms.
-- `modules/shared/cli/`: CLI modules imported by default.
-- `modules/shared/gui/`: GUI modules imported by GUI-capable hosts.
+- `modules/shared/`: flat collection of Home Manager modules shared across platforms.
 - `modules/darwin/`: Darwin-only modules split by nix-darwin and Home Manager layer.
 - `modules/nixos/`: reserved for future NixOS modules.
 - `dev/`: dev shell with formatters and linters used by hooks.

@@ -1,7 +1,8 @@
 { pkgs, lib, ... }:
 {
   imports = [
-    ../../shared/cli/nvim/platform/darwin-ime.nix
+    ../../shared/nvim/platform/darwin-ime.nix
+    ./omniwm
   ];
 
   home.packages = with pkgs; [

@@ -17,8 +17,7 @@ Home Manager configuration for `tosshy` on `MacBook-V3`.
 
 Imports:
 
-- selected modules from `modules/shared/cli`: CLI, editor, and AI CLI config
-- selected modules from `modules/shared/gui`: terminal configs, fonts, and GUI tools
+- selected modules from `modules/shared`: shell, editor, terminal, font, and AI tool config
 - `modules/darwin/home-manager`: Darwin-only Home Manager additions
 - `nixvim.homeModules.nixvim`: nixvim module integration
 
@@ -44,7 +43,7 @@ configuration can be reused across environments where the default user differs
 
 Imports:
 
-- selected modules from `modules/shared/cli`: CLI, editor, and AI CLI config
+- selected modules from `modules/shared`: shell, editor, and AI tool config
 - `nixvim.homeModules.nixvim`: nixvim module integration
 
 This profile defines a Linux-oriented package set and only enables the
@@ -55,7 +54,7 @@ This home is imported by the root flake as `homeConfigurations."standalone"`.
 ## Guidelines
 
 - Keep nix-darwin and future NixOS settings out of this directory.
-- Import only the shared CLI and GUI modules each profile needs.
+- Import only the shared modules each profile needs.
 - Keep package lists and `programs.*` opt-ins in the profile that needs them.
 - Put platform-specific user additions in platform modules such as
   `modules/darwin/home-manager`.

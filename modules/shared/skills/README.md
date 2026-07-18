@@ -9,7 +9,7 @@
 | Claude Code | `~/.claude/skills/<name>/SKILL.md` | `claude/default.nix` | `home.file` の symlink |
 | Codex CLI 0.128.0 | `~/.codex/skills/<name>/SKILL.md` | `codex/default.nix` | **`home.activation` で実ファイル cp** |
 
-両方とも `modules/shared/cli/skills/<name>/SKILL.md` を配置元として使う。
+両方とも `modules/shared/skills/<name>/SKILL.md` を配置元として使う。
 
 ### なぜ Codex だけ実ファイルにするか
 
@@ -105,7 +105,7 @@ codex exec --skip-git-repo-check 'List all skills currently available to you. Ju
 
 新しいランタイムを足したくなったら:
 
-1. `modules/shared/cli/<runtime>/default.nix` を作る
+1. `modules/shared/<runtime>/default.nix` を作る
 2. デプロイ先パスにシンボリックリンクを張る(ランタイムが symlink を辿るなら `home.file` の `source` で OK。辿らないなら Codex 同様 `home.activation` + `install -Dm644` で実ファイル化)
 3. 必要な Home Manager entrypoint でその `<runtime>` モジュールを import
 

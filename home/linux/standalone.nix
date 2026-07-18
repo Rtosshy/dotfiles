@@ -9,16 +9,16 @@
 {
   imports = [
     ../../modules/shared/home-manager/nix-profile-add-activation.nix
-    ../../modules/shared/cli/vim
-    ../../modules/shared/cli/nvim
-    ../../modules/shared/cli/fish
-    ../../modules/shared/cli/git
-    ../../modules/shared/cli/direnv
-    ../../modules/shared/cli/lazygit
-    ../../modules/shared/cli/starship
-    ../../modules/shared/cli/claude
-    ../../modules/shared/cli/codex
-    ../../modules/shared/cli/herdr
+    ../../modules/shared/vim
+    ../../modules/shared/nvim
+    ../../modules/shared/fish
+    ../../modules/shared/git
+    ../../modules/shared/direnv
+    ../../modules/shared/lazygit
+    ../../modules/shared/starship
+    ../../modules/shared/claude
+    ../../modules/shared/codex
+    ../../modules/shared/herdr
     nixvim.homeModules.nixvim
   ];
 

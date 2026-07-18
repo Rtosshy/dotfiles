@@ -14,13 +14,10 @@ this piece?", keep that decision in the entrypoint file.
 
 Cross-platform Home Manager modules.
 
-Home Manager entrypoints import the specific modules they need from
-`shared/cli/` and `shared/gui/`. Profile-specific package lists and
-`programs.*` choices belong in `home/`.
-
-### `shared/cli/`
-
-Reusable CLI and editor modules.
+Modules are kept directly under `shared/`; CLI and GUI are not separate layout
+categories. Home Manager entrypoints import only the modules needed by each
+profile. Profile-specific package lists and `programs.*` choices belong in
+`home/`.
 
 Examples:
 
@@ -29,20 +26,13 @@ Examples:
 - `git/`: git configuration
 - `lazygit/`: lazygit configuration
 - `nvim/`: nixvim-based Neovim configuration
-
-CLI package lists and profile-level program choices are intentionally not
-declared here. Put those decisions in the importing Home Manager entrypoint
-under `home/`.
-
-### `shared/gui/`
-
-Reusable GUI-oriented Home Manager modules.
-
-Examples:
-
 - `ghostty/`: Ghostty configuration
 - `wezterm/`: WezTerm configuration and Lua config files
 - `fonts/`: GUI font packages
+
+Package lists and profile-level program choices are intentionally not declared
+here. Put those decisions in the importing Home Manager entrypoint under
+`home/`.
 
 ### `darwin/`
 
@@ -50,7 +40,7 @@ Darwin-specific modules.
 
 - `darwin/nix-darwin/system/`: nix-darwin system settings
 - `darwin/nix-darwin/homebrew/`: nix-homebrew setup plus Homebrew casks and activation behavior
-- `darwin/home-manager/`: Darwin-only Home Manager additions
+- `darwin/home-manager/`: Darwin-only Home Manager additions, including OmniWM
 
 Darwin-only user configuration, such as `macism`, macOS terminal keybinds, and
 `darwin-rebuild` abbreviations, belongs in `darwin/home-manager`.
@@ -72,4 +62,4 @@ Reserved for future NixOS modules.
 - Keep platform-specific behavior in platform modules or guard it with platform
   checks.
 - Keep app-specific configuration near the app module. For example, WezTerm Lua
-  files live under `shared/gui/wezterm/config`.
+  files live under `shared/wezterm/config`.

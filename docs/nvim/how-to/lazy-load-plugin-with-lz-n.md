@@ -34,7 +34,7 @@ nixvim の lazy loading は **lz.n プロバイダ依存**(現状唯一)。`plug
 
 2. **`require` 直叩きの呼び出し箇所を grep する。**
    ```
-   grep -rn "PluginName\|require('module')" modules/shared/cli/nvim
+   grep -rn "PluginName\|require('module')" modules/shared/nvim
    ```
    `<cmd>lua require('telescope.builtin')...>` のような直叩きは `cmd` トリガーを発火させない。
    - **コマンド化できるもの** → `<cmd>Telescope find_files<cr>` 等に変換(alpha のダッシュボードボタン、devdocs の picker がこれだった)。
@@ -76,7 +76,7 @@ nix build --no-link --print-out-paths \
 
 ## 関連
 
-- [telescope.nix](../../../modules/shared/cli/nvim/plugins/telescope.nix) — cmd + keys 併用の実例
-- [lazygit.nix](../../../modules/shared/cli/nvim/plugins/lazygit.nix) — 全コマンド列挙の実例
-- [alpha.nix](../../../modules/shared/cli/nvim/plugins/alpha.nix) / [devdocs.nix](../../../modules/shared/cli/nvim/plugins/devdocs.nix) — require 直叩きをコマンド化した呼び出し箇所
+- [telescope.nix](../../../modules/shared/nvim/plugins/telescope.nix) — cmd + keys 併用の実例
+- [lazygit.nix](../../../modules/shared/nvim/plugins/lazygit.nix) — 全コマンド列挙の実例
+- [alpha.nix](../../../modules/shared/nvim/plugins/alpha.nix) / [devdocs.nix](../../../modules/shared/nvim/plugins/devdocs.nix) — require 直叩きをコマンド化した呼び出し箇所
 - nixvim 公式テスト: `tests/test-sources/plugins/lazyloading/lz-n.nix`(`lazyLoad.settings.cmd/keys` の正準例)

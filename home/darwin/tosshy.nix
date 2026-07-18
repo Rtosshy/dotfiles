@@ -7,26 +7,25 @@
 {
   imports = [
     ../../modules/shared/home-manager/nix-profile-add-activation.nix
-    ../../modules/shared/cli/vim
-    ../../modules/shared/cli/nvim
-    ../../modules/shared/cli/fish
-    ../../modules/shared/cli/bash
-    ../../modules/shared/cli/nushell
-    ../../modules/shared/cli/git
-    ../../modules/shared/cli/codex
-    ../../modules/shared/cli/direnv
-    ../../modules/shared/cli/emacs
-    ../../modules/shared/cli/claude
-    ../../modules/shared/cli/herdr
-    ../../modules/shared/cli/lazygit
-    ../../modules/shared/cli/starship
-    ../../modules/shared/cli/tmux
-    ../../modules/shared/cli/btop
-    ../../modules/shared/cli/spotify-player
-    ../../modules/shared/gui/fonts
-    ../../modules/shared/gui/omniwm
-    ../../modules/shared/gui/wezterm
-    ../../modules/shared/gui/kitty
+    ../../modules/shared/vim
+    ../../modules/shared/nvim
+    ../../modules/shared/fish
+    ../../modules/shared/bash
+    ../../modules/shared/nushell
+    ../../modules/shared/git
+    ../../modules/shared/codex
+    ../../modules/shared/direnv
+    ../../modules/shared/emacs
+    ../../modules/shared/claude
+    ../../modules/shared/herdr
+    ../../modules/shared/lazygit
+    ../../modules/shared/starship
+    ../../modules/shared/tmux
+    ../../modules/shared/btop
+    ../../modules/shared/spotify-player
+    ../../modules/shared/fonts
+    ../../modules/shared/wezterm
+    ../../modules/shared/kitty
     ../../modules/darwin/home-manager
     nixvim.homeModules.nixvim
   ];

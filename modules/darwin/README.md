@@ -51,6 +51,7 @@ Darwin-only Home Manager additions.
 Examples:
 
 - `macism`
+- OmniWM settings
 - `darwin-rebuild` and `nix flake update` fish abbreviations
 - macOS-specific Ghostty settings
 - Darwin IME integration for Neovim
@@ -71,8 +72,7 @@ flake.nix
 flake.nix
 └─ homeConfigurations."tosshy@MacBook-V3"
    └─ home/darwin/tosshy.nix
-      ├─ modules/shared/cli/*
-      ├─ modules/shared/gui/*
+      ├─ modules/shared/*
       └─ modules/darwin/home-manager
 ```
 
