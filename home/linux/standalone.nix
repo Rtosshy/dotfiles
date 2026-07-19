@@ -13,6 +13,7 @@
     ../../modules/shared/nvim
     ../../modules/shared/fish
     ../../modules/shared/git
+    ../../modules/shared/rust
     ../../modules/shared/direnv
     ../../modules/shared/lazygit
     ../../modules/shared/starship
