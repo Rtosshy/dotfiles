@@ -15,6 +15,9 @@
 
       highlights = {
         FloatBorder.fg = "#ffffff";
+        BlinkCmpMenuBorder.fg = "#ffffff";
+        BlinkCmpDocBorder.fg = "#ffffff";
+        BlinkCmpSignatureHelpBorder.fg = "#ffffff";
         TelescopeBorder.fg = "#ffffff";
       };
     };
