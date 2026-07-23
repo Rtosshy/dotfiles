@@ -11,6 +11,9 @@
     ../../modules/shared/vim
     ../../modules/shared/nvim
     ../../modules/shared/nvim/platform/darwin-ime.nix
+    ../../modules/shared/nvim/platform/yoshi-error.nix
+    ../../modules/shared/nvim/platform/yoshi-paste.nix
+    ../../modules/shared/nvim/platform/yoshi-yank.nix
     ../../modules/shared/fish
     ../../modules/shared/bash
     ../../modules/shared/nushell
