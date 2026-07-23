@@ -105,8 +105,6 @@
         let
           homeManagerPackage =
             home-manager.packages.${system}.home-manager or home-manager.packages.${system}.default;
-          darwinRebuildPackage =
-            nix-darwin.packages.${system}.darwin-rebuild or nix-darwin.packages.${system}.default;
           help = mkTask pkgs "dotfiles-help" ''
             cat <<'EOF'
             Available tasks:
@@ -130,11 +128,6 @@
             nix flake check "$repo/dev"
           '';
 
-          darwin-switch = mkTask pkgs "dotfiles-darwin-switch" ''
-            repo="''${DOTFILES_FLAKE:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
-            ${darwinRebuildPackage}/bin/darwin-rebuild switch --flake "$repo#MacBook-V3"
-          '';
-
           default = help;
           inherit help;
 
@@ -146,6 +139,15 @@
           update-claude = mkTask pkgs "dotfiles-update-claude" ''
             repo="''${DOTFILES_FLAKE:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
             nix flake update claude-code --flake "$repo"
+          '';
+        }
+        # Darwin向けのappsにのみdarwin-switchを追加する
+        # Linux向けではnix-darwinのDarwin専用パッケージを評価しないでdarwin-switchのCIチェックで落ちない
+        // nixpkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+          darwin-switch = mkTask pkgs "dotfiles-darwin-switch" ''
+            repo="''${DOTFILES_FLAKE:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
+            ${nix-darwin.packages.${system}.darwin-rebuild}/bin/darwin-rebuild \
+            switch --flake "$repo#MacBook-V3"
           '';
         }
       );
