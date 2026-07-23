@@ -30,6 +30,7 @@
       "slack"
       "zoom"
       "discord"
+      "spotify"
       "google-chrome"
       "claude"
       "chatgpt"
