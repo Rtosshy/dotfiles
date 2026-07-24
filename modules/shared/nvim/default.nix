@@ -22,6 +22,7 @@
       ./plugins/lsp.nix
       ./plugins/formatting.nix
       ./plugins/trouble.nix
+      ./plugins/toggleterm.nix
       ./plugins/gitsigns.nix
       ./plugins/diffview.nix
       ./plugins/lazygit.nix
