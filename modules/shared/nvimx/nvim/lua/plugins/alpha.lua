@@ -2,13 +2,9 @@
 return {
   {
     'goolord/alpha-nvim',
-    event = 'VimEnter',
+    lazy = false,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      if vim.fn.argc() > 0 then
-        return
-      end
-
       local alpha = require('alpha')
       local dashboard = require('alpha.themes.dashboard')
       local paths = require('config.paths')

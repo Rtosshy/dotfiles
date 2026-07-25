@@ -51,11 +51,10 @@ nix run .#home-switch
 The pre-commit hook runs the Lua formatter again. A configuration-only change
 that does not alter the plugin spec does not require `nvimx-lock`.
 
-Language servers and formatters remain external executables, as in the NixVim
-configuration. Install `lua-language-server`, `pyright`, `gopls`,
-`kotlin-language-server`, `terraform-ls`, `rust-analyzer`, and `nixd` as
-needed. Formatting additionally uses `stylua`, `gofmt`, `ktlint`, `rustfmt`,
-`clang-format`, and `terraform`.
+The Neovim wrapper provides `lua-language-server`, `pyright`, `gopls`,
+`kotlin-language-server`, `terraform-ls`, `rust-analyzer`, and `nixd`.
+Formatting additionally expects `stylua`, `gofmt`, `ktlint`, `rustfmt`,
+`clang-format`, and `terraform` on `PATH`.
 
 The configured plugins also expect `lazygit`, `rg`, `fd`, `curl`, `jq`,
 `pandoc`, `make`, a C compiler, OpenSSL, and SSH for their corresponding

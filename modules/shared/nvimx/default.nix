@@ -1,6 +1,22 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  nvimx,
+  ...
+}:
 
 let
+  lockDir = ./nvim/nvimx-lock;
+
+  languageServers = with pkgs; [
+    lua-language-server
+    pyright
+    gopls
+    kotlin-language-server
+    terraform-ls
+    rust-analyzer
+    nixd
+  ];
+
   treesitterGrammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
     bash
     c
@@ -31,7 +47,16 @@ in
   programs.nvimx = {
     enable = true;
     configDir = nvimConfig;
-    lockDir = ./nvim/nvimx-lock;
+    inherit lockDir;
+    extraPackages = languageServers;
+    env = import ./env.nix {
+      inherit
+        pkgs
+        nvimx
+        lockDir
+        ;
+      extraPackages = languageServers;
+    };
 
     lock = {
       projectDir = "~/ghq/github.com/Rtosshy/dotfiles";

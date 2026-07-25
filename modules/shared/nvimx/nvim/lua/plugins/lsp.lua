@@ -12,7 +12,11 @@ return {
     },
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local wezterm_types = vim.fn.stdpath('data') .. '/lazy/wezterm-types'
+      local wezterm_plugin = require('lazy.core.config').plugins['wezterm-types']
+      local wezterm_types = assert(
+        wezterm_plugin and wezterm_plugin.dir,
+        'wezterm-types plugin directory is unavailable'
+      )
       local servers = {
         lua_ls = {
           settings = {

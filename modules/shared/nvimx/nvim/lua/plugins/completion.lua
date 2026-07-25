@@ -25,7 +25,10 @@ return {
         default = { 'lsp', 'snippets', 'path', 'buffer' },
         min_keyword_length = 1,
       },
-      fuzzy = { implementation = 'lua' },
+      fuzzy = {
+        implementation = 'rust',
+        prebuilt_binaries = { download = false },
+      },
     },
   },
 }
