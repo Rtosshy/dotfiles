@@ -1,0 +1,517 @@
+{
+  "lazyNvim": {
+    "inputName": "lazy-nvim",
+    "source": {
+      "owner": "folke",
+      "repo": "lazy.nvim",
+      "type": "github"
+    },
+    "synthetic": true
+  },
+  "localPlugins": {},
+  "plugins": {
+    "alpha-nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "alpha-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "goolord",
+        "repo": "alpha-nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "blink.cmp": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "blink-cmp",
+      "resolvedRef": null,
+      "source": {
+        "owner": "saghen",
+        "repo": "blink.cmp",
+        "type": "github"
+      },
+      "tag": null,
+      "version": "1.*"
+    },
+    "bufferline.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "bufferline-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "akinsho",
+        "repo": "bufferline.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "conform.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "conform-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "stevearc",
+        "repo": "conform.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "cyberdream.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "cyberdream-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "scottmckendry",
+        "repo": "cyberdream.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "devdocs.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "devdocs-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "maskudo",
+        "repo": "devdocs.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "diffview.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "diffview-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "flash.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "flash-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "folke",
+        "repo": "flash.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "friendly-snippets": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "friendly-snippets",
+      "resolvedRef": null,
+      "source": {
+        "owner": "rafamadriz",
+        "repo": "friendly-snippets",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "gitsigns.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "gitsigns-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "im-select.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "im-select-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "keaising",
+        "repo": "im-select.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "lazygit.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "lazygit-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "kdheepak",
+        "repo": "lazygit.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "live-share.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "live-share-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "azratul",
+        "repo": "live-share.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "lualine.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "lualine-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "nvim-lualine",
+        "repo": "lualine.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "noice.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "noice-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "folke",
+        "repo": "noice.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "nui.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "nui-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "MunifTanjim",
+        "repo": "nui.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "nvim-autopairs": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "nvim-autopairs",
+      "resolvedRef": null,
+      "source": {
+        "owner": "windwp",
+        "repo": "nvim-autopairs",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "nvim-lspconfig": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "nvim-lspconfig",
+      "resolvedRef": null,
+      "source": {
+        "owner": "neovim",
+        "repo": "nvim-lspconfig",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "nvim-notify": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "nvim-notify",
+      "resolvedRef": null,
+      "source": {
+        "owner": "rcarriga",
+        "repo": "nvim-notify",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "nvim-treesitter": {
+      "branch": "master",
+      "build": {
+        "cmd": ":TSUpdate",
+        "kind": "excmd"
+      },
+      "commit": null,
+      "inputName": "nvim-treesitter",
+      "resolvedRef": null,
+      "source": {
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "nvim-web-devicons": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "nvim-web-devicons",
+      "resolvedRef": null,
+      "source": {
+        "owner": "nvim-tree",
+        "repo": "nvim-web-devicons",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "oil-git-status.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "oil-git-status-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "refractalize",
+        "repo": "oil-git-status.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "oil.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "oil-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "stevearc",
+        "repo": "oil.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "plenary.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "plenary-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "nvim-lua",
+        "repo": "plenary.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "smear-cursor.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "smear-cursor-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "sphamba",
+        "repo": "smear-cursor.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "telescope-fzf-native.nvim": {
+      "branch": null,
+      "build": {
+        "cmd": "make",
+        "kind": "shell"
+      },
+      "commit": null,
+      "inputName": "telescope-fzf-native-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "nvim-telescope",
+        "repo": "telescope-fzf-native.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "telescope.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "telescope-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "nvim-telescope",
+        "repo": "telescope.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "toggleterm.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "toggleterm-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "akinsho",
+        "repo": "toggleterm.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": "*"
+    },
+    "trouble.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "trouble-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "folke",
+        "repo": "trouble.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "wezterm-types": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": "d8b1671db6de96e3c4e44ce5cfd1c9c31d3828bf",
+      "inputName": "wezterm-types",
+      "resolvedRef": null,
+      "source": {
+        "owner": "DrKJeff16",
+        "repo": "wezterm-types",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "which-key.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "inputName": "which-key-nvim",
+      "resolvedRef": null,
+      "source": {
+        "owner": "folke",
+        "repo": "which-key.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    }
+  },
+  "schemaVersion": 1,
+  "warnings": [
+    "plugin toggleterm.nvim: version constraint \"*\" is not resolved yet (TODO: semver)",
+    "plugin blink.cmp: version constraint \"1.*\" is not resolved yet (TODO: semver)"
+  ]
+}

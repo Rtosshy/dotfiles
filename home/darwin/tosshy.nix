@@ -2,7 +2,6 @@
   inputs,
   lib,
   pkgs,
-  nixvim,
   nvimx,
   ...
 }:
@@ -10,11 +9,6 @@
   imports = [
     ../../modules/shared/home-manager/nix-profile-add-activation.nix
     ../../modules/shared/vim
-    ../../modules/shared/nixvim
-    ../../modules/shared/nixvim/platform/darwin-ime.nix
-    ../../modules/shared/nixvim/platform/yoshi-error.nix
-    ../../modules/shared/nixvim/platform/yoshi-paste.nix
-    ../../modules/shared/nixvim/platform/yoshi-yank.nix
     ../../modules/shared/fish
     ../../modules/shared/bash
     ../../modules/shared/nushell
@@ -24,6 +18,7 @@
     ../../modules/shared/direnv
     ../../modules/shared/emacs
     ../../modules/shared/claude
+    ../../modules/shared/nvimx
     ../../modules/shared/herdr
     ../../modules/shared/lazygit
     ../../modules/shared/starship
@@ -34,7 +29,6 @@
     ../../modules/shared/wezterm
     ../../modules/shared/kitty
     ../../modules/darwin/omniwm
-    nixvim.homeModules.nixvim
     nvimx.homeModules.nvimx
   ];
 
