@@ -15,7 +15,6 @@ return {
       'nvim-tree/nvim-web-devicons',
       {
         'refractalize/oil-git-status.nvim',
-        opts = {},
       },
     },
     opts = {
@@ -40,6 +39,10 @@ return {
         ['g\\'] = { 'actions.toggle_trash', mode = 'n' },
       },
     },
+    config = function(_, opts)
+      require('oil').setup(opts)
+      require('oil-git-status').setup()
+    end,
   },
   {
     'nvim-telescope/telescope.nvim',

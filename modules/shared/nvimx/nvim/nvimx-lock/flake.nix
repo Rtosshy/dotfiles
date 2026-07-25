@@ -10,7 +10,7 @@
       flake = false;
     };
     blink-cmp = {
-      url = "github:saghen/blink.cmp";
+      url = "github:saghen/blink.cmp/v1";
       flake = false;
     };
     bufferline-nvim = {

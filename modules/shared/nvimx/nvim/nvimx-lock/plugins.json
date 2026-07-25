@@ -27,7 +27,7 @@
       "version": null
     },
     "blink.cmp": {
-      "branch": null,
+      "branch": "v1",
       "build": {
         "kind": "none"
       },
@@ -40,7 +40,7 @@
         "type": "github"
       },
       "tag": null,
-      "version": "1.*"
+      "version": null
     },
     "bufferline.nvim": {
       "branch": null,
@@ -317,8 +317,7 @@
     "nvim-treesitter": {
       "branch": "master",
       "build": {
-        "cmd": ":TSUpdate",
-        "kind": "excmd"
+        "kind": "none"
       },
       "commit": null,
       "inputName": "nvim-treesitter",
@@ -511,7 +510,6 @@
   },
   "schemaVersion": 1,
   "warnings": [
-    "plugin toggleterm.nvim: version constraint \"*\" is not resolved yet (TODO: semver)",
-    "plugin blink.cmp: version constraint \"1.*\" is not resolved yet (TODO: semver)"
+    "plugin toggleterm.nvim: version constraint \"*\" is not resolved yet (TODO: semver)"
   ]
 }

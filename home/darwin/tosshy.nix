@@ -59,7 +59,6 @@
       tdf
       terraform
       terraform-ls
-      tree-sitter # nvim-treesitter がパーサーのビルドに使用する
       tmux
     ];
   };

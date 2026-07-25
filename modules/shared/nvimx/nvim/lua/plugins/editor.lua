@@ -2,25 +2,14 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     branch = 'master',
-    build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = {
-      ensure_installed = {
-        'lua',
-        'go',
-        'rust',
-        'yaml',
-        'bash',
-        'fish',
-        'c',
-        'cpp',
-        'nix',
-        'terraform',
-      },
       highlight = { enable = true },
     },
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
+
+      pcall(vim.treesitter.start)
       vim.api.nvim_create_autocmd('FileType', {
         callback = function()
           pcall(vim.treesitter.start)
@@ -30,7 +19,7 @@ return {
   },
   {
     'saghen/blink.cmp',
-    version = '1.*',
+    branch = 'v1',
     event = 'InsertEnter',
     dependencies = { 'rafamadriz/friendly-snippets' },
     opts = {
@@ -54,6 +43,7 @@ return {
         default = { 'lsp', 'snippets', 'path', 'buffer' },
         min_keyword_length = 1,
       },
+      fuzzy = { implementation = 'lua' },
     },
   },
   {
