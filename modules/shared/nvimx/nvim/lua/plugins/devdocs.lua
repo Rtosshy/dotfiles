@@ -30,22 +30,4 @@ return {
       ensure_installed = { 'go', 'html', 'http', 'lua~5.1' },
     },
   },
-  {
-    'azratul/live-share.nvim',
-    cmd = { 'LiveShareHostStart', 'LiveShareJoin', 'LiveShareServer' },
-    opts = {
-      username = 'tosshy',
-      port = 80,
-      transport = 'ws',
-    },
-  },
-  {
-    'keaising/im-select.nvim',
-    cond = vim.fn.has('mac') == 1,
-    event = 'VeryLazy',
-    opts = {
-      default_command = 'macism',
-      set_previous_events = {},
-    },
-  },
 }

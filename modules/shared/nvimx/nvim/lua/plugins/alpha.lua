@@ -1,3 +1,4 @@
+-- Alpha dashboard and Yoshi animation.
 return {
   {
     'goolord/alpha-nvim',

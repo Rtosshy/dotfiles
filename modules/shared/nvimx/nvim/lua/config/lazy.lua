@@ -17,6 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   spec = {
     { import = 'plugins' },
+    { import = 'platform.darwin-ime' },
   },
   install = { colorscheme = { 'cyberdream' } },
   checker = { enabled = false },

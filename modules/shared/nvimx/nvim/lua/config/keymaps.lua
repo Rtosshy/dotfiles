@@ -47,9 +47,3 @@ map(
   '"_dP',
   vim.tbl_extend('force', opts, { desc = 'Paste without yanking replaced text' })
 )
-
-if vim.fn.has('mac') == 1 then
-  nmap('<Esc>', function()
-    vim.system({ 'macism', 'com.apple.keylayout.ABC' })
-  end)
-end
