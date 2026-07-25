@@ -1,5 +1,5 @@
 local paths = require('config.paths')
-local yoshi = require('config.yoshi')
+local yoshi = require('config.yoshi-animation')
 
 local eat = yoshi.animation({
   frame_dir = paths.asset('frames/yoshi-eat'),
