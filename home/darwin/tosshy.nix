@@ -2,18 +2,13 @@
   inputs,
   lib,
   pkgs,
-  nixvim,
+  nvimx,
   ...
 }:
 {
   imports = [
     ../../modules/shared/home-manager/nix-profile-add-activation.nix
     ../../modules/shared/vim
-    ../../modules/shared/nvim
-    ../../modules/shared/nvim/platform/darwin-ime.nix
-    ../../modules/shared/nvim/platform/yoshi-error.nix
-    ../../modules/shared/nvim/platform/yoshi-paste.nix
-    ../../modules/shared/nvim/platform/yoshi-yank.nix
     ../../modules/shared/fish
     ../../modules/shared/bash
     ../../modules/shared/nushell
@@ -23,6 +18,7 @@
     ../../modules/shared/direnv
     ../../modules/shared/emacs
     ../../modules/shared/claude
+    ../../modules/shared/nvimx
     ../../modules/shared/herdr
     ../../modules/shared/lazygit
     ../../modules/shared/starship
@@ -33,7 +29,7 @@
     ../../modules/shared/wezterm
     ../../modules/shared/kitty
     ../../modules/darwin/omniwm
-    nixvim.homeModules.nixvim
+    nvimx.homeModules.nvimx
   ];
 
   home = {
@@ -63,7 +59,6 @@
       tdf
       terraform
       terraform-ls
-      tree-sitter # nvim-treesitter がパーサーのビルドに使用する
       tmux
     ];
   };

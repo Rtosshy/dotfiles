@@ -65,7 +65,7 @@ flake.nix
 └─ homeConfigurations."tosshy@MacBook-V3"
    └─ home/darwin/tosshy.nix
       ├─ modules/shared/*
-      ├─ modules/shared/nvim/platform/darwin-ime.nix
+      ├─ modules/shared/nvimx
       └─ modules/darwin/omniwm
 ```
 

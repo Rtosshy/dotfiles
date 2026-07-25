@@ -36,10 +36,7 @@
       url = "github:sadjow/codex-cli-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nvimx.url = "github:myuron/nvimx";
   };
 
   outputs =
@@ -47,7 +44,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      nixvim,
+      nvimx,
       ...
     }:
     let
@@ -167,7 +164,7 @@
             ];
           }
         ];
-        specialArgs = { inherit inputs home-manager nixvim; };
+        specialArgs = { inherit inputs home-manager; };
       };
 
       homeConfigurations."tosshy@MacBook-V3" = home-manager.lib.homeManagerConfiguration {
@@ -175,7 +172,7 @@
           system = "aarch64-darwin";
           config.allowUnfree = true;
         };
-        extraSpecialArgs = { inherit inputs nixvim; };
+        extraSpecialArgs = { inherit inputs nvimx; };
         modules = [
           ./home/darwin/tosshy.nix
         ];
@@ -223,7 +220,7 @@
                 inputs
                 username
                 homeDirectory
-                nixvim
+                nvimx
                 ;
             };
         modules = [

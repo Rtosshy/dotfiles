@@ -25,7 +25,7 @@ Examples:
 - `starship/`: prompt configuration
 - `git/`: git configuration
 - `lazygit/`: lazygit configuration
-- `nvim/`: nixvim-based Neovim configuration
+- `nvimx/`: Lua/lazy.nvim-based Neovim configuration managed by nvimx
 - `ghostty/`: Ghostty configuration
 - `wezterm/`: WezTerm configuration and Lua config files
 - `fonts/`: GUI font packages
