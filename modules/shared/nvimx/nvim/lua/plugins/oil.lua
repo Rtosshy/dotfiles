@@ -41,7 +41,9 @@ return {
     },
     config = function(_, opts)
       require('oil').setup(opts)
-      require('oil-git-status').setup()
+      require('oil-git-status').setup({
+        show_ignored = false,
+      })
     end,
   },
 }
