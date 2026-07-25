@@ -40,6 +40,7 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvimx.url = "github:myuron/nvimx";
   };
 
   outputs =
@@ -48,6 +49,7 @@
       nix-darwin,
       home-manager,
       nixvim,
+      nvimx,
       ...
     }:
     let
@@ -175,7 +177,7 @@
           system = "aarch64-darwin";
           config.allowUnfree = true;
         };
-        extraSpecialArgs = { inherit inputs nixvim; };
+        extraSpecialArgs = { inherit inputs nixvim nvimx; };
         modules = [
           ./home/darwin/tosshy.nix
         ];

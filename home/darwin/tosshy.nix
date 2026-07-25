@@ -3,17 +3,18 @@
   lib,
   pkgs,
   nixvim,
+  nvimx,
   ...
 }:
 {
   imports = [
     ../../modules/shared/home-manager/nix-profile-add-activation.nix
     ../../modules/shared/vim
-    ../../modules/shared/nvim
-    ../../modules/shared/nvim/platform/darwin-ime.nix
-    ../../modules/shared/nvim/platform/yoshi-error.nix
-    ../../modules/shared/nvim/platform/yoshi-paste.nix
-    ../../modules/shared/nvim/platform/yoshi-yank.nix
+    ../../modules/shared/nixvim
+    ../../modules/shared/nixvim/platform/darwin-ime.nix
+    ../../modules/shared/nixvim/platform/yoshi-error.nix
+    ../../modules/shared/nixvim/platform/yoshi-paste.nix
+    ../../modules/shared/nixvim/platform/yoshi-yank.nix
     ../../modules/shared/fish
     ../../modules/shared/bash
     ../../modules/shared/nushell
@@ -34,6 +35,7 @@
     ../../modules/shared/kitty
     ../../modules/darwin/omniwm
     nixvim.homeModules.nixvim
+    nvimx.homeModules.nvimx
   ];
 
   home = {

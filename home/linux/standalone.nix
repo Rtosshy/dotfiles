@@ -10,7 +10,7 @@
   imports = [
     ../../modules/shared/home-manager/nix-profile-add-activation.nix
     ../../modules/shared/vim
-    ../../modules/shared/nvim
+    ../../modules/shared/nixvim
     ../../modules/shared/fish
     ../../modules/shared/git
     ../../modules/shared/rust
