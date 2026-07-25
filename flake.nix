@@ -225,7 +225,7 @@
                 inputs
                 username
                 homeDirectory
-                nixvim
+                nvimx
                 ;
             };
         modules = [
