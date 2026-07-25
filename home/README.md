@@ -18,9 +18,9 @@ Home Manager configuration for `tosshy` on `MacBook-V3`.
 Imports:
 
 - selected modules from `modules/shared`: shell, editor, terminal, font, and AI tool config
-- `modules/shared/nvim/platform/darwin-ime.nix`: Darwin IME integration for Neovim
+- `modules/shared/nvimx`: Neovim configuration, including Darwin IME integration
 - `modules/darwin/omniwm`: Darwin-only OmniWM configuration
-- `nixvim.homeModules.nixvim`: nixvim module integration
+- `nvimx.homeModules.nvimx`: nvimx module integration
 
 This profile also defines Darwin-specific user settings, the macOS package set,
 and profile-level programs such as Home Manager, direnv, mise, and zoxide.
@@ -45,7 +45,7 @@ configuration can be reused across environments where the default user differs
 Imports:
 
 - selected modules from `modules/shared`: shell, editor, and AI tool config
-- `nixvim.homeModules.nixvim`: nixvim module integration
+- `nvimx.homeModules.nvimx`: nvimx module integration
 
 This profile defines a Linux-oriented package set and only enables the
 profile-level programs that should be present in standalone environments.

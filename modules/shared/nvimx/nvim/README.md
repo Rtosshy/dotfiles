@@ -1,6 +1,6 @@
 # Neovim (lazy.nvim)
 
-This is the Lua/lazy.nvim equivalent of `modules/shared/nixvim`.
+This is the Lua/lazy.nvim Neovim configuration managed by nvimx.
 
 To use it directly:
 
@@ -15,9 +15,8 @@ lazy.nvim and lazy.nvim installs the plugins.
 
 ## Development workflow
 
-Keep one feature in one file under `lua/plugins/`, following the same grouping
-as `modules/shared/nixvim/plugins/`. Core settings live under `lua/config/`,
-while macOS-specific settings live under `lua/platform/`.
+Keep one feature in one file under `lua/plugins/`. Core settings live under
+`lua/config/`, while macOS-specific settings live under `lua/platform/`.
 
 For a Lua-only configuration change, format and build from the repository root:
 

@@ -124,10 +124,6 @@ CI uses `nix flake check --impure`. Pure `nix flake check` (or any pure
 evaluation that touches the activation package) fails with an assertion
 message pointing at `--impure`.
 
-> First activation builds ~430 derivations (mostly nixvim treesitter grammars)
-> and takes a while. The Nix binary cache covers most of it; fully cold builds
-> are uncommon.
-
 ## Dev shell
 
 Formatters and linters used by the hooks live in `dev/flake.nix`. `direnv`
