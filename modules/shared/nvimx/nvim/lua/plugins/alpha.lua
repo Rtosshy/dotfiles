@@ -19,6 +19,7 @@ return {
       local top_padding = 2
       local gap_after_logo = 1
       local image_id_base = 424242
+      local static_image = (vim.uv or vim.loop).os_uname().sysname == 'Linux'
       local presets = {
         {
           weight = 1,
@@ -139,6 +140,10 @@ return {
         apply_color(frame)
       end
       local function start()
+        if static_image then
+          draw(current_frame)
+          return
+        end
         if running then
           return
         end
@@ -162,6 +167,10 @@ return {
         tick()
       end
       local function stop()
+        if static_image then
+          clear()
+          return
+        end
         if running then
           running = false
           generation = generation + 1
