@@ -82,7 +82,7 @@
       flake = false;
     };
     nvim-treesitter = {
-      url = "github:nvim-treesitter/nvim-treesitter/master";
+      url = "github:nvim-treesitter/nvim-treesitter/main";
       flake = false;
     };
     nvim-web-devicons = {
