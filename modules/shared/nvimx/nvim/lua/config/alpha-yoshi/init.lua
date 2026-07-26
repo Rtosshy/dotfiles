@@ -6,6 +6,7 @@ local presets = require('config.alpha-yoshi.presets')
 local selector = require('config.alpha-yoshi.selector')
 local canvas = require('config.alpha-yoshi.canvas')
 local animated = require('config.alpha-yoshi.renderer.animated')
+local static = require('config.alpha-yoshi.renderer.static')
 
 ---@param opts AlphaYoshiSetupOptions
 function M.setup(opts)
@@ -21,12 +22,12 @@ function M.setup(opts)
   }
 
   ---@type AlphaYoshiRenderer
-  local animated_renderer
+  local renderer
 
   local function reroll()
     active = selector.weighted(presets)
     current_frame = 1
-    animated_renderer:reset()
+    renderer:reset()
   end
 
   local function apply_color(frame)
@@ -42,7 +43,7 @@ function M.setup(opts)
     end
   end
 
-  animated_renderer = animated.new({
+  local context = {
     draw = draw,
     clear = function()
       canvas.clear(active.frame_count)
@@ -56,22 +57,20 @@ function M.setup(opts)
     is_active = function()
       return vim.bo.filetype == 'alpha'
     end,
-  })
+  }
+
+  if static_image then
+    renderer = static.new(context)
+  else
+    renderer = animated.new(context)
+  end
 
   local function start()
-    if static_image then
-      draw(current_frame)
-      return
-    end
-    animated_renderer:start()
+    renderer:start()
   end
 
   local function stop()
-    if static_image then
-      canvas.clear(active.frame_count)
-      return
-    end
-    animated_renderer:stop()
+    renderer:stop()
   end
 
   apply_color(current_frame)
