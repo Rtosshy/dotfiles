@@ -4,24 +4,7 @@ local uv = vim.uv or vim.loop
 
 local image_id_base = 424242
 local presets = require('config.alpha-yoshi.presets')
-
-local function pick_preset()
-  local total = 0
-  for _, preset in ipairs(presets) do
-    total = total + preset.weight
-  end
-
-  math.randomseed(os.time() + (uv.hrtime() % 1000000))
-  local target, accumulated = math.random() * total, 0
-  for _, preset in ipairs(presets) do
-    accumulated = accumulated + preset.weight
-    if target <= accumulated then
-      return preset
-    end
-  end
-
-  return presets[1]
-end
+local selector = require('config.alpha-yoshi.selector')
 
 local function send(sequence)
   if vim.api.nvim_ui_send then
@@ -33,14 +16,14 @@ end
 
 ---@param opts { alpha: table, logo_line_count: integer, top_padding: integer, gap_after_logo: integer }
 function M.setup(opts)
-  local active = pick_preset()
+  local active = selector.weighted(presets)
   local current_frame = 1
   local running = false
   local generation = 0
   local static_image = uv.os_uname().sysname == 'Linux'
 
   local function reroll()
-    active = pick_preset()
+    active = selector.weighted(presets)
     current_frame = 1
   end
 
