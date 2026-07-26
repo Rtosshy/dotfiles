@@ -42,7 +42,13 @@ return {
             },
           },
         },
-        nixd = {},
+        nixd = {
+          settings = {
+            -- nixvim used to add this server-specific wrapper automatically.
+            -- Keep the empty value as a JSON object; plain {} is encoded as [].
+            nixd = vim.empty_dict(),
+          },
+        },
       }
 
       for name, config in pairs(servers) do
