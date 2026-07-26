@@ -27,18 +27,6 @@ function M.setup(opts)
     })
   end
 
-  local function delete_sequence()
-    local chunks = {}
-    for frame = 1, active.frame_count do
-      chunks[#chunks + 1] = ('\27_Ga=d,d=i,i=%d,q=2\27\\'):format(image_id_base + frame)
-    end
-    return table.concat(chunks)
-  end
-
-  local function clear()
-    canvas.send(delete_sequence())
-  end
-
   local function draw(frame)
     local file = ('%s/%s%02d.png'):format(active.frame_dir, active.frame_prefix, frame - 1)
     local handle = io.open(file, 'rb')
@@ -53,7 +41,7 @@ function M.setup(opts)
     canvas.send(table.concat({
       '\27[s',
       ('\27[%d;%dH'):format(row, col + 1),
-      delete_sequence(),
+      canvas.delete_sequence(active.frame_count, image_id_base),
       ('\27_Ga=T,t=f,f=100,i=%d,c=%d,r=%d,q=2;'):format(
         image_id_base + frame,
         active.image_cols,
@@ -85,7 +73,7 @@ function M.setup(opts)
       if vim.bo.filetype ~= 'alpha' then
         running = false
         generation = generation + 1
-        clear()
+        canvas.clear(active.frame_count, image_id_base)
         return
       end
 
@@ -98,13 +86,13 @@ function M.setup(opts)
 
   local function stop()
     if static_image then
-      clear()
+      canvas.clear(active.frame_count, image_id_base)
       return
     end
     if running then
       running = false
       generation = generation + 1
-      clear()
+      canvas.clear(active.frame_count, image_id_base)
     end
   end
 
