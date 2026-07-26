@@ -1,5 +1,6 @@
 local paths = require('config.paths')
 
+---@type AlphaYoshiPreset[]
 return {
   {
     weight = 1,

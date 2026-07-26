@@ -26,9 +26,9 @@ function M.clear(frame_count)
   M.send(M.delete_sequence(frame_count))
 end
 
----@param preset table
+---@param preset AlphaYoshiPreset
 ---@param frame integer
----@param layout table
+---@param layout AlphaYoshiLayout
 ---@return boolean
 function M.draw(preset, frame, layout)
   local file = ('%s/%s%02d.png'):format(preset.frame_dir, preset.frame_prefix, frame - 1)

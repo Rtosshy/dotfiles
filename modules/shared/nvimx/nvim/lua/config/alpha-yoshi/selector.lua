@@ -1,6 +1,8 @@
 local M = {}
 local uv = vim.uv or vim.loop
 
+---@param candidates AlphaYoshiPreset[]
+---@return AlphaYoshiPreset
 function M.weighted(candidates)
   local total = 0
   for _, candidate in ipairs(candidates) do

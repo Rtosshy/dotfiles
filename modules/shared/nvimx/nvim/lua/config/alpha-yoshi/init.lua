@@ -7,16 +7,19 @@ local selector = require('config.alpha-yoshi.selector')
 local canvas = require('config.alpha-yoshi.canvas')
 local animated = require('config.alpha-yoshi.renderer.animated')
 
----@param opts { alpha: table, logo_line_count: integer, top_padding: integer, gap_after_logo: integer }
+---@param opts AlphaYoshiSetupOptions
 function M.setup(opts)
   local active = selector.weighted(presets)
   local current_frame = 1
   local static_image = uv.os_uname().sysname == 'Linux'
+
+  ---@type AlphaYoshiLayout
   local layout = {
     top_padding = opts.top_padding,
     logo_line_count = opts.logo_line_count,
     gap_after_logo = opts.gap_after_logo,
   }
+
   ---@type AlphaYoshiRenderer
   local animated_renderer
 
@@ -103,7 +106,7 @@ function M.setup(opts)
     group = group,
     callback = function()
       if vim.bo.filetype == 'alpha' then
-        pcall(opts.alpha.redraw)
+        pcall(opts.redraw)
         vim.defer_fn(start, 160)
       end
     end,

@@ -34,7 +34,7 @@ return {
       }
       alpha.setup(dashboard.config)
       require('config.alpha-yoshi').setup({
-        alpha = alpha,
+        redraw = alpha.redraw,
         logo_line_count = #logo,
         top_padding = top_padding,
         gap_after_logo = gap_after_logo,
