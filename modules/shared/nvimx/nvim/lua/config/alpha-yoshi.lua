@@ -2,7 +2,6 @@ local M = {}
 
 local uv = vim.uv or vim.loop
 
-local image_id_base = 424242
 local presets = require('config.alpha-yoshi.presets')
 local selector = require('config.alpha-yoshi.selector')
 local canvas = require('config.alpha-yoshi.canvas')
@@ -33,7 +32,7 @@ function M.setup(opts)
   end
 
   local function draw(frame)
-    if canvas.draw(active, frame, layout, image_id_base) then
+    if canvas.draw(active, frame, layout) then
       apply_color(frame)
     end
   end
@@ -57,7 +56,7 @@ function M.setup(opts)
       if vim.bo.filetype ~= 'alpha' then
         running = false
         generation = generation + 1
-        canvas.clear(active.frame_count, image_id_base)
+        canvas.clear(active.frame_count)
         return
       end
 
@@ -70,13 +69,13 @@ function M.setup(opts)
 
   local function stop()
     if static_image then
-      canvas.clear(active.frame_count, image_id_base)
+      canvas.clear(active.frame_count)
       return
     end
     if running then
       running = false
       generation = generation + 1
-      canvas.clear(active.frame_count, image_id_base)
+      canvas.clear(active.frame_count)
     end
   end
 
