@@ -14,6 +14,11 @@ function M.setup(opts)
   local running = false
   local generation = 0
   local static_image = uv.os_uname().sysname == 'Linux'
+  local layout = {
+    top_padding = opts.top_padding,
+    logo_line_count = opts.logo_line_count,
+    gap_after_logo = opts.gap_after_logo,
+  }
 
   local function reroll()
     active = selector.weighted(presets)
@@ -28,30 +33,9 @@ function M.setup(opts)
   end
 
   local function draw(frame)
-    local file = ('%s/%s%02d.png'):format(active.frame_dir, active.frame_prefix, frame - 1)
-    local handle = io.open(file, 'rb')
-    if not handle then
-      vim.notify('Yoshi frame was not found: ' .. file, vim.log.levels.ERROR)
-      return
+    if canvas.draw(active, frame, layout, image_id_base) then
+      apply_color(frame)
     end
-    handle:close()
-
-    local row = opts.top_padding + opts.logo_line_count + opts.gap_after_logo + 1
-    local col = math.max(0, math.floor((vim.o.columns - active.image_cols) / 2))
-    canvas.send(table.concat({
-      '\27[s',
-      ('\27[%d;%dH'):format(row, col + 1),
-      canvas.delete_sequence(active.frame_count, image_id_base),
-      ('\27_Ga=T,t=f,f=100,i=%d,c=%d,r=%d,q=2;'):format(
-        image_id_base + frame,
-        active.image_cols,
-        active.image_rows
-      ),
-      vim.base64.encode(file),
-      '\27\\',
-      '\27[u',
-    }))
-    apply_color(frame)
   end
 
   local function start()
