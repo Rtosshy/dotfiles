@@ -5,23 +5,25 @@ local uv = vim.uv or vim.loop
 local presets = require('config.alpha-yoshi.presets')
 local selector = require('config.alpha-yoshi.selector')
 local canvas = require('config.alpha-yoshi.canvas')
+local animated = require('config.alpha-yoshi.renderer.animated')
 
 ---@param opts { alpha: table, logo_line_count: integer, top_padding: integer, gap_after_logo: integer }
 function M.setup(opts)
   local active = selector.weighted(presets)
   local current_frame = 1
-  local running = false
-  local generation = 0
   local static_image = uv.os_uname().sysname == 'Linux'
   local layout = {
     top_padding = opts.top_padding,
     logo_line_count = opts.logo_line_count,
     gap_after_logo = opts.gap_after_logo,
   }
+  ---@type AlphaYoshiRenderer
+  local animated_renderer
 
   local function reroll()
     active = selector.weighted(presets)
     current_frame = 1
+    animated_renderer:reset()
   end
 
   local function apply_color(frame)
@@ -37,34 +39,28 @@ function M.setup(opts)
     end
   end
 
+  animated_renderer = animated.new({
+    draw = draw,
+    clear = function()
+      canvas.clear(active.frame_count)
+    end,
+    frame_count = function()
+      return active.frame_count
+    end,
+    frame_delay_ms = function()
+      return active.frame_delay_ms
+    end,
+    is_active = function()
+      return vim.bo.filetype == 'alpha'
+    end,
+  })
+
   local function start()
     if static_image then
       draw(current_frame)
       return
     end
-    if running then
-      return
-    end
-
-    running = true
-    generation = generation + 1
-    local current_generation = generation
-    local function tick()
-      if current_generation ~= generation then
-        return
-      end
-      if vim.bo.filetype ~= 'alpha' then
-        running = false
-        generation = generation + 1
-        canvas.clear(active.frame_count)
-        return
-      end
-
-      draw(current_frame)
-      current_frame = (current_frame % active.frame_count) + 1
-      vim.defer_fn(tick, active.frame_delay_ms)
-    end
-    tick()
+    animated_renderer:start()
   end
 
   local function stop()
@@ -72,11 +68,7 @@ function M.setup(opts)
       canvas.clear(active.frame_count)
       return
     end
-    if running then
-      running = false
-      generation = generation + 1
-      canvas.clear(active.frame_count)
-    end
+    animated_renderer:stop()
   end
 
   apply_color(current_frame)

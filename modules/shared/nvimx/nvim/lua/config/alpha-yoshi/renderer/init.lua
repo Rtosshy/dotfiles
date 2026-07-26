@@ -1,0 +1,4 @@
+---@class AlphaYoshiRenderer
+---@field start fun(self: AlphaYoshiRenderer)
+---@field stop fun(self: AlphaYoshiRenderer)
+---@field reset fun(self: AlphaYoshiRenderer)
