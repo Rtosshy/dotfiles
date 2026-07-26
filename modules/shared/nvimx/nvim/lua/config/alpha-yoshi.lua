@@ -5,14 +5,7 @@ local uv = vim.uv or vim.loop
 local image_id_base = 424242
 local presets = require('config.alpha-yoshi.presets')
 local selector = require('config.alpha-yoshi.selector')
-
-local function send(sequence)
-  if vim.api.nvim_ui_send then
-    vim.api.nvim_ui_send(sequence)
-  else
-    io.stdout:write(sequence)
-  end
-end
+local canvas = require('config.alpha-yoshi.canvas')
 
 ---@param opts { alpha: table, logo_line_count: integer, top_padding: integer, gap_after_logo: integer }
 function M.setup(opts)
@@ -43,7 +36,7 @@ function M.setup(opts)
   end
 
   local function clear()
-    send(delete_sequence())
+    canvas.send(delete_sequence())
   end
 
   local function draw(frame)
@@ -57,7 +50,7 @@ function M.setup(opts)
 
     local row = opts.top_padding + opts.logo_line_count + opts.gap_after_logo + 1
     local col = math.max(0, math.floor((vim.o.columns - active.image_cols) / 2))
-    send(table.concat({
+    canvas.send(table.concat({
       '\27[s',
       ('\27[%d;%dH'):format(row, col + 1),
       delete_sequence(),
