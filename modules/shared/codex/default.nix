@@ -18,6 +18,7 @@ in
       (installSkill "growth-L1" ../skills/growth-L1/SKILL.md)
       (installSkill "growth-L2" ../skills/growth-L2/SKILL.md)
       (installSkill "growth-L3" ../skills/growth-L3/SKILL.md)
+      (installSkill "grill-me" ../skills/grill-me/SKILL.md)
     ]
   );
 }
