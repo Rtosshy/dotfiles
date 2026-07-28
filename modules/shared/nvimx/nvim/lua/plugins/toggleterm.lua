@@ -5,7 +5,7 @@ return {
     event = 'VeryLazy',
     opts = {
       direction = 'float',
-      open_mapping = '[[<c-]>]]',
+      open_mapping = [[<c-]>]],
     },
   },
 }
