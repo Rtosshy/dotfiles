@@ -20,6 +20,7 @@
     ../../modules/shared/claude
     ../../modules/shared/nvimx
     ../../modules/shared/herdr
+    ../../modules/shared/hunk
     ../../modules/shared/lazygit
     ../../modules/shared/starship
     ../../modules/shared/tmux

@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 let
   installSkill = name: src: ''
     $DRY_RUN_CMD rm -f $HOME/.codex/skills/${name}/SKILL.md
@@ -19,6 +19,7 @@ in
       (installSkill "growth-L2" ../skills/growth-L2/SKILL.md)
       (installSkill "growth-L3" ../skills/growth-L3/SKILL.md)
       (installSkill "grill-me" ../skills/grill-me/SKILL.md)
+      (installSkill "hunk-review" "${pkgs.hunk}/skills/hunk-review/SKILL.md")
     ]
   );
 }
