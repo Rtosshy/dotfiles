@@ -418,6 +418,14 @@ binding = "Left Option+Control+Shift+Right Arrow"
 id = "moveColumn.right"
 
 [[hotkeys]]
+binding = "Unassigned"
+id = "moveColumn.up"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "moveColumn.down"
+
+[[hotkeys]]
 binding = "Left Option+Control+Home"
 id = "moveColumnToFirst"
 
@@ -547,63 +555,63 @@ id = "moveColumnToIndex.9"
 
 [[hotkeys]]
 binding = "Left Option+Control+Equal"
-id = "cycleColumnWidthForward"
+id = "cycleSizeForward"
 
 [[hotkeys]]
 binding = "Left Option+Control+Minus"
-id = "cycleColumnWidthBackward"
+id = "cycleSizeBackward"
 
 [[hotkeys]]
 binding = "Unassigned"
-id = "cycleWindowWidthForward"
+id = "cycleWindowPrimarySpanForward"
 
 [[hotkeys]]
 binding = "Unassigned"
-id = "cycleWindowWidthBackward"
+id = "cycleWindowPrimarySpanBackward"
 
 [[hotkeys]]
 binding = "Unassigned"
-id = "cycleWindowHeightForward"
+id = "cycleWindowSecondarySpanForward"
 
 [[hotkeys]]
 binding = "Unassigned"
-id = "cycleWindowHeightBackward"
+id = "cycleWindowSecondarySpanBackward"
 
 [[hotkeys]]
-binding = "Left Option+Control+Return"
-id = "toggleColumnFullWidth"
+binding = "Control+Left Option+Return"
+id = "toggleContainerFullPrimarySpan"
 
 [[hotkeys]]
 binding = "Left Option+Control+F"
-id = "expandColumnToAvailableWidth"
+id = "expandContainerToAvailablePrimarySpan"
 
 [[hotkeys]]
 binding = "Left Option+Control+R"
-id = "resetWindowHeight"
+id = "resetWindowSecondarySpan"
 
 [[hotkeys]]
 binding = "Left Option+Minus"
-id = "setColumnWidth.decrease10Percent"
+id = "setContainerPrimarySpan.decrease10Percent"
 
 [[hotkeys]]
 binding = "Left Option+Equal"
-id = "setColumnWidth.increase10Percent"
+id = "setContainerPrimarySpan.increase10Percent"
 
 [[hotkeys]]
 binding = "Unassigned"
-id = "setWindowWidth.decrease10Percent"
+id = "setWindowPrimarySpan.decrease10Percent"
 
 [[hotkeys]]
 binding = "Unassigned"
-id = "setWindowWidth.increase10Percent"
+id = "setWindowPrimarySpan.increase10Percent"
 
 [[hotkeys]]
 binding = "Left Option+Shift+Minus"
-id = "setWindowHeight.decrease10Percent"
+id = "setWindowSecondarySpan.decrease10Percent"
 
 [[hotkeys]]
 binding = "Left Option+Shift+Equal"
-id = "setWindowHeight.increase10Percent"
+id = "setWindowSecondarySpan.increase10Percent"
 
 [[hotkeys]]
 binding = "Left Option+Control+B"
@@ -652,6 +660,14 @@ id = "resizeShrink.up"
 [[hotkeys]]
 binding = "Unassigned"
 id = "resizeShrink.down"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "resizeFocusedWindow.grow"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "resizeFocusedWindow.shrink"
 
 [[hotkeys]]
 binding = "Unassigned"
@@ -707,7 +723,7 @@ id = "toggleWorkspaceBarVisibility"
 
 [[hotkeys]]
 binding = "Unassigned"
-id = "toggleHiddenBar"
+id = "toggleHiddenBarPanel"
 
 [[hotkeys]]
 binding = "Left Option+Grave"
@@ -720,6 +736,10 @@ id = "toggleWorkspaceLayout"
 [[hotkeys]]
 binding = "Left Option+Shift+O"
 id = "toggleOverview"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "toggleSystemStats"
 
 [mouseWarp]
 enabled = true
