@@ -40,7 +40,7 @@
       curl
       byobu
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+      codex
     ];
   };
 

@@ -56,7 +56,7 @@
       pandoc
       poppler-utils
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+      codex
       tdf
       terraform
       terraform-ls
