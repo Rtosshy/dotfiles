@@ -18,6 +18,7 @@ return {
         go = { 'gofmt' },
         kotlin = { 'ktlint' },
         rust = { 'rustfmt' },
+        haskell = { 'ormolu' },
         cpp = { 'clang-format' },
         c = { 'clang-format' },
         terraform = { 'terraform_fmt' },

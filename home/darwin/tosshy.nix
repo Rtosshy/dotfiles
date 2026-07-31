@@ -14,6 +14,7 @@
     ../../modules/shared/nushell
     ../../modules/shared/git
     ../../modules/shared/rust
+    ../../modules/shared/haskell
     ../../modules/shared/codex
     ../../modules/shared/direnv
     ../../modules/shared/emacs

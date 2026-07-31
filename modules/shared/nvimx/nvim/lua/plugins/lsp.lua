@@ -49,6 +49,7 @@ return {
             nixd = vim.empty_dict(),
           },
         },
+        hls = {},
       }
 
       for name, config in pairs(servers) do

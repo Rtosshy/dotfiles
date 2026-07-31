@@ -15,6 +15,7 @@ let
     terraform-ls
     rust-analyzer
     nixd
+    haskell-language-server
   ];
 
   treesitterGrammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
@@ -23,6 +24,7 @@ let
     cpp
     fish
     go
+    haskell
     lua
     nix
     rust
