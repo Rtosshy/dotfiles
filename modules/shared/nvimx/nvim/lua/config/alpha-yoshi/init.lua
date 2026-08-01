@@ -10,8 +10,10 @@ local static = require('config.alpha-yoshi.renderer.static')
 
 ---@param opts AlphaYoshiSetupOptions
 function M.setup(opts)
-  local active = selector.weighted(presets)
-  local current_frame = 1
+  -- Initialized by reroll() before the renderer starts.
+  ---@type AlphaYoshiPreset
+  local active
+
   local static_image = uv.os_uname().sysname == 'Linux'
 
   ---@type AlphaYoshiLayout
@@ -26,7 +28,6 @@ function M.setup(opts)
 
   local function reroll()
     active = selector.weighted(presets)
-    current_frame = 1
     renderer:reset()
   end
 
@@ -73,42 +74,65 @@ function M.setup(opts)
     renderer:stop()
   end
 
-  apply_color(current_frame)
+  local active_buffer
+
+  local function defer_start(buffer, delay)
+    vim.defer_fn(function()
+      if active_buffer == buffer and vim.api.nvim_get_current_buf() == buffer then
+        start()
+      end
+    end, delay)
+  end
+
+  local function activate()
+    if vim.bo.filetype ~= 'alpha' then
+      return
+    end
+
+    local buffer = vim.api.nvim_get_current_buf()
+    active_buffer = buffer
+
+    reroll()
+    apply_color(1)
+    defer_start(buffer, 80)
+  end
+
+  local function deactivate(args)
+    if active_buffer ~= args.buf then
+      return
+    end
+
+    stop()
+    active_buffer = nil
+  end
+
+  local function redraw()
+    local buffer = vim.api.nvim_get_current_buf()
+    if active_buffer ~= buffer then
+      return
+    end
+
+    pcall(opts.redraw)
+    defer_start(buffer, 160)
+  end
 
   local group = vim.api.nvim_create_augroup('AlphaYoshiImage', { clear = true })
   vim.api.nvim_create_autocmd('User', {
     group = group,
     pattern = 'AlphaReady',
-    callback = function()
-      reroll()
-      apply_color(current_frame)
-      vim.defer_fn(start, 80)
-    end,
+    callback = activate,
   })
   vim.api.nvim_create_autocmd('BufEnter', {
     group = group,
-    callback = function()
-      if vim.bo.filetype ~= 'alpha' then
-        return
-      end
-      reroll()
-      apply_color(current_frame)
-      vim.defer_fn(function()
-        if vim.bo.filetype == 'alpha' then
-          start()
-        end
-      end, 80)
-    end,
+    callback = activate,
   })
-  vim.api.nvim_create_autocmd('BufLeave', { group = group, callback = stop })
+  vim.api.nvim_create_autocmd('BufLeave', {
+    group = group,
+    callback = deactivate,
+  })
   vim.api.nvim_create_autocmd({ 'VimResized', 'WinResized' }, {
     group = group,
-    callback = function()
-      if vim.bo.filetype == 'alpha' then
-        pcall(opts.redraw)
-        vim.defer_fn(start, 160)
-      end
-    end,
+    callback = redraw,
   })
 end
 
