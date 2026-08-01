@@ -1,16 +1,16 @@
 local M = {}
-local uv = vim.uv or vim.loop
 
 ---@param candidates AlphaYoshiPreset[]
+---@param random? fun(): number
 ---@return AlphaYoshiPreset
-function M.weighted(candidates)
+function M.weighted(candidates, random)
+  local rng = random or math.random
   local total = 0
   for _, candidate in ipairs(candidates) do
     total = total + candidate.weight
   end
 
-  math.randomseed(os.time() + (uv.hrtime() % 1000000))
-  local target, accumulated = math.random() * total, 0
+  local target, accumulated = rng() * total, 0
   for _, candidate in ipairs(candidates) do
     accumulated = accumulated + candidate.weight
     if target <= accumulated then
