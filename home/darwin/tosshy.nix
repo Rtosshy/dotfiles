@@ -22,6 +22,7 @@
     ../../modules/shared/nvimx
     ../../modules/shared/herdr
     ../../modules/shared/hunk
+    ../../modules/shared/terminal-browser
     ../../modules/shared/lazygit
     ../../modules/shared/starship
     ../../modules/shared/tmux

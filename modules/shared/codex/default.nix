@@ -1,5 +1,7 @@
 { lib, pkgs, ... }:
 let
+  terminalBrowserPkg = pkgs.callPackage ../terminal-browser/package.nix { };
+
   installSkill = name: src: ''
     $DRY_RUN_CMD rm -f $HOME/.codex/skills/${name}/SKILL.md
     $DRY_RUN_CMD install -Dm644 ${src} $HOME/.codex/skills/${name}/SKILL.md
@@ -20,6 +22,9 @@ in
       (installSkill "growth-L3" ../skills/growth-L3/SKILL.md)
       (installSkill "grill-me" ../skills/grill-me/SKILL.md)
       (installSkill "hunk-review" "${pkgs.hunk}/skills/hunk-review/SKILL.md")
+      (lib.optionalString pkgs.stdenv.isDarwin (
+        installSkill "terminal-browser" "${terminalBrowserPkg}/skill/SKILL.md"
+      ))
     ]
   );
 }
