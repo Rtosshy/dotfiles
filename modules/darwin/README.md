@@ -56,7 +56,7 @@ activation and is imported from `home/darwin/tosshy.nix`.
 ```text
 flake.nix
 └─ darwinConfigurations."MacBook-V3"
-   └─ systems/darwin/macbook-v3
+   └─ systems/darwin/macbook-v3.nix
       ├─ inputs.nix-homebrew.darwinModules.nix-homebrew
       ├─ modules/darwin/nix-darwin/system
       ├─ modules/darwin/nix-darwin/homebrew

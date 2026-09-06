@@ -149,7 +149,7 @@
       # $ darwin-rebuild build --flake .#MacBook-V3
       darwinConfigurations."MacBook-V3" = nix-darwin.lib.darwinSystem {
         modules = [
-          ./systems/darwin/macbook-v3
+          ./systems/darwin/macbook-v3.nix
           {
             nixpkgs.overlays = [
               (_final: prev: {
