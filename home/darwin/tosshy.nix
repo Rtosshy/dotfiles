@@ -57,6 +57,7 @@
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       codex
       tdf
+      google-cloud-sdk
       terraform
       terraform-ls
       tmux
