@@ -52,6 +52,34 @@ profile-level programs that should be present in standalone environments.
 
 This home is imported by the root flake as `homeConfigurations."standalone"`.
 
+### `darwin/template.nix`
+
+Skeleton for a new Darwin Home Manager profile, used when moving to a new
+machine. It is not referenced by `flake.nix`, so `nix flake check` never
+evaluates it — re-verify it by hand after changing the shared modules:
+
+```sh
+nix eval --impure --expr '
+  let inputs = (builtins.getFlake "path:'"$PWD"'").inputs; in
+  (inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = import inputs.nixpkgs {
+      system = "aarch64-darwin";
+      config.allowUnfree = true;
+    };
+    extraSpecialArgs = { inherit inputs; nvimx = inputs.nvimx; };
+    modules = [ ./home/darwin/template.nix ];
+  }).activationPackage.drvPath'
+```
+
+Copy the file rather than editing it in place:
+
+```sh
+cp home/darwin/template.nix home/darwin/<user>.nix
+```
+
+The import list is a working minimum, not the full set. `darwin/tosshy.nix` is
+the reference for what else is available under `modules/shared`.
+
 ## Guidelines
 
 - Keep nix-darwin and future NixOS settings out of this directory.

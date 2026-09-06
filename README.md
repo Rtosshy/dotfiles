@@ -124,6 +124,45 @@ CI uses `nix flake check --impure`. Pure `nix flake check` (or any pure
 evaluation that touches the activation package) fails with an assertion
 message pointing at `--impure`.
 
+## New machine
+
+Templates for a new Darwin machine live next to the real configurations:
+
+- `systems/darwin/template.nix` — nix-darwin host skeleton
+- `home/darwin/template.nix` — Home Manager profile skeleton
+
+Neither is imported by `flake.nix`, so neither is evaluated by `nix flake
+check`. Each file's header carries its own instructions; `systems/README.md`
+and `home/README.md` carry the manual eval commands used to verify them.
+
+```sh
+# 1. Install Nix (Determinate Systems installer) and clone the repo
+git clone https://github.com/Rtosshy/dotfiles ~/ghq/github.com/Rtosshy/dotfiles
+cd ~/ghq/github.com/Rtosshy/dotfiles
+
+# 2. Copy the templates
+cp systems/darwin/template.nix systems/darwin/macbook-v4.nix
+cp home/darwin/template.nix home/darwin/tosshy.nix   # reuse if the user is unchanged
+
+# 3. Replace every CHANGE-ME, then register both outputs in flake.nix:
+#      darwinConfigurations."MacBook-V4"
+#      homeConfigurations."tosshy@MacBook-V4"
+
+# 4. System first, then home
+nix run nix-darwin -- switch --flake .#MacBook-V4
+nix run home-manager/master -- switch --flake .#tosshy@MacBook-V4
+```
+
+Two things the templates cannot cover:
+
+- The `apps` in `flake.nix` (`build`, `check`, `home-switch`, `darwin-switch`)
+  hardcode `MacBook-V3` / `tosshy@MacBook-V3`. They keep targeting the old
+  machine until updated, without failing.
+- User-level values in the shared modules — `system.primaryUser`,
+  `users.users.<user>` (including `uid`, from `id -u`), `nixpkgs.hostPlatform`,
+  and `nix-homebrew.user` — still live under `modules/darwin/nix-darwin/`. They
+  only need changing if the user or CPU architecture differs.
+
 ## Dev shell
 
 Formatters and linters used by the hooks live in `dev/flake.nix`. `direnv`
