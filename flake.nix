@@ -44,9 +44,11 @@
       ...
     }:
     let
+      # x86_64-darwinはnixpkgs 26.11でサポートが打ち切られ、import nixpkgsの
+      # 時点でthrowするので載せられない
+      # https://nixos.org/manual/nixpkgs/unstable/release-notes#x86_64-darwin-26.11
       systems = [
         "aarch64-darwin"
-        "x86_64-darwin"
         "x86_64-linux"
         "aarch64-linux"
       ];
