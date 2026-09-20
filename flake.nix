@@ -16,10 +16,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    homebrew-nikitabobko-tap = {
-      url = "github:nikitabobko/homebrew-tap";
-      flake = false;
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
