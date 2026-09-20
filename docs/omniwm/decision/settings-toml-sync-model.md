@@ -3,16 +3,17 @@ title: OmniWM settings.toml をベース+差分の2層で管理する
 id: omniwm-settings-sync-model-0001
 type: decision
 category: omniwm
-status: active
+status: superseded
 created: 2026-08-30
 valid_as_of: 2026-08-30
+superseded_by: ./adopt-omniwm-nix-flake.md
 owner: "@Rtosshy"
 tags: [omniwm, settings-toml, nix, home-manager, config-management, layering]
 ---
 
 <!-- 出力先: docs/omniwm/decision/settings-toml-sync-model.md -->
 
-> ✅ **ACTIVE（有効・2026-08-30 時点）** — これは点時刻の記録です。以降の状況変化はこの記録を無効化しません。最新の決定は後継チェーンを辿ってください。
+> ⛔ **SUPERSEDED（無効）** — このナレッジは 2026-09-21 に [OmniWM の導入と設定を omniwm.nix flake に委ねる](./adopt-omniwm-nix-flake.md)（./adopt-omniwm-nix-flake.md）によって置き換えられました。**最新情報は必ず後継ファイルを参照してください。** 本ファイルは履歴・経緯の保存目的でのみ残しています。
 
 # OmniWM settings.toml をベース+差分の2層で管理する
 

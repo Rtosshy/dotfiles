@@ -16,14 +16,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    homebrew-barutsrb-tap = {
-      url = "github:barutsrb/homebrew-tap";
-      flake = false;
-    };
-    homebrew-nikitabobko-tap = {
-      url = "github:nikitabobko/homebrew-tap";
-      flake = false;
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvimx.url = "github:myuron/nvimx";
+    omniwm = {
+      url = "github:mst-mkt/omniwm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
