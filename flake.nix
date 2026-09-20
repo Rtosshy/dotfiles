@@ -65,6 +65,28 @@
           )
         );
 
+      # appの説明文。nix flake checkがapps.<system>.<name>にmeta.descriptionを
+      # 要求するので、#helpの一覧とmetaの二重管理にならないようここを唯一の出典にする
+      taskDescriptions = {
+        build = "Build Home Manager activation package";
+        check = "Evaluate Home Manager and run dev flake checks";
+        darwin-switch = "Switch nix-darwin configuration";
+        help = "Show available tasks";
+        home-switch = "Switch Home Manager for tosshy@MacBook-V3";
+        standalone-switch = "Switch standalone Home Manager for $USER (Linux)";
+        update-claude = "Update sadjow/claude-code-nix lock input";
+      };
+
+      helpText =
+        let
+          names = builtins.attrNames taskDescriptions;
+          width = 2 + nixpkgs.lib.foldl' nixpkgs.lib.max 0 (map builtins.stringLength names);
+          pad = name: name + nixpkgs.lib.strings.replicate (width - builtins.stringLength name) " ";
+        in
+        nixpkgs.lib.concatMapStringsSep "\n" (
+          name: "  nix run .#${pad name}${taskDescriptions.${name}}"
+        ) names;
+
       mkTask =
         pkgs: name: text:
         let
@@ -79,6 +101,8 @@
         {
           type = "app";
           program = "${package}/bin/${name}";
+          # nameは"dotfiles-<task>"なのでprefixを剥がして説明文を引く
+          meta.description = taskDescriptions.${nixpkgs.lib.removePrefix "dotfiles-" name};
         };
     in
     {
@@ -129,12 +153,7 @@
           help = mkTask pkgs "dotfiles-help" ''
             cat <<'EOF'
             Available tasks:
-              nix run .#build              Build Home Manager activation package
-              nix run .#check              Evaluate Home Manager and run dev flake checks
-              nix run .#home-switch        Switch Home Manager for tosshy@MacBook-V3
-              nix run .#darwin-switch      Switch nix-darwin configuration
-              nix run .#standalone-switch  Switch standalone Home Manager for $USER (Linux)
-              nix run .#update-claude      Update sadjow/claude-code-nix lock input
+            ${helpText}
             EOF
           '';
         in
