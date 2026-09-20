@@ -48,16 +48,17 @@ home-manager switch --flake .#tosshy@MacBook-V3
 Home activation installs user CLI/GUI packages and shell configuration. The
 `drs` / `nfu` fish abbreviations point at this repo.
 
-### Non-NixOS Linux (`homeConfigurations."standalone"`)
+### Non-NixOS Linux (`lib.mkStandalone` + `#standalone-switch`)
 
 For Codespaces spawned from OSS project devcontainers, remote dev boxes,
 generic Ubuntu / Debian / Fedora servers, WSL2, etc. Targets the current Linux
 system, such as `x86_64-linux` or `aarch64-linux`, and CLI modules only (no GUI).
 
-The output reads `username` and `homeDirectory` from `$USER` / `$HOME` at
-activation time, so the same flake works in any container regardless of the
-default user (`vscode`, `node`, `codespace`, `ubuntu`, ...). This requires
-`--impure` on every Nix command that touches the output.
+`username` and `homeDirectory` are arguments to `lib.mkStandalone` rather than
+hardcoded, so the same flake works in any container regardless of the default
+user (`vscode`, `node`, `codespace`, `ubuntu`, ...). The `standalone-switch`
+app reads `$USER` / `$HOME` in the shell and passes them in, so nothing here
+needs `--impure`.
 
 ```sh
 # 1. Install Nix in single-user mode (no systemd / no daemon)
@@ -75,22 +76,28 @@ echo '[ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/
 mkdir -p ~/.config/nix \
   && echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
-# 5. First-time activation (no clone required; --refresh forces a fresh fetch)
-nix run home-manager/master -- switch \
-  --flake github:Rtosshy/dotfiles#standalone --impure --refresh
+# 5. Activation (no clone required; --refresh forces a fresh fetch)
+nix run github:Rtosshy/dotfiles#standalone-switch -- --refresh
 
-# 6. Subsequent rebuilds (home-manager CLI is on PATH after step 5)
-home-manager switch --flake github:Rtosshy/dotfiles#standalone --impure --refresh
+# 6. Subsequent rebuilds: the same command
+nix run github:Rtosshy/dotfiles#standalone-switch -- --refresh
 ```
 
+Arguments after `--` are forwarded to the `nix eval` that resolves the
+activation package, which is why `--refresh` works there.
+
 For long-lived systems where the config will be edited locally (EC2, WSL2,
-etc.), clone to the standard ghq location and switch from there:
+etc.), clone to the standard ghq location and point `DOTFILES_FLAKE` at it:
 
 ```sh
 git clone https://github.com/Rtosshy/dotfiles ~/ghq/github.com/Rtosshy/dotfiles
 cd ~/ghq/github.com/Rtosshy/dotfiles
-home-manager switch --flake .#standalone --impure
+DOTFILES_FLAKE=. nix run .#standalone-switch
 ```
+
+`standalone-switch` defaults to `github:Rtosshy/dotfiles` rather than the
+enclosing git repository, because the usual working directory in a Codespace
+belongs to somebody else's project. `DOTFILES_FLAKE` is the override.
 
 #### Why upstream installer + `--no-daemon`
 
@@ -109,20 +116,30 @@ Step 4 is required because the upstream installer ships a conservative default
 that disables `nix-command` and flakes. Every command in this README assumes
 both are enabled.
 
-#### Why `--impure`
+#### Why an app instead of `homeConfigurations."standalone"`
 
-The natural alternative — enumerating supported users as `tosshy@standalone`,
-`vscode@standalone`, `codespace@standalone`, ... — fails the moment we land in
-a container with an unanticipated default user, and forces a `flake.nix` edit
-+ push + pull every time we meet a new one. Since the typical use case is
-"drop into someone else's OSS Codespace and run a single command", reading
-`$USER` / `$HOME` from the environment is a deliberate trade-off: we give up
-flake purity in exchange for working in any container without
-preconfiguration.
+Enumerating supported users as `tosshy@standalone`, `vscode@standalone`,
+`codespace@standalone`, ... fails the moment we land in a container with an
+unanticipated default user, and forces a `flake.nix` edit + push + pull every
+time we meet a new one. The typical use case is "drop into someone else's OSS
+Codespace and run a single command", so the identity has to come from the
+environment.
 
-CI uses `nix flake check --impure`. Pure `nix flake check` (or any pure
-evaluation that touches the activation package) fails with an assertion
-message pointing at `--impure`.
+Reading it with `builtins.getEnv` would work but makes the output impure —
+every `nix` command touching it, CI included, then needs `--impure`. There is
+no pure way to read `$USER` at evaluation time (Home Manager itself only does
+this for `stateVersion < 20.09`, and Nix has no `builtins.currentUser`).
+
+Exposing a *function* instead moves the decision out of evaluation: the
+`standalone-switch` app reads `$USER` / `$HOME` in bash and interpolates them
+into `nix eval --apply`, so they arrive as plain strings. The flake stays pure
+and CI runs a plain `nix flake check`.
+
+The cost is that `home-manager switch` is no longer the entry point, so the
+`home-manager generations` / `news` / `rollback` subcommands are unavailable
+here. Generation bookkeeping itself is unaffected — the activation script runs
+`nix-env --profile ... --set` on its own — and `HOME_MANAGER_BACKUP_EXT` still
+works as the `-b` equivalent.
 
 ## New machine
 

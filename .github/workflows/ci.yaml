@@ -15,7 +15,7 @@ jobs:
       - uses: cachix/install-nix-action@v31
 
       - name: Check flake
-        run: nix flake check --impure
+        run: nix flake check
 
       - name: Validate Lefthook config
         run: nix develop ./dev -c lefthook validate

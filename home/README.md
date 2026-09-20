@@ -50,7 +50,9 @@ Imports:
 This profile defines a Linux-oriented package set and only enables the
 profile-level programs that should be present in standalone environments.
 
-This home is imported by the root flake as `homeConfigurations."standalone"`.
+This home is assembled by the root flake's `lib.mkStandalone` function, which
+takes `system`, `username` and `homeDirectory` as arguments. The
+`standalone-switch` app supplies them from the shell — see the root README.
 
 ### `darwin/template.nix`
 

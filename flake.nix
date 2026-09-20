@@ -78,21 +78,47 @@
           type = "app";
           program = "${package}/bin/${name}";
         };
-
-      standaloneSystem =
-        let
-          envSystem = builtins.getEnv "NIX_SYSTEM";
-        in
-        if envSystem != "" then
-          envSystem
-        else
-          builtins.currentSystem or (throw ''
-            homeConfigurations."standalone" reads the current system from
-            the activation environment, so it must be evaluated with
-            --impure. Re-run with: --impure
-          '');
     in
     {
+      # Standalone Home Manager builder for non-NixOS Linux environments
+      # (Codespaces spawned from OSS project devcontainers, remote dev
+      # boxes, ad-hoc Ubuntu/Debian/Fedora servers, ...).
+      #
+      # This is a function rather than a `homeConfigurations.<name>` entry
+      # on purpose. The typical landing target is "someone else's OSS
+      # project's Codespace", whose default user varies by devcontainer
+      # (`vscode`, `node`, `codespace`, `developer`, ...). Enumerating
+      # `<user>@standalone` outputs would still miss unfamiliar containers
+      # and forces a flake.nix edit every time we land in one.
+      #
+      # Taking the identity as an argument moves that decision out of Nix
+      # evaluation: the `standalone-switch` app below reads $USER / $HOME
+      # in the shell and passes them in via `nix eval --apply`, so the
+      # flake itself stays pure and `nix flake check` needs no --impure.
+      lib.mkStandalone =
+        {
+          system,
+          username,
+          homeDirectory,
+        }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          extraSpecialArgs = {
+            inherit
+              inputs
+              username
+              homeDirectory
+              nvimx
+              ;
+          };
+          modules = [
+            ./home/linux/standalone.nix
+          ];
+        };
+
       apps = forAllSystems (
         system: pkgs:
         let
@@ -101,11 +127,12 @@
           help = mkTask pkgs "dotfiles-help" ''
             cat <<'EOF'
             Available tasks:
-              nix run .#build          Build Home Manager activation package
-              nix run .#check          Evaluate Home Manager and run dev flake checks
-              nix run .#home-switch    Switch Home Manager for tosshy@MacBook-V3
-              nix run .#darwin-switch  Switch nix-darwin configuration
-              nix run .#update-claude  Update sadjow/claude-code-nix lock input
+              nix run .#build              Build Home Manager activation package
+              nix run .#check              Evaluate Home Manager and run dev flake checks
+              nix run .#home-switch        Switch Home Manager for tosshy@MacBook-V3
+              nix run .#darwin-switch      Switch nix-darwin configuration
+              nix run .#standalone-switch  Switch standalone Home Manager for $USER (Linux)
+              nix run .#update-claude      Update sadjow/claude-code-nix lock input
             EOF
           '';
         in
@@ -136,11 +163,35 @@
         }
         # Darwin向けのappsにのみdarwin-switchを追加する
         # Linux向けではnix-darwinのDarwin専用パッケージを評価しないでdarwin-switchのCIチェックで落ちない
-        // nixpkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+        // nixpkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           darwin-switch = mkTask pkgs "dotfiles-darwin-switch" ''
             repo="''${DOTFILES_FLAKE:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
             ${nix-darwin.packages.${system}.darwin-rebuild}/bin/darwin-rebuild \
             switch --flake "$repo#MacBook-V3"
+          '';
+        }
+        # Linux向けのappsにのみstandalone-switchを追加する
+        # lib.mkStandaloneがhome/linux/standalone.nixしか組み立てないので
+        // nixpkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+          standalone-switch = mkTask pkgs "dotfiles-standalone-switch" ''
+            # 素のCodespaceにcloneは無いのでデフォルトはリモート参照にする。
+            # git rev-parse を既定にすると、居候先のOSSリポジトリを掴む事故になる。
+            flake="''${DOTFILES_FLAKE:-github:Rtosshy/dotfiles}"
+
+            username="''${USER:-$(id -un)}"
+            if [[ -z "''${HOME:-}" ]]; then
+              echo "standalone-switch: HOME is unset; cannot determine the home directory" >&2
+              exit 1
+            fi
+
+            # $USER / $HOME はここ(シェル)で読んで、ただの文字列として純粋評価に渡す。
+            # Nix側はbuiltins.getEnvを使わないので--impureが要らない。
+            echo "standalone-switch: evaluating for $username ($HOME) on ${system}"
+            drv="$(nix eval --raw "$flake#lib.mkStandalone" "$@" --apply \
+              "f: (f { system = \"${system}\"; username = \"$username\"; homeDirectory = \"$HOME\"; }).activationPackage.drvPath")"
+
+            out="$(nix build "$drv^*" --no-link --print-out-paths)"
+            "$out/activate"
           '';
         }
       );
@@ -174,54 +225,5 @@
         ];
       };
 
-      # Standalone Home Manager output for non-NixOS Linux environments
-      # (Codespaces spawned from OSS project devcontainers, remote dev
-      # boxes, ad-hoc Ubuntu/Debian/Fedora servers, ...).
-      #
-      # `username` and `homeDirectory` are read from `$USER` and `$HOME`
-      # at evaluation time instead of being hardcoded. The reason is that
-      # the typical landing target is "someone else's OSS project's
-      # Codespace", whose default user varies by devcontainer
-      # (`vscode`, `node`, `codespace`, `developer`, ...). Hardcoding even
-      # an enumerated set of `<user>@standalone` outputs would still miss
-      # unfamiliar containers and forces a flake.nix edit every time we
-      # land in one, which defeats the point of a one-shot activation.
-      #
-      # Trade-off: this output is impure and every Nix command touching
-      # it must pass `--impure`. CI uses `nix flake check --impure`. Pure
-      # `nix flake check` fails with the throw below pointing at the fix.
-      #
-      # Activate with:
-      # $ nix run home-manager/master -- switch \
-      #     --flake github:Rtosshy/dotfiles#standalone --impure
-      homeConfigurations."standalone" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = standaloneSystem;
-          config.allowUnfree = true;
-        };
-        extraSpecialArgs =
-          let
-            username = builtins.getEnv "USER";
-            homeDirectory = builtins.getEnv "HOME";
-          in
-          if username == "" || homeDirectory == "" then
-            throw ''
-              homeConfigurations."standalone" reads $USER and $HOME from
-              the activation environment, so it must be evaluated with
-              --impure. Re-run with: --impure
-            ''
-          else
-            {
-              inherit
-                inputs
-                username
-                homeDirectory
-                nvimx
-                ;
-            };
-        modules = [
-          ./home/linux/standalone.nix
-        ];
-      };
     };
 }
