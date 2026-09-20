@@ -1,26 +1,101 @@
-{ lib, pkgs, ... }:
+{ inputs, ... }:
 
 let
-  # 意図した設定だけを持つ層。base.toml に存在しないキーを書くと
-  # merge.py が非ゼロ終了し、ビルドごと失敗する。OmniWM のキー改名を
-  # 「静かな設定消失」ではなくビルドエラーとして検知するための仕掛け。
-  overridesJSON = pkgs.writeText "omniwm-overrides.json" (builtins.toJSON (import ./overrides.nix));
-
-  # base.toml は再シリアライズしない。値だけを行単位で差し替えるので、
-  # 触れていない行はバイト単位で保たれ、float/integer の区別も壊れない。
-  # OmniWM 0.6.3 以降は型不正もファイル全体を無効化するため、これは必須。
-  # 理由: docs/omniwm/decision/settings-toml-sync-model.md
-  settingsFile = pkgs.runCommand "omniwm-settings.toml" { } ''
-    ${pkgs.python3}/bin/python3 ${./merge.py} \
-      --base ${./base.toml} \
-      --overrides ${overridesJSON} \
-      --out $out
-  '';
+  omniwm = inputs.omniwm.lib;
 in
 {
-  # OmniWM rewrites settings.toml after loading it, so deploy it as a real
-  # writable file instead of a Home Manager symlink to the Nix store.
-  home.activation.materializeOmniWMSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    $DRY_RUN_CMD install -Dm644 ${settingsFile} $HOME/.config/omniwm/settings.toml
-  '';
+  # programs.omniwm は Home Manager 内蔵版をこのモジュールが置き換える
+  # (upstream 側が disabledModules で無効化している)。
+  imports = [ inputs.omniwm.homeManagerModules.default ];
+
+  programs.omniwm = {
+    enable = true;
+
+    # ここに書いたキーだけが、パッケージ版に同梱された OmniWM の完全な
+    # defaults へ深いマージで重なる。hotkeys は id 単位でマージされ、
+    # 未知の id は評価時に落ちる。OmniWM は不完全な settings.toml を
+    # ファイルごと破棄するが、その完全形の追従は flake 側の仕事になった。
+    settings = {
+      borders.width = 1.0;
+      gaps.size = 1.0;
+      general.ipcEnabled = true;
+      focus = {
+        crossesMonitorAtEdge = true;
+        followsWindowToMonitor = true;
+        moveCrossesMonitorAtEdge = true;
+      };
+      workspaceBar.reserveLayoutSpace = true;
+      niri.visibleContainerCount = 4;
+
+      hotkeys = omniwm.hotkeys {
+        "switchWorkspace.0" = "Left Option+1";
+        "moveToWorkspace.0" = "Left Option+Shift+1";
+        "switchWorkspace.1" = "Left Option+2";
+        "moveToWorkspace.1" = "Left Option+Shift+2";
+        "switchWorkspace.2" = "Left Option+3";
+        "moveToWorkspace.2" = "Left Option+Shift+3";
+        "switchWorkspace.3" = "Left Option+4";
+        "moveToWorkspace.3" = "Left Option+Shift+4";
+        "switchWorkspace.4" = "Left Option+5";
+        "moveToWorkspace.4" = "Left Option+Shift+5";
+        "switchWorkspace.5" = "Left Option+6";
+        "moveToWorkspace.5" = "Left Option+Shift+6";
+        "switchWorkspace.6" = "Left Option+7";
+        "moveToWorkspace.6" = "Left Option+Shift+7";
+        "switchWorkspace.7" = "Left Option+8";
+        "moveToWorkspace.7" = "Left Option+Shift+8";
+        "switchWorkspace.8" = "Left Option+9";
+        "moveToWorkspace.8" = "Left Option+Shift+9";
+        "workspaceBackAndForth" = "Left Option+Control+Tab";
+        "focus.left" = "Left Option+Control+H";
+        "focus.down" = "Left Option+Control+J";
+        "focus.up" = "Left Option+Control+K";
+        "focus.right" = "Left Option+Control+L";
+        "focusPrevious" = "Left Option+Tab";
+        "moveWindowToWorkspaceUp" = "Left Option+Control+Shift+Up Arrow";
+        "moveWindowToWorkspaceDown" = "Left Option+Control+Shift+Down Arrow";
+        "moveColumnToWorkspaceUp" = "Left Option+Control+Shift+Page Up";
+        "moveColumnToWorkspaceDown" = "Left Option+Control+Shift+Page Down";
+        "move.left" = "Left Option+Control+Shift+H";
+        "move.down" = "Left Option+Control+Shift+J";
+        "move.up" = "Left Option+Control+Shift+K";
+        "move.right" = "Left Option+Control+Shift+L";
+        "focusMonitorNext" = "Control+Command+Tab";
+        "focusMonitorLast" = "Control+Command+Grave";
+        "toggleFullscreen" = "Left Option+Shift+F";
+        "moveColumn.left" = "Left Option+Control+Shift+Left Arrow";
+        "moveColumn.right" = "Left Option+Control+Shift+Right Arrow";
+        "moveColumnToFirst" = "Left Option+Control+Home";
+        "moveColumnToLast" = "Left Option+Control+End";
+        "toggleColumnTabbed" = "Left Option+Control+T";
+        "focusColumnFirst" = "Left Option+Home";
+        "focusColumnLast" = "Left Option+End";
+        "focusColumn.0" = "Left Option+Control+1";
+        "focusColumn.1" = "Left Option+Control+2";
+        "focusColumn.2" = "Left Option+Control+3";
+        "focusColumn.3" = "Left Option+Control+4";
+        "focusColumn.4" = "Left Option+Control+5";
+        "focusColumn.5" = "Left Option+Control+6";
+        "focusColumn.6" = "Left Option+Control+7";
+        "focusColumn.7" = "Left Option+Control+8";
+        "focusColumn.8" = "Left Option+Control+9";
+        "cycleSizeForward" = "Left Option+Control+Equal";
+        "cycleSizeBackward" = "Left Option+Control+Minus";
+        "toggleContainerFullPrimarySpan" = "Control+Left Option+Return";
+        "expandContainerToAvailablePrimarySpan" = "Left Option+Control+F";
+        "resetWindowSecondarySpan" = "Left Option+Control+R";
+        "setContainerPrimarySpan.decrease10Percent" = "Left Option+Minus";
+        "setContainerPrimarySpan.increase10Percent" = "Left Option+Equal";
+        "setWindowSecondarySpan.decrease10Percent" = "Left Option+Shift+Minus";
+        "setWindowSecondarySpan.increase10Percent" = "Left Option+Shift+Equal";
+        "balanceSizes" = "Left Option+Control+B";
+        "openCommandPalette" = "Left Option+Control+Space";
+        "raiseAllFloatingWindows" = "Left Option+Shift+R";
+        "openMenuAnywhere" = "Left Option+Control+M";
+        "toggleQuakeTerminal" = "Left Option+Grave";
+        "toggleWorkspaceLayout" = "Left Option+Control+Shift+Space";
+        "toggleOverview" = "Left Option+Shift+O";
+      };
+    };
+  };
 }

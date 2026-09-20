@@ -136,22 +136,6 @@
         "type": "github"
       }
     },
-    "homebrew-barutsrb-tap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1788753221,
-        "narHash": "sha256-+HrnxHGLg3vGh2HzWZ+891f5QBRon5cvM7Rr9lV2kvw=",
-        "owner": "barutsrb",
-        "repo": "homebrew-tap",
-        "rev": "ed66148f36a9b5458d705ed15b5f36a682ed72da",
-        "type": "github"
-      },
-      "original": {
-        "owner": "barutsrb",
-        "repo": "homebrew-tap",
-        "type": "github"
-      }
-    },
     "homebrew-cask": {
       "flake": false,
       "locked": {
@@ -342,18 +326,38 @@
         "type": "github"
       }
     },
+    "omniwm": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789876604,
+        "narHash": "sha256-kiGUzKCtDDzhVXWYaVewZvljypB4+RJ/tTv+ZNE74F0=",
+        "owner": "mst-mkt",
+        "repo": "omniwm.nix",
+        "rev": "21d3f73363d21a75e7e16b194b81c295819fbaee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mst-mkt",
+        "repo": "omniwm.nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "claude-code": "claude-code",
         "home-manager": "home-manager",
-        "homebrew-barutsrb-tap": "homebrew-barutsrb-tap",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "homebrew-nikitabobko-tap": "homebrew-nikitabobko-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "nvimx": "nvimx"
+        "nvimx": "nvimx",
+        "omniwm": "omniwm"
       }
     },
     "systems": {

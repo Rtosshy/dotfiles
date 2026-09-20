@@ -46,10 +46,12 @@ nix-darwin's `homebrew.*` options.
 
 ### `omniwm/`
 
-Home Manager module and settings for the Darwin-only OmniWM application.
+Settings for the Darwin-only OmniWM application, imported from
+`home/darwin/tosshy.nix`.
 
-It materializes OmniWM's writable `settings.toml` during Home Manager
-activation and is imported from `home/darwin/tosshy.nix`.
+The package, the launchd agent, and the full `settings.toml` schema come from
+the `omniwm` flake input (`mst-mkt/omniwm.nix`); this module only carries the
+settings that were deliberately chosen. See its README for the details.
 
 ## Import Flow
 
