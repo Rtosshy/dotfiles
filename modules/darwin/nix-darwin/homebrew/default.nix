@@ -21,7 +21,6 @@
       upgrade = true;
     };
     casks = [
-      "zen"
       "thebrowsercompany-dia"
       "raycast"
       "slack"
