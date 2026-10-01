@@ -50,6 +50,7 @@ return {
           },
         },
         hls = {},
+        clangd = {},
       }
 
       for name, config in pairs(servers) do

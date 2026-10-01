@@ -16,6 +16,7 @@ let
     rust-analyzer
     nixd
     haskell-language-server
+    clang-tools
   ];
 
   treesitterGrammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
