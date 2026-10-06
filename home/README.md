@@ -23,7 +23,7 @@ Imports:
 - `nvimx.homeModules.nvimx`: nvimx module integration
 
 This profile also defines Darwin-specific user settings, the macOS package set,
-and profile-level programs such as Home Manager, direnv, mise, and zoxide.
+and profile-level programs such as Home Manager, mise, and zoxide.
 
 This home is imported by the root flake as
 `homeConfigurations."tosshy@MacBook-V3"`.

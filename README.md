@@ -36,7 +36,7 @@ Home Manager is evaluated separately from nix-darwin. First-time activation can
 use the pinned Home Manager input from this flake:
 
 ```sh
-nix run home-manager/master -- switch --flake .#tosshy@MacBook-V3
+nix run .#home-switch
 ```
 
 After that, `home-manager` is installed into the user profile:
@@ -45,8 +45,7 @@ After that, `home-manager` is installed into the user profile:
 home-manager switch --flake .#tosshy@MacBook-V3
 ```
 
-Home activation installs user CLI/GUI packages and shell configuration. The
-`drs` / `nfu` fish abbreviations point at this repo.
+Home activation installs user CLI/GUI packages and shell configuration.
 
 ### Non-NixOS Linux (`lib.mkStandalone` + `#standalone-switch`)
 

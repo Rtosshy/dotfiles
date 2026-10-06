@@ -57,8 +57,8 @@ Reserved for future NixOS modules.
 - Import individual shared modules explicitly from Home Manager entrypoints.
 - If the same explicit import set becomes noisy in multiple entrypoints, consider
   introducing a profile-specific group module.
-- Keep profile package policy and optional tools such as `direnv`, `mise`, and
-  `zoxide` in `home/`, where each user environment can opt in deliberately.
+- Keep profile package policy and optional tools such as `mise` and `zoxide`
+  in `home/`, where each user environment can opt in deliberately.
 - Keep platform-specific behavior in platform modules or guard it with platform
   checks.
 - Keep app-specific configuration near the app module. For example, WezTerm Lua

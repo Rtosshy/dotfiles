@@ -51,9 +51,10 @@ The pre-commit hook runs the Lua formatter again. A configuration-only change
 that does not alter the plugin spec does not require `nvimx-lock`.
 
 The Neovim wrapper provides `lua-language-server`, `pyright`, `gopls`,
-`kotlin-language-server`, `terraform-ls`, `rust-analyzer`, and `nixd`.
-Formatting additionally expects `stylua`, `gofmt`, `ktlint`, `rustfmt`,
-`clang-format`, and `terraform` on `PATH`.
+`kotlin-language-server`, `terraform-ls`, `rust-analyzer`, `nixd`,
+`haskell-language-server`, and `clangd` (from `clang-tools`, which also
+provides `clang-format`). Formatting additionally expects `stylua`, `gofmt`,
+`ktlint`, `rustfmt`, and `terraform` on `PATH`.
 
 The configured plugins also expect `lazygit`, `rg`, `fd`, `curl`, `jq`,
 `pandoc`, `make`, a C compiler, OpenSSL, and SSH for their corresponding
