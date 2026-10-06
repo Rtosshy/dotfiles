@@ -155,12 +155,12 @@
         in
         {
           build = mkTask pkgs "dotfiles-build" ''
-            repo="''${DOTFILES_FLAKE:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
+            repo="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
             nix build "$repo#homeConfigurations.\"tosshy@MacBook-V3\".activationPackage"
           '';
 
           check = mkTask pkgs "dotfiles-check" ''
-            repo="''${DOTFILES_FLAKE:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
+            repo="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
             nix eval "$repo#homeConfigurations.\"tosshy@MacBook-V3\".activationPackage.drvPath" >/dev/null
             nix flake check "$repo/dev"
           '';
@@ -169,12 +169,12 @@
           inherit help;
 
           home-switch = mkTask pkgs "dotfiles-home-switch" ''
-            repo="''${DOTFILES_FLAKE:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
+            repo="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
             ${homeManagerPackage}/bin/home-manager switch --flake "$repo#tosshy@MacBook-V3"
           '';
 
           update-claude = mkTask pkgs "dotfiles-update-claude" ''
-            repo="''${DOTFILES_FLAKE:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
+            repo="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
             nix flake update claude-code --flake "$repo"
           '';
         }
@@ -182,7 +182,7 @@
         # Linux向けではnix-darwinのDarwin専用パッケージを評価しないでdarwin-switchのCIチェックで落ちない
         // nixpkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           darwin-switch = mkTask pkgs "dotfiles-darwin-switch" ''
-            repo="''${DOTFILES_FLAKE:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
+            repo="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
             ${nix-darwin.packages.${system}.darwin-rebuild}/bin/darwin-rebuild \
             switch --flake "$repo#MacBook-V3"
           '';
@@ -193,6 +193,9 @@
           standalone-switch = mkTask pkgs "dotfiles-standalone-switch" ''
             # 素のCodespaceにcloneは無いのでデフォルトはリモート参照にする。
             # git rev-parse を既定にすると、居候先のOSSリポジトリを掴む事故になる。
+            # DOTFILES_FLAKEはこのタスクにだけ残す。EC2やWSL2でcloneを編集するとき、
+            # これが無いとpushしてからでないとローカルの変更を適用できない。
+            # 他のタスクはリポジトリ内で実行する前提なのでgit rev-parseで足りる。
             flake="''${DOTFILES_FLAKE:-github:Rtosshy/dotfiles}"
 
             username="''${USER:-$(id -un)}"
