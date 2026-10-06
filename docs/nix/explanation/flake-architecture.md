@@ -167,7 +167,7 @@ sequenceDiagram
 
 ## 関連
 
-- `../../../README.md` — インストール手順と、standalone の設計判断(single-user Nix・関数で公開する理由)
-- `../../../home/README.md` / `../../../systems/README.md` / `../../../modules/README.md` — 各ディレクトリの役割と配置方針
-- `../../../modules/darwin/README.md` — nix-darwin 層と Darwin 専用アプリ層の分け方
-- `../../../flake.nix` — 出力と apps の定義本体
+- [`/README.md`](/README.md) — インストール手順と、standalone の設計判断(single-user Nix・関数で公開する理由)
+- [`/home/README.md`](/home/README.md) / [`/systems/README.md`](/systems/README.md) / [`/modules/README.md`](/modules/README.md) — 各ディレクトリの役割と配置方針
+- [`/modules/darwin/README.md`](/modules/darwin/README.md) — nix-darwin 層と Darwin 専用アプリ層の分け方
+- [`/flake.nix`](/flake.nix) — 出力と apps の定義本体
