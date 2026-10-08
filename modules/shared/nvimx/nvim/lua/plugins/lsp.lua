@@ -51,6 +51,19 @@ return {
         },
         hls = {},
         clangd = {},
+        vtsls = {},
+        astro = {
+          before_init = function(_, config)
+            local tsdk = require('lspconfig.util').get_typescript_server_path(config.root_dir)
+            -- TypeScript 7 (Go) ships no tsserverlibrary.js, which astro-ls requires.
+            if vim.fn.filereadable(tsdk .. '/tsserverlibrary.js') == 0 then
+              -- Fall back to the Nix-provided typescript_5 on PATH.
+              local prefix = vim.fn.fnamemodify(vim.fn.resolve(vim.fn.exepath('tsc')), ':h:h')
+              tsdk = prefix .. '/lib/node_modules/typescript/lib'
+            end
+            config.init_options.typescript.tsdk = tsdk
+          end,
+        },
       }
 
       for name, config in pairs(servers) do

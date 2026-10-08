@@ -17,19 +17,32 @@ let
     nixd
     haskell-language-server
     clang-tools
+    vtsls
+    astro-language-server
+    # astro-ls fallback tsdk when the project has no usable local typescript.
+    # TypeScript 7 (Go) lacks tsserverlibrary.js, so pin v5 here.
+    typescript_5
+    prettier
   ];
 
   treesitterGrammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+    astro
     bash
     c
     cpp
+    css
     fish
     go
     haskell
+    html
+    javascript
+    json
     lua
     nix
     rust
     terraform
+    tsx
+    typescript
     yaml
   ];
 
