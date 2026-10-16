@@ -19,6 +19,8 @@ in
       (installSkill "growth-L2" ../skills/growth-L2/SKILL.md)
       (installSkill "growth-L3" ../skills/growth-L3/SKILL.md)
       (installSkill "grill-me" ../skills/grill-me/SKILL.md)
+      (installSkill "kotoba" ../skills/kotoba/SKILL.md)
+      (installSkill "rhythm" ../skills/rhythm/SKILL.md)
     ]
   );
 }

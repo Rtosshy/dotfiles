@@ -8,6 +8,8 @@ _: {
     ".claude/skills/growth-L2/SKILL.md".source = ../skills/growth-L2/SKILL.md;
     ".claude/skills/growth-L3/SKILL.md".source = ../skills/growth-L3/SKILL.md;
     ".claude/skills/grill-me/SKILL.md".source = ../skills/grill-me/SKILL.md;
+    ".claude/skills/kotoba/SKILL.md".source = ../skills/kotoba/SKILL.md;
+    ".claude/skills/rhythm/SKILL.md".source = ../skills/rhythm/SKILL.md;
 
     # writing-knowledge は複数ファイル構成(reference/templates/checklists)。
     # ディレクトリごと recursive 配置する(Claude Code は symlink を辿る)。
