@@ -80,6 +80,7 @@ return {
         { '<leader>gd', group = 'git diff' },
         { '<leader>h', group = 'help' },
         { '<leader>l', group = 'line' },
+        { '<leader>m', group = 'markdown' },
         { '<leader>s', group = 'save' },
         { '<leader>w', group = 'window' },
         {

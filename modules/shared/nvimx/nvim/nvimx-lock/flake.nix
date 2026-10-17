@@ -25,8 +25,16 @@
       url = "github:scottmckendry/cyberdream.nvim";
       flake = false;
     };
+    d2-vim = {
+      url = "github:terrastruct/d2-vim";
+      flake = false;
+    };
     devdocs-nvim = {
       url = "github:maskudo/devdocs.nvim";
+      flake = false;
+    };
+    diagram-nvim = {
+      url = "github:3rd/diagram.nvim";
       flake = false;
     };
     diffview-nvim = {
@@ -47,6 +55,10 @@
     };
     im-select-nvim = {
       url = "github:keaising/im-select.nvim";
+      flake = false;
+    };
+    image-nvim = {
+      url = "github:3rd/image.nvim";
       flake = false;
     };
     lazygit-nvim = {
@@ -114,7 +126,7 @@
       flake = false;
     };
     toggleterm-nvim = {
-      url = "github:akinsho/toggleterm.nvim";
+      url = "github:akinsho/toggleterm.nvim/refs/tags/v2.13.1";
       flake = false;
     };
     trouble-nvim = {

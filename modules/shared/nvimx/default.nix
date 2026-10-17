@@ -25,6 +25,14 @@ let
     prettier
   ];
 
+  # External commands invoked by diagram.nvim / image.nvim.
+  diagramTools = with pkgs; [
+    d2
+    imagemagick
+  ];
+
+  extraPackages = languageServers ++ diagramTools;
+
   treesitterGrammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
     astro
     bash
@@ -63,15 +71,14 @@ in
   programs.nvimx = {
     enable = true;
     configDir = nvimConfig;
-    inherit lockDir;
-    extraPackages = languageServers;
+    inherit lockDir extraPackages;
     env = import ./env.nix {
       inherit
         pkgs
         nvimx
         lockDir
+        extraPackages
         ;
-      extraPackages = languageServers;
     };
 
     lock = {

@@ -16,7 +16,11 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "nvim-web-devicons"
+      ],
       "inputName": "alpha-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "goolord",
@@ -32,7 +36,11 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "friendly-snippets"
+      ],
       "inputName": "blink-cmp",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "saghen",
@@ -48,7 +56,11 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "nvim-web-devicons"
+      ],
       "inputName": "bufferline-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "akinsho",
@@ -64,7 +76,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "conform-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "stevearc",
@@ -80,11 +94,31 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "cyberdream-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "scottmckendry",
         "repo": "cyberdream.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "d2-vim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "dependencies": [],
+      "inputName": "d2-vim",
+      "pin": null,
+      "resolvedRef": null,
+      "source": {
+        "owner": "terrastruct",
+        "repo": "d2-vim",
         "type": "github"
       },
       "tag": null,
@@ -96,11 +130,36 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "plenary.nvim",
+        "telescope.nvim"
+      ],
       "inputName": "devdocs-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "maskudo",
         "repo": "devdocs.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "diagram.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "dependencies": [
+        "image.nvim"
+      ],
+      "inputName": "diagram-nvim",
+      "pin": null,
+      "resolvedRef": null,
+      "source": {
+        "owner": "3rd",
+        "repo": "diagram.nvim",
         "type": "github"
       },
       "tag": null,
@@ -112,7 +171,11 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "plenary.nvim"
+      ],
       "inputName": "diffview-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "sindrets",
@@ -128,7 +191,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "flash-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "folke",
@@ -144,7 +209,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "friendly-snippets",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "rafamadriz",
@@ -160,7 +227,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "gitsigns-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "lewis6991",
@@ -176,11 +245,31 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "im-select-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "keaising",
         "repo": "im-select.nvim",
+        "type": "github"
+      },
+      "tag": null,
+      "version": null
+    },
+    "image.nvim": {
+      "branch": null,
+      "build": {
+        "kind": "none"
+      },
+      "commit": null,
+      "dependencies": [],
+      "inputName": "image-nvim",
+      "pin": null,
+      "resolvedRef": null,
+      "source": {
+        "owner": "3rd",
+        "repo": "image.nvim",
         "type": "github"
       },
       "tag": null,
@@ -192,7 +281,11 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "plenary.nvim"
+      ],
       "inputName": "lazygit-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "kdheepak",
@@ -208,7 +301,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "live-share-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "azratul",
@@ -224,7 +319,11 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "nvim-web-devicons"
+      ],
       "inputName": "lualine-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "nvim-lualine",
@@ -240,7 +339,12 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "nui.nvim",
+        "nvim-notify"
+      ],
       "inputName": "noice-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "folke",
@@ -256,7 +360,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "nui-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "MunifTanjim",
@@ -272,7 +378,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "nvim-autopairs",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "windwp",
@@ -288,7 +396,12 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "blink.cmp",
+        "wezterm-types"
+      ],
       "inputName": "nvim-lspconfig",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "neovim",
@@ -304,7 +417,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "nvim-notify",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "rcarriga",
@@ -320,7 +435,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "nvim-treesitter",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "nvim-treesitter",
@@ -336,7 +453,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "nvim-web-devicons",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "nvim-tree",
@@ -352,7 +471,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "oil-git-status-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "refractalize",
@@ -368,7 +489,12 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "nvim-web-devicons",
+        "oil-git-status.nvim"
+      ],
       "inputName": "oil-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "stevearc",
@@ -384,7 +510,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "plenary-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "nvim-lua",
@@ -400,7 +528,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "smear-cursor-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "sphamba",
@@ -417,7 +547,9 @@
         "kind": "shell"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "telescope-fzf-native-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "nvim-telescope",
@@ -433,7 +565,13 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "nvim-web-devicons",
+        "plenary.nvim",
+        "telescope-fzf-native.nvim"
+      ],
       "inputName": "telescope-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "nvim-telescope",
@@ -449,8 +587,10 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "toggleterm-nvim",
-      "resolvedRef": null,
+      "pin": null,
+      "resolvedRef": "refs/tags/v2.13.1",
       "source": {
         "owner": "akinsho",
         "repo": "toggleterm.nvim",
@@ -465,7 +605,11 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [
+        "nvim-web-devicons"
+      ],
       "inputName": "trouble-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "folke",
@@ -481,7 +625,9 @@
         "kind": "none"
       },
       "commit": "d8b1671db6de96e3c4e44ce5cfd1c9c31d3828bf",
+      "dependencies": [],
       "inputName": "wezterm-types",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "DrKJeff16",
@@ -497,7 +643,9 @@
         "kind": "none"
       },
       "commit": null,
+      "dependencies": [],
       "inputName": "which-key-nvim",
+      "pin": null,
       "resolvedRef": null,
       "source": {
         "owner": "folke",
@@ -509,7 +657,5 @@
     }
   },
   "schemaVersion": 1,
-  "warnings": [
-    "plugin toggleterm.nvim: version constraint \"*\" is not resolved yet (TODO: semver)"
-  ]
+  "warnings": []
 }

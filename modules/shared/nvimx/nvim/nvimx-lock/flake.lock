@@ -81,6 +81,22 @@
         "type": "github"
       }
     },
+    "d2-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785641390,
+        "narHash": "sha256-iAPP/Ohf3Aw8I4WmNvTtyMja48stsG4pzp8cZjcDjRg=",
+        "owner": "terrastruct",
+        "repo": "d2-vim",
+        "rev": "a950f1a276506ac4bbc274dd65ba98b15a1d490d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "terrastruct",
+        "repo": "d2-vim",
+        "type": "github"
+      }
+    },
     "devdocs-nvim": {
       "flake": false,
       "locked": {
@@ -94,6 +110,22 @@
       "original": {
         "owner": "maskudo",
         "repo": "devdocs.nvim",
+        "type": "github"
+      }
+    },
+    "diagram-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788393924,
+        "narHash": "sha256-JVf3rzGZkyVhwv+uyHEwHlKwzjd2FxNdIURvK+pdSrw=",
+        "owner": "3rd",
+        "repo": "diagram.nvim",
+        "rev": "54d71d6ae72afa236eedb2a918a35d7414ba39f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "3rd",
+        "repo": "diagram.nvim",
         "type": "github"
       }
     },
@@ -174,6 +206,22 @@
       "original": {
         "owner": "keaising",
         "repo": "im-select.nvim",
+        "type": "github"
+      }
+    },
+    "image-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788555859,
+        "narHash": "sha256-4JNTP9EDDydHsuceLxLel2JnAoXGAH1/MTT1jf10aIg=",
+        "owner": "3rd",
+        "repo": "image.nvim",
+        "rev": "365e2ace0f619164ae6fd2f6f1d2807775dd6849",
+        "type": "github"
+      },
+      "original": {
+        "owner": "3rd",
+        "repo": "image.nvim",
         "type": "github"
       }
     },
@@ -409,12 +457,15 @@
         "bufferline-nvim": "bufferline-nvim",
         "conform-nvim": "conform-nvim",
         "cyberdream-nvim": "cyberdream-nvim",
+        "d2-vim": "d2-vim",
         "devdocs-nvim": "devdocs-nvim",
+        "diagram-nvim": "diagram-nvim",
         "diffview-nvim": "diffview-nvim",
         "flash-nvim": "flash-nvim",
         "friendly-snippets": "friendly-snippets",
         "gitsigns-nvim": "gitsigns-nvim",
         "im-select-nvim": "im-select-nvim",
+        "image-nvim": "image-nvim",
         "lazy-nvim": "lazy-nvim",
         "lazygit-nvim": "lazygit-nvim",
         "live-share-nvim": "live-share-nvim",
@@ -489,15 +540,16 @@
     "toggleterm-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1741512039,
-        "narHash": "sha256-fytbX+L12TK45YKFU9K+iFJcDrwboKabihc2LtX29J4=",
+        "lastModified": 1735582437,
+        "narHash": "sha256-Xc3TZUA6glsuchignUSk4gLZs1IBvI+YnWeP1r+snbQ=",
         "owner": "akinsho",
         "repo": "toggleterm.nvim",
-        "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
+        "rev": "50ea089fc548917cc3cc16b46a8211833b9e3c7c",
         "type": "github"
       },
       "original": {
         "owner": "akinsho",
+        "ref": "refs/tags/v2.13.1",
         "repo": "toggleterm.nvim",
         "type": "github"
       }
