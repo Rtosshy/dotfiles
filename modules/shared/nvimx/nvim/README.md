@@ -52,9 +52,16 @@ that does not alter the plugin spec does not require `nvimx-lock`.
 
 The Neovim wrapper provides `lua-language-server`, `pyright`, `gopls`,
 `kotlin-language-server`, `terraform-ls`, `rust-analyzer`, `nixd`,
-`haskell-language-server`, and `clangd` (from `clang-tools`, which also
-provides `clang-format`). Formatting additionally expects `stylua`, `gofmt`,
-`ktlint`, `rustfmt`, and `terraform` on `PATH`.
+`haskell-language-server`, `clangd` (from `clang-tools`, which also provides
+`clang-format`), `vtsls`, and `astro-language-server`. TypeScript 5 is also
+included as the fallback `tsdk` for astro-ls.
+
+The wrapper provides `prettier` for formatting. Formatting additionally expects
+`stylua`, `gofmt`, `ktlint`, `rustfmt`, and `terraform` on `PATH`.
+
+For diagram rendering, the wrapper provides `d2` and ImageMagick (`magick`) for
+diagram.nvim and image.nvim. These features require a terminal that implements
+the Kitty graphics protocol.
 
 The configured plugins also expect `lazygit`, `rg`, `fd`, `curl`, `jq`,
 `pandoc`, `make`, a C compiler, OpenSSL, and SSH for their corresponding

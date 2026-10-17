@@ -22,6 +22,10 @@ let
     # astro-ls fallback tsdk when the project has no usable local typescript.
     # TypeScript 7 (Go) lacks tsserverlibrary.js, so pin v5 here.
     typescript_5
+  ];
+
+  # External commands invoked by conform.nvim.
+  formatters = with pkgs; [
     prettier
   ];
 
@@ -31,7 +35,7 @@ let
     imagemagick
   ];
 
-  extraPackages = languageServers ++ diagramTools;
+  extraPackages = languageServers ++ formatters ++ diagramTools;
 
   treesitterGrammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
     astro
