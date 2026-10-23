@@ -26,6 +26,15 @@
   home = {
     inherit username homeDirectory;
     stateVersion = "25.11";
+    # nixpkgsのcacert・Node・uvは同梱ルートを使うため、2026-10のeMudhra中間CA漏洩の
+    # distrustがnixpkgsに入るまで遅れる。aptで更新されるホストのCAストアに寄せる。
+    # パスはDebian/Ubuntu前提(Fedoraは/etc/pki/tls/certs/ca-bundle.crt)。
+    sessionVariables = {
+      NIX_SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
+      SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
+      UV_SYSTEM_CERTS = "1";
+      NODE_OPTIONS = "--use-openssl-ca";
+    };
     packages = with pkgs; [
       ripgrep
       fd
