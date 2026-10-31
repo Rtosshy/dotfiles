@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "timezone": "Asia/Tokyo",
+  "semanticCommits": "enabled",
+  "ignorePaths": ["modules/shared/nvimx/nvim/nvimx-lock/"],
+  "nix": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 9am on monday"],
+    "commitMessageAction": "update",
+    "commitMessageTopic": "flake",
+    "commitMessageExtra": ""
+  }
+}
