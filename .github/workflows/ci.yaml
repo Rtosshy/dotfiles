@@ -1,10 +1,22 @@
 name: CI
 
+# Skip changes nothing in the flake can read. Not an allowlist of *.nix:
+# Nix code imports SKILL.md, TOML, conf and assets, so those must still run CI.
 on:
   pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "**/README.md"
+      - ".claude/**"
+      - ".codex/**"
   push:
     branches:
       - main
+    paths-ignore:
+      - "docs/**"
+      - "**/README.md"
+      - ".claude/**"
+      - ".codex/**"
 
 jobs:
   checks:
