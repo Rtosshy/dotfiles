@@ -22,3 +22,16 @@ jobs:
 
       - name: Run hooks
         run: nix develop ./dev -c lefthook run pre-commit --all-files
+
+  # `nix flake check` only evaluates darwinConfigurations on Linux, so build
+  # failures (e.g. nss-cacert) slip through. Build the system for flake updates.
+  darwin-build:
+    if: startsWith(github.head_ref, 'renovate/')
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: cachix/install-nix-action@v31
+
+      - name: Build darwin system
+        run: nix build --no-link -L '.#darwinConfigurations."MacBook-V3".system'
