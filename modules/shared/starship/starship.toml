@@ -1,3 +1,5 @@
+scan_timeout = 100
+
 format = """
 $directory\
 $git_branch\
