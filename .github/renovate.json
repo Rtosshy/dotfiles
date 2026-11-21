@@ -3,6 +3,10 @@
   "extends": ["config:recommended"],
   "timezone": "Asia/Tokyo",
   "semanticCommits": "enabled",
+  "automerge": true,
+  "automergeType": "pr",
+  "automergeStrategy": "squash",
+  "platformAutomerge": false,
   "ignorePaths": ["modules/shared/nvimx/nvim/nvimx-lock/"],
   "nix": {
     "enabled": true
