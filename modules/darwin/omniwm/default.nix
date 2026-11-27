@@ -84,10 +84,10 @@ in
         "toggleContainerFullPrimarySpan" = "Control+Left Option+Return";
         "expandContainerToAvailablePrimarySpan" = "Left Option+Control+F";
         "resetWindowSecondarySpan" = "Left Option+Control+R";
-        "setContainerPrimarySpan.decrease10Percent" = "Left Option+Minus";
-        "setContainerPrimarySpan.increase10Percent" = "Left Option+Equal";
-        "setWindowSecondarySpan.decrease10Percent" = "Left Option+Shift+Minus";
-        "setWindowSecondarySpan.increase10Percent" = "Left Option+Shift+Equal";
+        "resizeContainerPrimarySpan.shrink" = "Left Option+Minus";
+        "resizeContainerPrimarySpan.grow" = "Left Option+Equal";
+        "resizeWindowSecondarySpan.shrink" = "Left Option+Shift+Minus";
+        "resizeWindowSecondarySpan.grow" = "Left Option+Shift+Equal";
         "balanceSizes" = "Left Option+Control+B";
         "openCommandPalette" = "Left Option+Control+Space";
         "raiseAllFloatingWindows" = "Left Option+Shift+R";
