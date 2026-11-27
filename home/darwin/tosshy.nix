@@ -56,6 +56,7 @@
       poppler-utils
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       codex
+      antigravity-cli
       tdf
       google-cloud-sdk
       terraform
